@@ -8,3 +8,6 @@
 
 config_version=4
 
+[application]
+
+run/main_scene="res://Control.tscn"
