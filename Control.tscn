@@ -14,9 +14,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Label" type="Label" parent="Control"]
-margin_left = 494.0
+margin_left = 420.0
 margin_top = 293.0
-margin_right = 530.0
+margin_right = 604.0
 margin_bottom = 307.0
-text = "a test"
+text = "Auto builds for game jams! :)"
 script = ExtResource( 1 )
