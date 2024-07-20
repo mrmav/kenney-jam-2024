@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/Character/MoveRectUpAndDown.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Character/Eye_Follow.gd" type="Script" id=2]
@@ -7,24 +7,127 @@
 [ext_resource path="res://Graphics/Textures/Player/T_Eye_Black.png" type="Texture" id=5]
 [ext_resource path="res://Graphics/Textures/Player/T_Eye_White.png" type="Texture" id=6]
 [ext_resource path="res://Graphics/Textures/Player/T_Eye_Glow.png" type="Texture" id=7]
+[ext_resource path="res://Graphics/Textures/Others/T_Pattern.png" type="Texture" id=8]
+[ext_resource path="res://Graphics/Textures/Player/Clouds/T_Cloud_5.png" type="Texture" id=9]
+[ext_resource path="res://Graphics/Shaders/sprite_mask.gdshader" type="Shader" id=10]
+[ext_resource path="res://Graphics/Textures/Player/Clouds/T_Cloud_4.png" type="Texture" id=11]
+[ext_resource path="res://Graphics/Textures/Player/Clouds/T_Cloud_1.png" type="Texture" id=12]
+[ext_resource path="res://Scenes/Character/ribbitious.gd" type="Script" id=13]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 10 )
+shader_param/rect_size = 3.241
+shader_param/ratio_width = 1.0
+shader_param/ratio_height = 0.61
+shader_param/location_x = 0.313
+shader_param/location_y = -0.251
+shader_param/invert_mask = true
+shader_param/mask_texture = ExtResource( 11 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "A_clouds_idle"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Clouds_01/Clouds_02:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Clouds_01:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+
+[sub_resource type="Theme" id=2]
 
 [node name="scene_character" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Ribbitious" type="Control" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+[node name="Background" type="TextureRect" parent="."]
+self_modulate = Color( 0.333333, 0.227451, 0.227451, 0.862745 )
+material = SubResource( 1 )
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -50.0
-margin_top = -100.0
-margin_right = 50.0
-rect_pivot_offset = Vector2( 105, 60 )
+texture = ExtResource( 8 )
+stretch_mode = 2
 
-[node name="Tween" type="Tween" parent="Ribbitious"]
+[node name="Clouds" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 
-[node name="Rect_Frog" type="TextureRect" parent="Ribbitious/Tween"]
+[node name="Could_03" type="TextureRect" parent="Clouds"]
+modulate = Color( 1, 1, 1, 0.396078 )
+margin_left = 421.0
+margin_top = 318.0
+margin_right = 649.0
+margin_bottom = 445.0
+rect_scale = Vector2( 0.401, 0.401 )
+rect_pivot_offset = Vector2( 140.93, 86.0814 )
+texture = ExtResource( 12 )
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Clouds/Could_03"]
+autoplay = "A_clouds_idle"
+anims/A_clouds_idle = SubResource( 3 )
+
+[node name="Clouds_01" type="TextureRect" parent="Clouds/Could_03"]
+modulate = Color( 1, 1, 1, 0.705882 )
+margin_left = -178.895
+margin_top = 38.3779
+margin_right = 97.1052
+margin_bottom = 188.378
+rect_scale = Vector2( 0.3, 0.3 )
+rect_pivot_offset = Vector2( 140.93, 86.0814 )
+texture = ExtResource( 11 )
+
+[node name="Clouds_02" type="TextureRect" parent="Clouds/Could_03/Clouds_01"]
+modulate = Color( 1, 1, 1, 0.627451 )
+margin_left = -128.838
+margin_top = 124.144
+margin_right = 110.162
+margin_bottom = 258.144
+rect_scale = Vector2( 0.3, 0.3 )
+rect_pivot_offset = Vector2( 140.93, 86.0814 )
+texture = ExtResource( 9 )
+
+[node name="Ribbitious" type="Control" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 480, 0 )
+script = ExtResource( 13 )
+button_path = NodePath("../Button")
+clouds_path = NodePath("../Clouds")
+
+[node name="Rect_Frog" type="TextureRect" parent="Ribbitious"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -38,7 +141,7 @@ expand = true
 stretch_mode = 6
 script = ExtResource( 1 )
 
-[node name="Eye_Right" type="Control" parent="Ribbitious/Tween/Rect_Frog"]
+[node name="Eye_Right" type="Control" parent="Ribbitious/Rect_Frog"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -86.0
@@ -53,7 +156,7 @@ pupil_path = NodePath("Rect_Eye_Black")
 glow_path = NodePath("Rect_Eye_Glow")
 eye_radius = 5.0
 
-[node name="Rect_Eye_White" type="TextureRect" parent="Ribbitious/Tween/Rect_Frog/Eye_Right"]
+[node name="Rect_Eye_White" type="TextureRect" parent="Ribbitious/Rect_Frog/Eye_Right"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 22.5, 22.5 )
@@ -61,7 +164,7 @@ texture = ExtResource( 6 )
 expand = true
 stretch_mode = 5
 
-[node name="Rect_Eye_Black" type="TextureRect" parent="Ribbitious/Tween/Rect_Frog/Eye_Right"]
+[node name="Rect_Eye_Black" type="TextureRect" parent="Ribbitious/Rect_Frog/Eye_Right"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 22.5, 22.5 )
@@ -69,7 +172,7 @@ texture = ExtResource( 5 )
 expand = true
 stretch_mode = 6
 
-[node name="Rect_Eye_Glow" type="TextureRect" parent="Ribbitious/Tween/Rect_Frog/Eye_Right"]
+[node name="Rect_Eye_Glow" type="TextureRect" parent="Ribbitious/Rect_Frog/Eye_Right"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 22.5, 22.5 )
@@ -77,7 +180,7 @@ texture = ExtResource( 7 )
 expand = true
 stretch_mode = 6
 
-[node name="Eye_Left" type="Control" parent="Ribbitious/Tween/Rect_Frog"]
+[node name="Eye_Left" type="Control" parent="Ribbitious/Rect_Frog"]
 margin_left = 43.0
 margin_top = 8.0
 margin_right = 88.0
@@ -90,7 +193,7 @@ pupil_path = NodePath("Rect_Eye_Black")
 glow_path = NodePath("Rect_Eye_Glow")
 eye_radius = 5.0
 
-[node name="Rect_Eye_White" type="TextureRect" parent="Ribbitious/Tween/Rect_Frog/Eye_Left"]
+[node name="Rect_Eye_White" type="TextureRect" parent="Ribbitious/Rect_Frog/Eye_Left"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 22.5, 22.5 )
@@ -98,7 +201,7 @@ texture = ExtResource( 6 )
 expand = true
 stretch_mode = 5
 
-[node name="Rect_Eye_Black" type="TextureRect" parent="Ribbitious/Tween/Rect_Frog/Eye_Left"]
+[node name="Rect_Eye_Black" type="TextureRect" parent="Ribbitious/Rect_Frog/Eye_Left"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 22.5, 22.5 )
@@ -106,7 +209,7 @@ texture = ExtResource( 5 )
 expand = true
 stretch_mode = 6
 
-[node name="Rect_Eye_Glow" type="TextureRect" parent="Ribbitious/Tween/Rect_Frog/Eye_Left"]
+[node name="Rect_Eye_Glow" type="TextureRect" parent="Ribbitious/Rect_Frog/Eye_Left"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 22.5, 22.5 )
@@ -114,7 +217,7 @@ texture = ExtResource( 7 )
 expand = true
 stretch_mode = 6
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Ribbitious/Tween"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Ribbitious"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -129,15 +232,23 @@ patch_margin_top = 43
 patch_margin_right = 205
 patch_margin_bottom = 58
 
-[node name="Label" type="Label" parent="Ribbitious/Tween/NinePatchRect"]
+[node name="Label" type="Label" parent="Ribbitious/NinePatchRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 30.0
 margin_top = 30.0
 margin_right = -30.0
 margin_bottom = -40.0
+theme = SubResource( 2 )
 text = "LORD RIBBITIOUS"
 align = 1
 valign = 3
 autowrap = true
 uppercase = true
+
+[node name="Button" type="Button" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -83.0
