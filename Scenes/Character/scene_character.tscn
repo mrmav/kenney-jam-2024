@@ -70,19 +70,21 @@ tracks/2/keys = {
 [node name="scene_character" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 1
+mouse_filter = 2
 
 [node name="Background" type="TextureRect" parent="."]
 self_modulate = Color( 0.333333, 0.227451, 0.227451, 0.862745 )
 material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 texture = ExtResource( 8 )
 stretch_mode = 2
 
 [node name="Clouds" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 
 [node name="Could_03" type="TextureRect" parent="Clouds"]
 modulate = Color( 1, 1, 1, 0.396078 )
@@ -92,6 +94,7 @@ margin_right = 649.0
 margin_bottom = 445.0
 rect_scale = Vector2( 0.401, 0.401 )
 rect_pivot_offset = Vector2( 140.93, 86.0814 )
+mouse_filter = 2
 texture = ExtResource( 12 )
 flip_h = true
 
@@ -107,6 +110,7 @@ margin_right = 97.1052
 margin_bottom = 188.378
 rect_scale = Vector2( 0.3, 0.3 )
 rect_pivot_offset = Vector2( 140.93, 86.0814 )
+mouse_filter = 2
 texture = ExtResource( 11 )
 
 [node name="Clouds_02" type="TextureRect" parent="Clouds/Could_03/Clouds_01"]
@@ -117,6 +121,7 @@ margin_right = 110.162
 margin_bottom = 258.144
 rect_scale = Vector2( 0.3, 0.3 )
 rect_pivot_offset = Vector2( 140.93, 86.0814 )
+mouse_filter = 2
 texture = ExtResource( 9 )
 
 [node name="Ribbitious" type="Control" parent="."]

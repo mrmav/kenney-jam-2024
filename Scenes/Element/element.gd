@@ -1,6 +1,6 @@
 extends Node2D
 
-signal element_selected
+signal user_clicked
 
 export var outline_path: NodePath
 export var sphere_path: NodePath
@@ -61,8 +61,7 @@ func _process(delta):
 
 func _on_area_input_event(viewport: Node, event: InputEvent, shape_idx: int):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
-		var o = owner
-		owner.emit_signal("node_selected", get_parent(), self)
+		emit_signal("user_clicked")
 
 
 func _on_Area2D_mouse_entered() -> void:

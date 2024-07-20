@@ -7,11 +7,11 @@
 [node name="Main" type="Node"]
 
 [node name="NodeContainer" parent="." instance=ExtResource( 2 )]
+position = Vector2( 489, 206 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="SceneCharacter" parent="CanvasLayer" instance=ExtResource( 1 )]
-mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
 anchor_right = 1.0

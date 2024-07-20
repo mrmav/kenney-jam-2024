@@ -6,23 +6,28 @@ class_name TreeNode
 const TYPE_TREE_NODE = 1
 
 export(PackedScene) var element_scene = null
-export(Array, NodePath) var incested_nodes = []
 
+var element = null
 var line_connections = []
 
 func _enter_tree():
 	assert(element_scene != null, "No element scene given.")
 	
-	if Engine.editor_hint:
+	if Engine.editor_hint:		
 		return
 	
 	# Instances the element of this node
-	var el = element_scene.instance()
-	el.z_as_relative = false
-	el.z_index = Enums.ZIndex.Elements
-	add_child(el)
-	
-	connect("tree_entered", el, "set_owner", [owner])
+	element = element_scene.instance()
+	element.z_as_relative = false
+	element.z_index = Enums.ZIndex.Elements
+	add_child(element)
+		
+	element.connect("user_clicked", self, "_on_user_click")
+
+
+func _on_user_click():
+	GlobalAccess.node_container.emit_signal("user_clicked", self)
+
 	
 func _ready():
 	
@@ -36,9 +41,15 @@ func _ready():
 		if child.get("TYPE_TREE_NODE"):
 			_create_connection(self, child, line_scene)
 			
-	for sibling in incested_nodes:
-		if sibling.get("TYPE_TREE_NODE"):
-			_create_connection(self, sibling, line_scene)
+	for sibling in get_parent().get_children():
+		if sibling == self:
+			continue
+		if not sibling.get("TYPE_TREE_NODE"):
+			continue
+#		if sibling.get_child_count() > 0:
+#			continue
+		
+		_create_connection(self, sibling, line_scene)
 
 
 func _create_connection(a : Node2D, b : Node2D, line_scene : PackedScene) -> void:
