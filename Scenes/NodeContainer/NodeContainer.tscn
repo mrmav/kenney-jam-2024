@@ -6,82 +6,86 @@
 [ext_resource path="res://Scenes/NodeContainer/GameCamera.gd" type="Script" id=4]
 
 [node name="NodeContainer" type="Node2D"]
-position = Vector2( 15, 32 )
 script = ExtResource( 1 )
-tree_root_path = NodePath("TreeNode")
+__meta__ = {
+"_edit_lock_": true
+}
+tree_root_path = NodePath("TreeRoot")
 
-[node name="TreeNode" type="Node2D" parent="."]
+[node name="TreeRoot" type="Node2D" parent="."]
+position = Vector2( -185.011, -147.181 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
-[node name="TreeNode2" type="Node2D" parent="TreeNode"]
-position = Vector2( -198, 189 )
+[node name="TreeNode2" type="Node2D" parent="TreeRoot"]
+position = Vector2( 201.082, 299.023 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
-[node name="TreeNode3" type="Node2D" parent="TreeNode/TreeNode2"]
-position = Vector2( -161, 59 )
+[node name="TreeNode3" type="Node2D" parent="TreeRoot/TreeNode2"]
+position = Vector2( -203.715, 231.194 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
-[node name="TreeNode9" type="Node2D" parent="TreeNode/TreeNode2/TreeNode3"]
-position = Vector2( -187, -210 )
+[node name="TreeNode9" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode3"]
+position = Vector2( -263.811, -76.3988 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
-[node name="TreeNode4" type="Node2D" parent="TreeNode"]
-position = Vector2( 167, -205 )
+[node name="TreeNode4" type="Node2D" parent="TreeRoot"]
+position = Vector2( 402.601, -155.902 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
-[node name="TreeNode7" type="Node2D" parent="TreeNode/TreeNode4"]
-position = Vector2( 199, -74 )
+[node name="TreeNode7" type="Node2D" parent="TreeRoot/TreeNode4"]
+position = Vector2( 423.884, -166.777 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
-[node name="TreeNode6" type="Node2D" parent="TreeNode/TreeNode4/TreeNode7"]
-position = Vector2( 123, 221 )
+[node name="TreeNode6" type="Node2D" parent="TreeRoot/TreeNode4/TreeNode7"]
+position = Vector2( -29.6093, 339.019 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
-[node name="TreeNode5" type="Node2D" parent="TreeNode/TreeNode4/TreeNode7/TreeNode6"]
-position = Vector2( -191, 352 )
+[node name="TreeNode5" type="Node2D" parent="TreeRoot/TreeNode4/TreeNode7/TreeNode6"]
+position = Vector2( 130.429, 193.433 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
-[node name="TreeNode8" type="Node2D" parent="TreeNode/TreeNode4/TreeNode7/TreeNode6/TreeNode5"]
-position = Vector2( -273, 38 )
+[node name="TreeNode8" type="Node2D" parent="TreeRoot/TreeNode4/TreeNode7/TreeNode6/TreeNode5"]
+position = Vector2( -237.142, 82.9975 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
-[node name="TreeNode9" type="Node2D" parent="TreeNode/TreeNode4/TreeNode7/TreeNode6/TreeNode5"]
-position = Vector2( -18, 186 )
+[node name="TreeNode9" type="Node2D" parent="TreeRoot/TreeNode4/TreeNode7/TreeNode6/TreeNode5"]
+position = Vector2( -34.1991, 258.052 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
-[node name="TreeNode10" type="Node2D" parent="TreeNode/TreeNode4/TreeNode7/TreeNode6"]
-position = Vector2( 269, 63 )
+[node name="TreeNode10" type="Node2D" parent="TreeRoot/TreeNode4/TreeNode7/TreeNode6"]
+position = Vector2( 212.284, 9.7576 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
-[node name="TreeNode11" type="Node2D" parent="TreeNode/TreeNode4/TreeNode7/TreeNode6/TreeNode10"]
-position = Vector2( 66, 161 )
+[node name="TreeNode11" type="Node2D" parent="TreeRoot/TreeNode4/TreeNode7/TreeNode6/TreeNode10"]
+position = Vector2( 211.916, 271.008 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
-[node name="TreeNode12" type="Node2D" parent="TreeNode/TreeNode4"]
-position = Vector2( -202, -255 )
+[node name="TreeNode12" type="Node2D" parent="TreeRoot/TreeNode4"]
+position = Vector2( -547.331, -306.446 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
-[node name="TreeNode13" type="Node2D" parent="TreeNode/TreeNode4/TreeNode12"]
-position = Vector2( 241, -168 )
+[node name="TreeNode13" type="Node2D" parent="TreeRoot/TreeNode4/TreeNode12"]
+position = Vector2( 87.7073, -341.566 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 smoothing_enabled = true
+editor_draw_screen = false
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_lock_": true
