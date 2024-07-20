@@ -12,7 +12,8 @@
 radius = 250.0
 
 [node name="scene_element" type="Node2D"]
-position = Vector2( 3, 0 )
+z_index = 2
+z_as_relative = false
 script = ExtResource( 7 )
 outline_path = NodePath("outline")
 sphere_path = NodePath("outline/base")
@@ -21,11 +22,10 @@ noise01_path = NodePath("outline/noise01")
 icon_path = NodePath("outline/icon")
 noise02_path = NodePath("outline/noise02")
 area2D_path = NodePath("outline/Area2D")
-description_path = NodePath("outline/Tween/element_name")
+description_path = NodePath("outline/LabelPositioner/element_name")
 description_tween_path = NodePath("outline/Tween")
 
 [node name="outline" type="Sprite" parent="."]
-position = Vector2( 430, 262 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 4 )
 
@@ -62,14 +62,17 @@ one_way_collision_margin = 0.0
 
 [node name="Tween" type="Tween" parent="outline"]
 
-[node name="element_name" type="Label" parent="outline/Tween"]
-visible = false
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="outline"]
+remote_path = NodePath("../LabelPositioner")
+
+[node name="LabelPositioner" type="Node2D" parent="outline"]
+
+[node name="element_name" type="Label" parent="outline/LabelPositioner"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -103.0
-margin_top = -270.0
-margin_right = -52.0
-margin_bottom = -256.0
+margin_right = 51.0
+margin_bottom = 14.0
+rect_scale = Vector2( 6.94668, 6.94668 )
 text = "Sausage"
