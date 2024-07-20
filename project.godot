@@ -12,3 +12,8 @@ config_version=4
 
 config/name="kenney-jam-2024"
 run/main_scene="res://Control.tscn"
+
+[display]
+
+window/stretch/mode="2d"
+window/stretch/aspect="keep_width"
