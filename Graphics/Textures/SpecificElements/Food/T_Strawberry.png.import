@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/T_TempFace.png-dd2c0bc4e0e6e7fa7c4745bcd9a695bd.stex"
+path="res://.import/T_Strawberry.png-edefa98ea3fe5580fb1e2f07e3e9c5cb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Main/T_TempFace.png"
-dest_files=[ "res://.import/T_TempFace.png-dd2c0bc4e0e6e7fa7c4745bcd9a695bd.stex" ]
+source_file="res://Graphics/Textures/SpecificElements/Food/T_Strawberry.png"
+dest_files=[ "res://.import/T_Strawberry.png-edefa98ea3fe5580fb1e2f07e3e9c5cb.stex" ]
 
 [params]
 

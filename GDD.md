@@ -87,10 +87,14 @@ Below follow how and which sprites and assets are used for what:
 | --------------------------- | ----------------------------------------- |
 | Philosophers Stone          | 3D/TowerDefenseKit/detail_crystal         |
 | Philosophers Stone Particle | 2D/JumperPack/particle_pink               |
-| Background                  | ///                                       |
+| Background                  | 2D/CartographyPack/Papers                 |
 | Base Elements               | 2d/Planets                                |
-| The Squared Circle          | 2d/PatternPack2/Thin Edited merged shapes |
+| Outer Elements              | 2D/InterfacePack/minimapMap_blank         |
+| The Squared Circle          | 2D/PatternPack2/Thin Edited merged shapes |
 | Selection Particles         | 2D/VoxelPack/Particles/swirl_white        |
+| Ribbitonious                | 2D/Animal                                 |
+| Hat                         | 2D/ScribblePlatformer                     |
+| Banner                      | 2D/InterfacePack/bannerScroll             |
 
 
 
