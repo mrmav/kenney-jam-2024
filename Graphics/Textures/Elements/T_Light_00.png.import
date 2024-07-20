@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/T_TempFace.png-dd2c0bc4e0e6e7fa7c4745bcd9a695bd.stex"
+path="res://.import/T_Light_00.png-d90ace27536270a76f98343407f869e2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Main/T_TempFace.png"
-dest_files=[ "res://.import/T_TempFace.png-dd2c0bc4e0e6e7fa7c4745bcd9a695bd.stex" ]
+source_file="res://Graphics/Textures/Elements/T_Light_00.png"
+dest_files=[ "res://.import/T_Light_00.png-d90ace27536270a76f98343407f869e2.stex" ]
 
 [params]
 
