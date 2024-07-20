@@ -7,7 +7,6 @@ export var glow_path: NodePath
 export var eye_radius: float = 20
 export var lerp_factor: float = 0.1
 
-
 var base_eye: TextureRect
 var pupil: TextureRect
 var glow: TextureRect
