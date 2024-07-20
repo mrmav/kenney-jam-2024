@@ -119,6 +119,15 @@ func _process(delta):
 	for connection in line_connections:
 		_update_line_points(connection)
 	
+	if Engine.editor_hint:
+		if position != _last_post:
+			# this is being moved in the editor
+			if Input.is_key_pressed(KEY_ALT):
+				for child in get_children():
+					child.position -= position - _last_post
+					
+	_last_post = position
+	
 	
 func _draw():
 	if not Engine.editor_hint:
