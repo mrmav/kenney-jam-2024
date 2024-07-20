@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/Character/MoveRectUpAndDown.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Character/Eye_Follow.gd" type="Script" id=2]
@@ -24,6 +24,49 @@ shader_param/location_y = -0.251
 shader_param/invert_mask = true
 shader_param/mask_texture = ExtResource( 11 )
 
+[sub_resource type="Animation" id=3]
+resource_name = "A_clouds_idle"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Clouds_01/Clouds_02:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Clouds_01:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+
+[sub_resource type="Theme" id=2]
+
 [node name="scene_character" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -36,6 +79,45 @@ anchor_bottom = 1.0
 texture = ExtResource( 8 )
 stretch_mode = 2
 
+[node name="Clouds" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Could_03" type="TextureRect" parent="Clouds"]
+modulate = Color( 1, 1, 1, 0.396078 )
+margin_left = 421.0
+margin_top = 318.0
+margin_right = 649.0
+margin_bottom = 445.0
+rect_scale = Vector2( 0.401, 0.401 )
+rect_pivot_offset = Vector2( 140.93, 86.0814 )
+texture = ExtResource( 12 )
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Clouds/Could_03"]
+autoplay = "A_clouds_idle"
+anims/A_clouds_idle = SubResource( 3 )
+
+[node name="Clouds_01" type="TextureRect" parent="Clouds/Could_03"]
+modulate = Color( 1, 1, 1, 0.705882 )
+margin_left = -178.895
+margin_top = 38.3779
+margin_right = 97.1052
+margin_bottom = 188.378
+rect_scale = Vector2( 0.3, 0.3 )
+rect_pivot_offset = Vector2( 140.93, 86.0814 )
+texture = ExtResource( 11 )
+
+[node name="Clouds_02" type="TextureRect" parent="Clouds/Could_03/Clouds_01"]
+modulate = Color( 1, 1, 1, 0.627451 )
+margin_left = -128.838
+margin_top = 124.144
+margin_right = 110.162
+margin_bottom = 258.144
+rect_scale = Vector2( 0.3, 0.3 )
+rect_pivot_offset = Vector2( 140.93, 86.0814 )
+texture = ExtResource( 9 )
+
 [node name="Ribbitious" type="Control" parent="."]
 anchor_top = 1.0
 anchor_right = 1.0
@@ -43,6 +125,7 @@ anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 480, 0 )
 script = ExtResource( 13 )
 button_path = NodePath("../Button")
+clouds_path = NodePath("../Clouds")
 
 [node name="Rect_Frog" type="TextureRect" parent="Ribbitious"]
 anchor_left = 0.5
@@ -134,35 +217,6 @@ texture = ExtResource( 7 )
 expand = true
 stretch_mode = 6
 
-[node name="Coulds" type="TextureRect" parent="Ribbitious/Rect_Frog"]
-visible = false
-margin_left = -210.0
-margin_top = -14.0
-margin_right = 18.0
-margin_bottom = 110.0
-rect_scale = Vector2( 0.4, 0.4 )
-rect_pivot_offset = Vector2( 140.93, 86.0814 )
-texture = ExtResource( 12 )
-flip_h = true
-
-[node name="Clouds_01" type="TextureRect" parent="Ribbitious/Rect_Frog/Coulds"]
-margin_left = 108.0
-margin_top = 43.0
-margin_right = 336.0
-margin_bottom = 167.0
-rect_scale = Vector2( 0.3, 0.3 )
-rect_pivot_offset = Vector2( 140.93, 86.0814 )
-texture = ExtResource( 11 )
-
-[node name="Clouds_02" type="TextureRect" parent="Ribbitious/Rect_Frog/Coulds/Clouds_01"]
-margin_left = 154.496
-margin_top = 59.1434
-margin_right = 382.496
-margin_bottom = 183.143
-rect_scale = Vector2( 0.3, 0.3 )
-rect_pivot_offset = Vector2( 140.93, 86.0814 )
-texture = ExtResource( 9 )
-
 [node name="NinePatchRect" type="NinePatchRect" parent="Ribbitious"]
 anchor_left = 0.5
 anchor_top = 1.0
@@ -185,6 +239,7 @@ margin_left = 30.0
 margin_top = 30.0
 margin_right = -30.0
 margin_bottom = -40.0
+theme = SubResource( 2 )
 text = "LORD RIBBITIOUS"
 align = 1
 valign = 3
