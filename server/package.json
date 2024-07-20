@@ -1,0 +1,17 @@
+{
+  "name": "jam-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "node index.js",
+    "debug": "ndb index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "mysql": "^2.18.1"
+  }
+}
