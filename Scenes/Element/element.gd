@@ -1,5 +1,7 @@
 extends Node2D
 
+signal element_selected
+
 export var outline_path: NodePath
 export var sphere_path: NodePath
 export var light_path: NodePath
@@ -39,6 +41,9 @@ func _ready():
 	
 	area2D.connect("mouse_entered", self, "_on_Area2D_mouse_entered")
 	area2D.connect("mouse_exited", self, "_on_Area2D_mouse_exited")
+	area2D.connect("input_event", self, "_on_area_input_event")
+	
+	#area2D.connect("")
 	
 	default_icon_scale = icon.scale
 	pass # Replace with function body.
@@ -53,7 +58,13 @@ func _process(delta):
 	description.set_global_position(outline.global_position)
 	pass
 	
-	
+
+func _on_area_input_event(viewport: Node, event: InputEvent, shape_idx: int):
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
+		var o = owner
+		owner.emit_signal("node_selected", get_parent(), self)
+
+
 func _on_Area2D_mouse_entered() -> void:
 	# Increase the size of the sprite
 	icon.scale = default_icon_scale * hover_scale

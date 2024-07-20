@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Reference",
+"class": "Enums",
+"language": "GDScript",
+"path": "res://Scripts/Enums.gd"
+}, {
+"base": "Node2D",
+"class": "TreeNode",
+"language": "GDScript",
+"path": "res://Scenes/NodeContainer/TreeNode.gd"
+} ]
+_global_script_class_icons={
+"Enums": "",
+"TreeNode": ""
+}
+
 [application]
 
 config/name="kenney-jam-2024"
@@ -20,3 +36,7 @@ window/size/height=540
 window/size/resizable=false
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true

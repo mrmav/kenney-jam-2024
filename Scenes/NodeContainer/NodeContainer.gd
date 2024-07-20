@@ -1,16 +1,16 @@
+tool
 extends Node2D
 
+signal node_selected(node, element)
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+onready var tree_root = get_node_or_null("TreeRoot")
+onready var camera = get_node_or_null("Camera2D")
 
+var selected_node : TreeNode = tree_root
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	connect("node_selected", self, "_on_node_selected")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_node_selected(node : TreeNode, element):
+	camera.global_position = node.global_position

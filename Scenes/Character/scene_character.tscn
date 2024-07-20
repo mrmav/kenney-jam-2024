@@ -70,6 +70,7 @@ tracks/2/keys = {
 [node name="scene_character" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 
 [node name="Background" type="TextureRect" parent="."]
 self_modulate = Color( 0.333333, 0.227451, 0.227451, 0.862745 )
