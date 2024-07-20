@@ -21,12 +21,19 @@ func _enter_tree():
 		_dummy_element_instance = element_scene.instance()		
 		return
 	
+	for child in get_children():
+		if child.get("TYPE_TREE_NODE"):
+			continue
+		child.queue_free()
+	
+	line_connections.clear()
+	
 	# Instances the element of this node
 	element = element_scene.instance()
 	element.z_as_relative = false
 	element.z_index = Enums.ZIndex.Elements
 	add_child(element)
-		
+	
 	element.connect("user_clicked", self, "_on_user_click")
 
 
@@ -111,6 +118,15 @@ func _process(delta):
 	
 	for connection in line_connections:
 		_update_line_points(connection)
+	
+	if Engine.editor_hint:
+		if position != _last_post:
+			# this is being moved in the editor
+			if Input.is_key_pressed(KEY_ALT):
+				for child in get_children():
+					child.position -= position - _last_post
+					
+	_last_post = position
 	
 	
 func _draw():
