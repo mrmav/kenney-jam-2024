@@ -1,8 +1,11 @@
 const express = require('express');
+var cors = require('cors')
 var bodyParser = require('body-parser')
 var mysql = require('mysql');
 const app = express();
 const port = 3000;
+
+app.use(cors())
 
 // create application/json parser
 var jsonParser = bodyParser.json()
