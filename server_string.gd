@@ -1,6 +1,7 @@
 extends Label
 
-var url = "http://localhost:3000"
+#var url = "http://localhost:3000"
+var url = "https://mrmav-jam.com"
 var post_endpoint = "/post-data"
 
 var http_request : HTTPRequest = null
