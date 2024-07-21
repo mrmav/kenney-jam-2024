@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Scenes/Character/MoveRectUpAndDown.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Character/Eye_Follow.gd" type="Script" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://Graphics/Textures/Player/T_Eye_Glow.png" type="Texture" id=7]
 [ext_resource path="res://Graphics/Textures/Others/T_Pattern_46.png" type="Texture" id=8]
 [ext_resource path="res://Graphics/Textures/Player/Clouds/T_Cloud_5.png" type="Texture" id=9]
-[ext_resource path="res://Graphics/Shaders/sprite_mask.gdshader" type="Shader" id=10]
 [ext_resource path="res://Graphics/Textures/Player/Clouds/T_Cloud_4.png" type="Texture" id=11]
 [ext_resource path="res://Graphics/Textures/Player/Clouds/T_Cloud_1.png" type="Texture" id=12]
 [ext_resource path="res://Scenes/Character/ribbitious.gd" type="Script" id=13]
@@ -21,15 +20,82 @@
 [ext_resource path="res://Graphics/Textures/UI/T_BannerHanging.png" type="Texture" id=19]
 [ext_resource path="res://Graphics/Textures/UI/T_Button_RectangleMetal.png" type="Texture" id=20]
 
+[sub_resource type="Shader" id=4]
+code = "shader_type canvas_item;
+
+uniform sampler2D mask_texture;
+uniform float rect_size : hint_range(0.0, 5.0) = 1.0;
+uniform float ratio_width : hint_range(0.0, 3.0) = 1.0;
+uniform float ratio_height : hint_range(0.0, 3.0) = 1.0;
+uniform float location_x : hint_range(-1.0, 2.0) = 0.0;
+uniform float location_y : hint_range(-1.0, 2.0) = 0.0;
+uniform bool invert_mask = false;
+
+void fragment() {
+	float ratio = TEXTURE_PIXEL_SIZE.x / TEXTURE_PIXEL_SIZE.y;
+    vec4 colour = texture(TEXTURE, UV);
+	float alpha_total = texture(mask_texture, (UV - vec2(location_x,location_y)) / vec2(ratio_width,ratio_height) / rect_size).a;
+	if (invert_mask == true) {
+		alpha_total = 1.0 - alpha_total;
+	}
+    colour.a *= alpha_total;
+    COLOR = colour;
+}"
+
 [sub_resource type="ShaderMaterial" id=1]
-shader = ExtResource( 10 )
+shader = SubResource( 4 )
 shader_param/rect_size = 3.052
 shader_param/ratio_width = 1.0
 shader_param/ratio_height = 0.61
 shader_param/location_x = 0.313
-shader_param/location_y = -0.09
+shader_param/location_y = -0.098
 shader_param/invert_mask = true
 shader_param/mask_texture = ExtResource( 16 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "A_backgroundSwitch_off"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/location_y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 3.24901 ),
+"update": 0,
+"values": [ 2.0, -0.092 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "A_backgroundSwitch_on"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/location_y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1.62451, 4.43827 ),
+"update": 0,
+"values": [ 2.0, -0.098 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/location_y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -0.098 ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "A_clouds_idle"
@@ -87,6 +153,11 @@ anchor_bottom = 1.0
 mouse_filter = 2
 texture = ExtResource( 8 )
 stretch_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
+anims/A_backgroundSwitch_off = SubResource( 5 )
+anims/A_backgroundSwitch_on = SubResource( 6 )
+anims/RESET = SubResource( 7 )
 
 [node name="Background_Border" type="NinePatchRect" parent="."]
 modulate = Color( 0.298039, 0.298039, 0.298039, 1 )
@@ -205,6 +276,7 @@ script = ExtResource( 13 )
 hover_button_path = NodePath("../HoverButton")
 submitText_path = NodePath("../SubmitText")
 clouds_path = NodePath("../Clouds")
+background_animation_path = NodePath("../Background/AnimationPlayer")
 
 [node name="Rect_Frog" type="TextureRect" parent="Ribbitious"]
 anchor_left = 0.5
