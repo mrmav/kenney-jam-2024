@@ -8,9 +8,13 @@ signal position_changed
 const TYPE_TREE_NODE = 1
 
 export(PackedScene) var element_scene = null
+export(bool) var relevant = true
+export(Array, NodePath) var bridges = []
 
 var element = null
 var line_connections = []
+
+var bridge_nodes = []
 
 var _dummy_element_instance = null
 
@@ -35,7 +39,7 @@ func _enter_tree():
 	add_child(element)
 	
 	element.connect("user_clicked", self, "_on_user_click")
-
+	
 
 func _on_user_click():
 	GlobalAccess.node_container.emit_signal("user_clicked", self)
@@ -43,8 +47,11 @@ func _on_user_click():
 	
 func _ready():
 	
-	connect("position_changed", self, "_on_pos_changed")
+#	set_as_toplevel(true)
 	
+	for b in bridges:
+		bridge_nodes.append(get_node(b))
+		
 	if Engine.editor_hint:
 		
 		var line_scene_editor : PackedScene = preload("res://Scenes/NodeContainer/LineConnectionEditor.tscn")
@@ -53,17 +60,21 @@ func _ready():
 		update()
 		return
 	
+	
 	# create a line connection to my parent child and incested nodes.
 	var line_scene : PackedScene = preload("res://Scenes/NodeContainer/LineConnection.tscn")
 	_build_connections(line_scene)
 	
-	
-
 
 func _build_connections(line_scene):
 	for child in get_children():
 		if child.get("TYPE_TREE_NODE"):
 			_create_connection(self, child, line_scene)
+			
+	for node in bridge_nodes:
+		if node.get("TYPE_TREE_NODE"):
+			print("connection bridge between ", self, " and ", node)
+			_create_connection(self, node, line_scene)
 			
 	for sibling in get_parent().get_children():
 		if sibling == self:
@@ -101,11 +112,6 @@ func _update_line_points(line_connection_obj):
 	line_connection_obj.line.add_point(line_connection_obj.b.global_position - line_connection_obj.line.global_position)
 
 
-func _on_pos_changed():
-	for connection in line_connections:
-		_update_line_points(connection)
-
-
 func check_nodes_connected(a, b) -> bool:
 	for connection in line_connections:
 		if (connection.a == a or connection.a == b) and (connection.b == a or connection.b == b):
@@ -114,20 +120,26 @@ func check_nodes_connected(a, b) -> bool:
 
 
 var _last_post = position
+var ignore_adjust = false
 func _process(delta):
 	
+	if Engine.editor_hint and not ignore_adjust:
+		if position != _last_post:
+			# is being dragged
+			for child in get_children():
+				if child.get("TYPE_TREE_NODE") and Input.is_key_pressed(KEY_ALT):
+					child.position += _last_post - position
+					child.ignore_adjust = true
+					child.update()
+					
+			update()
+			
 	for connection in line_connections:
 		_update_line_points(connection)
 	
-	if Engine.editor_hint:
-		if position != _last_post:
-			# this is being moved in the editor
-			if Input.is_key_pressed(KEY_ALT):
-				for child in get_children():
-					child.position -= position - _last_post
-					
-	_last_post = position
 	
+	ignore_adjust = false
+	_last_post = position
 	
 func _draw():
 	if not Engine.editor_hint:
@@ -138,8 +150,8 @@ func _draw():
 		return
 	
 	var color = Color.aquamarine
-	if name.find("Root") > -1:
-		color.darkened(0.4)
+	if "Root" in name:
+		color = Color.greenyellow
 	color.a = 0.3
 	draw_circle(Vector2.ZERO, (size_node.get_rect().size * size_node.scale).x / 2.0, color)
 	
