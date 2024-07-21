@@ -24,17 +24,15 @@ app.get('/', (req, res) => {
 
 app.get('/check', (req, res) => {
   var date = new Date();
-  console.log(date, req.query.recipe);
   
-  var buff = Buffer.from(req.query.recipe, 'base64');
-  
-  var player_array = JSON.parse(buff.toString());
-  
+  var buff = Buffer.from(req.query.recipe, 'base64');  
+  var player_array = JSON.parse(buff.toString());  
+
+  console.log("Checking player recipe: " + player_array.toString())
 
   var response = {
     "result": calculateCorrectPositionPercentile(good_recipe, player_array)
   }
-
   res.send(JSON.stringify(response));
 });
 
@@ -53,13 +51,13 @@ app.post('/post-data', jsonParser, (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 
-  console.log(calculateCorrectPositionPercentile(good_recipe, [10,  5,  7]));
-  console.log(calculateCorrectPositionPercentile(good_recipe, [10,  5]));
-  console.log(calculateCorrectPositionPercentile(good_recipe, [10]));
-  console.log(calculateCorrectPositionPercentile(good_recipe, [10,  89,  7]));
-  console.log(calculateCorrectPositionPercentile(good_recipe, [10, 89,  7,  5]));
-  console.log(calculateCorrectPositionPercentile(good_recipe, [10, 89,  7,  5, 10]));
-  console.log(calculateCorrectPositionPercentile(good_recipe, [10, 89,  7,  5, 10, 2, 4,7,7]));
+  // console.log(calculateCorrectPositionPercentile(good_recipe, [10,  5,  7]));
+  // console.log(calculateCorrectPositionPercentile(good_recipe, [10,  5]));
+  // console.log(calculateCorrectPositionPercentile(good_recipe, [10]));
+  // console.log(calculateCorrectPositionPercentile(good_recipe, [10,  89,  7]));
+  // console.log(calculateCorrectPositionPercentile(good_recipe, [10, 89,  7,  5]));
+  // console.log(calculateCorrectPositionPercentile(good_recipe, [10, 89,  7,  5, 10]));
+  // console.log(calculateCorrectPositionPercentile(good_recipe, [10, 89,  7,  5, 10, 2, 4,7,7]));
 
 });
 
