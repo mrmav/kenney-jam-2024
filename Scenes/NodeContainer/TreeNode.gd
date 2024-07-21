@@ -13,13 +13,13 @@ const _static = {
 export(PackedScene) var element_scene = null
 export(bool) var relevant = true
 export(Array, NodePath) var bridges = []
-export(int) var id setget _set_id, get_id
+export(int) var tree_id setget _set_id, get_id
 
 func _set_id(value):
 	return
 
 func get_id():
-	return id
+	return tree_id
 
 var element = null
 var line_connections = []
@@ -34,17 +34,21 @@ func _get_configuration_warning():
 	warning += "No element scene defined\n" if not element_scene else ""
 	
 	return warning
+
+static func _reset_ids():
+	_static.id = 0
 	
 
 static func _get_new_id() -> int:
 	var id = _static.id
 	_static.id += 1
-	print("new id ", id)
 	return id
 
 
 func _enter_tree():
 	assert(element_scene != null, "No element scene given.")
+	
+	tree_id = _get_new_id()
 	
 	if Engine.editor_hint:
 		_dummy_element_instance = element_scene.instance()		
@@ -60,25 +64,25 @@ func _enter_tree():
 	# Instances the element of this node
 	element = element_scene.instance()
 	element.z_as_relative = false
-	element.z_index = Enums.ZIndex.Elements
+	element.z_index = Enums.ZIndex.Elements	
 	add_child(element)
+	
+	z_as_relative = false
+	z_index = Enums.ZIndex.TreeNodes
 	
 	element.connect("user_clicked", self, "_on_user_click")
 	
-
+	
 func _on_user_click():
 	GlobalAccess.node_container.emit_signal("user_clicked", self)
 
 	
 func _ready():
-	id = _get_new_id()
-	name = "TreeNode_%d" % id
-	
+		
 	for b in bridges:
 		bridge_nodes.append(get_node_or_null(b))
 		
-	if Engine.editor_hint:
-		
+	if Engine.editor_hint:		
 		var line_scene_editor : PackedScene = preload("res://Scenes/NodeContainer/LineConnectionEditor.tscn")
 		_build_connections(line_scene_editor)
 		
@@ -172,7 +176,7 @@ func _process(delta):
 					child.ignore_adjust = true
 					child.update()
 					
-			update()
+	update()
 			
 	for connection in line_connections:
 		_update_line_points(connection)
@@ -182,16 +186,18 @@ func _process(delta):
 	_last_post = position
 	
 func _draw():
-	if not Engine.editor_hint:
-		return
+	if Engine.editor_hint:
+		
+		var size_node = _dummy_element_instance.get_node_or_null("outline")
+		if not size_node:
+			return
+		
+		var color = Color.aquamarine
+		if "Root" in name:
+			color = Color.greenyellow
+		color.a = 0.3
+		draw_circle(Vector2.ZERO, (size_node.get_rect().size * size_node.scale).x / 2.0, color)
 	
-	var size_node = _dummy_element_instance.get_node_or_null("outline")
-	if not size_node:
-		return
-	
-	var color = Color.aquamarine
-	if "Root" in name:
-		color = Color.greenyellow
-	color.a = 0.3
-	draw_circle(Vector2.ZERO, (size_node.get_rect().size * size_node.scale).x / 2.0, color)
+	if OS.is_debug_build():
+		draw_string(preload("res://Fonts/kenney_kenney-fonts/Resources/KenneyPixel_debug.tres"), Vector2.ZERO, str(tree_id), Color.red)
 	

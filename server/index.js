@@ -14,7 +14,7 @@ var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 
-var good_recipe = [10, 5, 7]
+var good_recipe = [0, 2, 3, 21, 22]
 
 
 app.get('/', (req, res) => {

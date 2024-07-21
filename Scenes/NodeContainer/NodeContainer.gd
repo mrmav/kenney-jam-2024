@@ -16,17 +16,22 @@ var visited_nodes = []
 
 func _enter_tree():
 	# register self class for global access
-	GlobalAccess.node_container = self
+	TreeNode._reset_ids()
+	
+	if not Engine.editor_hint:
+		GlobalAccess.node_container = self		
 	
 
 func _ready():
+	
+	if Engine.editor_hint:
+		return
 	
 	assert(tree_root != null, "TreeRoot not defined.")
 	connect("user_clicked", self, "_on_node_selected")
 	connect("no_more_moves_posssible", self, "no_more_connections")
 	
 	_confirm_selection(tree_root)
-	
 
 
 func _on_node_selected(node : TreeNode):
@@ -95,3 +100,11 @@ func _check_possible_moves() -> bool:
 
 func no_more_connections():
 	print("NO MORE CONNECTIONS POSSIBLE")
+
+
+func get_visited_ids_array() -> Array:
+	var res = []
+	for node in visited_nodes:
+		res.append(node.tree_id)
+	return res
+
