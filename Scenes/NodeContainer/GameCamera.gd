@@ -8,7 +8,6 @@ var zoomed_in = false
 var anchor_position : Vector2 = Vector2.ZERO
 
 
-
 onready var input_catch = get_node_or_null("../CanvasLayer/CatchInput")
 
 func _ready():

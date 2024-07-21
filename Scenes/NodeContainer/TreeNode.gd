@@ -72,6 +72,10 @@ func _build_connections(line_scene):
 			_create_connection(self, child, line_scene)
 			
 	for node in bridge_nodes:
+		if not node:
+			# node lost the ref? no longerexists?
+			continue
+			
 		if node.get("TYPE_TREE_NODE"):
 			print("connection bridge between ", self, " and ", node)
 			_create_connection(self, node, line_scene)
