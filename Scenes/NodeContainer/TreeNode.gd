@@ -6,10 +6,20 @@ signal position_changed
 
 # Since we cannot use own class name here, we create this type const.
 const TYPE_TREE_NODE = 1
+const _static = {
+	"id": 0
+}
 
 export(PackedScene) var element_scene = null
 export(bool) var relevant = true
 export(Array, NodePath) var bridges = []
+export(int) var id setget _set_id, get_id
+
+func _set_id(value):
+	return
+
+func get_id():
+	return id
 
 var element = null
 var line_connections = []
@@ -17,6 +27,21 @@ var line_connections = []
 var bridge_nodes = []
 
 var _dummy_element_instance = null
+
+
+func _get_configuration_warning():
+	var warning = ""
+	warning += "No element scene defined\n" if not element_scene else ""
+	
+	return warning
+	
+
+static func _get_new_id() -> int:
+	var id = _static.id
+	_static.id += 1
+	print("new id ", id)
+	return id
+
 
 func _enter_tree():
 	assert(element_scene != null, "No element scene given.")
@@ -46,6 +71,8 @@ func _on_user_click():
 
 	
 func _ready():
+	id = _get_new_id()
+	name = "TreeNode_%d" % id
 	
 	for b in bridges:
 		bridge_nodes.append(get_node_or_null(b))
