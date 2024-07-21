@@ -18,7 +18,7 @@ script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
 [node name="TreeNode2" type="Node2D" parent="TreeRoot"]
-position = Vector2( 305.515, 248.375 )
+position = Vector2( 237.709, 280.159 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
@@ -32,8 +32,13 @@ position = Vector2( nan, nan )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
+[node name="TreeNode3" type="Node2D" parent="TreeRoot"]
+position = Vector2( 358.488, 64.0289 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 3 )
+
 [node name="TreeNode4" type="Node2D" parent="TreeRoot"]
-position = Vector2( 651.722, 237.818 )
+position = Vector2( 687.744, 360.716 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
@@ -43,69 +48,71 @@ script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
 [node name="TreeNode6" type="Node2D" parent="TreeRoot/TreeNode4/TreeNode7"]
-position = Vector2( 42.4997, 228.689 )
+position = Vector2( -9.17242, 198.398 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
 [node name="TreeNode5" type="Node2D" parent="TreeRoot/TreeNode4/TreeNode7/TreeNode6"]
-position = Vector2( -200.626, 593.176 )
+position = Vector2( -168.024, 769.673 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
 [node name="TreeNode8" type="Node2D" parent="TreeRoot/TreeNode4/TreeNode7/TreeNode6/TreeNode5"]
-position = Vector2( -554.308, 528.545 )
+position = Vector2( -194.09, 229.776 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
 [node name="TreeNode2" type="Node2D" parent="TreeRoot/TreeNode4/TreeNode7/TreeNode6/TreeNode5/TreeNode8"]
-position = Vector2( 182.632, -454.137 )
+position = Vector2( -169.11, -445.661 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
+bridges = [ NodePath("../../../../../../TreeNode2") ]
 
 [node name="TreeNode3" type="Node2D" parent="TreeRoot/TreeNode4/TreeNode7/TreeNode6/TreeNode5/TreeNode8/TreeNode2"]
-position = Vector2( 84.8043, -445.863 )
+position = Vector2( -302.959, -117.429 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
 [node name="TreeNode9" type="Node2D" parent="TreeRoot/TreeNode4/TreeNode7/TreeNode6/TreeNode5/TreeNode8/TreeNode2/TreeNode3"]
-position = Vector2( -476.845, 351.241 )
+position = Vector2( -197.147, 207.154 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
 [node name="TreeNode10" type="Node2D" parent="TreeRoot/TreeNode4/TreeNode7/TreeNode6/TreeNode5/TreeNode8/TreeNode2/TreeNode3"]
-position = Vector2( -808.853, 27.9984 )
+position = Vector2( -421.09, -8.02345 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
 [node name="TreeNode11" type="Node2D" parent="TreeRoot/TreeNode4/TreeNode7/TreeNode6/TreeNode5/TreeNode8/TreeNode2/TreeNode3"]
-position = Vector2( -506.298, -198.563 )
+position = Vector2( -207.53, -188.835 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 relevant = false
 bridges = [ NodePath("../../../../../../../../TreeNode2/TreeNode3/TreeNode9") ]
 
 [node name="TreeNode9" type="Node2D" parent="TreeRoot/TreeNode4/TreeNode7/TreeNode6/TreeNode5"]
-position = Vector2( 223.329, 663.766 )
+position = Vector2( 68.6473, 292.954 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
 [node name="TreeNode10" type="Node2D" parent="TreeRoot/TreeNode4/TreeNode7/TreeNode6/TreeNode5"]
-position = Vector2( -104.186, 343.784 )
+position = Vector2( -38.4994, 172.151 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
 [node name="TreeNode10" type="Node2D" parent="TreeRoot/TreeNode4/TreeNode7/TreeNode6"]
-position = Vector2( 138.592, 376.792 )
+position = Vector2( 88.7018, 362.538 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
 [node name="TreeNode11" type="Node2D" parent="TreeRoot/TreeNode4/TreeNode7/TreeNode6/TreeNode10"]
-position = Vector2( 568.177, -2.22132 )
+position = Vector2( 76.4009, 259.703 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
+bridges = [ NodePath("../../TreeNode2") ]
 
 [node name="TreeNode2" type="Node2D" parent="TreeRoot/TreeNode4/TreeNode7/TreeNode6"]
-position = Vector2( 621.549, 652.462 )
+position = Vector2( 673.221, 682.753 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
@@ -121,12 +128,12 @@ script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
 [node name="TreeNode12" type="Node2D" parent="TreeRoot/TreeNode4"]
-position = Vector2( -81.85, -323.764 )
+position = Vector2( 9.02171, -211.511 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
 [node name="TreeNode13" type="Node2D" parent="TreeRoot/TreeNode4/TreeNode12"]
-position = Vector2( 165.882, -273.857 )
+position = Vector2( 76.7922, -398.583 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 3 )
 
