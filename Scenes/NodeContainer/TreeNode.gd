@@ -47,10 +47,8 @@ func _on_user_click():
 	
 func _ready():
 	
-#	set_as_toplevel(true)
-	
 	for b in bridges:
-		bridge_nodes.append(get_node(b))
+		bridge_nodes.append(get_node_or_null(b))
 		
 	if Engine.editor_hint:
 		
@@ -91,19 +89,20 @@ func _build_connections(line_scene):
 
 func _create_connection(a : Node2D, b : Node2D, line_scene : PackedScene) -> void:
 	
-	if a.check_nodes_connected(a, b) or b.check_nodes_connected(a, b):
-		print("Skipping already connected nodes.")
-		return
+	var should_be_visible = not(a.check_nodes_connected(a, b) or b.check_nodes_connected(a, b))
 	
-	var line : Line2D = line_scene.instance()
-	line.z_as_relative = false
-	line.z_index = Enums.ZIndex.LineConnections
-	add_child(line)
+	var line : Line2D  = null
+	if should_be_visible:
+		line = line_scene.instance()
+		line.z_as_relative = false
+		line.z_index = Enums.ZIndex.LineConnections
+		add_child(line)
 	
 	var line_conn_obj = {
 		"line": line,
 		"a": a,
-		"b": b
+		"b": b,
+		"is_visible": should_be_visible
 	}
 	
 	_update_line_points(line_conn_obj)
@@ -111,6 +110,9 @@ func _create_connection(a : Node2D, b : Node2D, line_scene : PackedScene) -> voi
 	
 
 func _update_line_points(line_connection_obj):
+	if not line_connection_obj.is_visible:
+		return
+		
 	line_connection_obj.line.clear_points()
 	line_connection_obj.line.add_point(line_connection_obj.a.global_position - line_connection_obj.line.global_position)
 	line_connection_obj.line.add_point(line_connection_obj.b.global_position - line_connection_obj.line.global_position)
@@ -121,6 +123,13 @@ func check_nodes_connected(a, b) -> bool:
 		if (connection.a == a or connection.a == b) and (connection.b == a or connection.b == b):
 			return true
 	return false
+	
+	
+func find_connection_to(a) -> Line2D:
+	for connection in line_connections:		
+		if (connection.a == a or connection.b == a):
+			return connection.line
+	return null
 
 
 var _last_post = position
