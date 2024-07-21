@@ -1,33 +1,50 @@
 extends Control
 
-export var button_path: NodePath
+export var hover_button_path: NodePath
+export var submitText_path: NodePath
 export var clouds_path: NodePath
-var button: Button
+export var background_animation_path: NodePath
+
+var hover_button: Button
+var submit_text: Control
 var cloud: Control
+var background_animation: AnimationPlayer
 
 var start_offset = Vector2(0,100)
+var start_offset_submit = Vector2(0,-150)
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	button = get_node(button_path) as Button
+	hover_button = get_node(hover_button_path) as Button
+	submit_text = get_node(submitText_path) as Control
 	cloud = get_node(clouds_path) as Control
+	background_animation =  get_node(background_animation_path) as AnimationPlayer
 	
-	button.connect("mouse_entered", self, "_on_Area2D_mouse_entered")
-	button.connect("mouse_exited", self, "_on_Area2D_mouse_exited")
+	hover_button.connect("mouse_entered", self, "_on_HoverButton_mouse_entered")
+	hover_button.connect("mouse_exited", self, "_on_HoverButton_mouse_exited")
+	hover_button.connect("pressed", self, "_on_Button_pressed")
 	
 	rect_position = rect_position + start_offset
+	submit_text.rect_position = submit_text.rect_position + start_offset_submit
 	pass # Replace with function body.
 
-
 	
-func _on_Area2D_mouse_entered() -> void:
+func _on_HoverButton_mouse_entered() -> void:
 	print("Hello ")
+	submit_text.rect_position = submit_text.rect_position - start_offset_submit
 	rect_position = rect_position - start_offset
+	background_animation.play("A_backgroundSwitch_off")
 	cloud.visible = false
 	pass
 
-func _on_Area2D_mouse_exited() -> void:
+func _on_HoverButton_mouse_exited() -> void:
 	print("Bye ")
-	# Return to the default size
+	submit_text.rect_position = submit_text.rect_position + start_offset_submit
 	rect_position = rect_position + start_offset
+	background_animation.play("A_backgroundSwitch_on")
 	cloud.visible = true
 	pass
+	
+func _on_Button_pressed() -> void:
+	print("Submit? ")
+	pass
+	

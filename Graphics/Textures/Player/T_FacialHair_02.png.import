@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/T_TempFace.png-e3f038751dbe39130049b12694e07f61.stex"
+path="res://.import/T_FacialHair_02.png-47d2e5259aead30bba9c4aadb7f54d31.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Menu/T_TempFace.png"
-dest_files=[ "res://.import/T_TempFace.png-e3f038751dbe39130049b12694e07f61.stex" ]
+source_file="res://Graphics/Textures/Player/T_FacialHair_02.png"
+dest_files=[ "res://.import/T_FacialHair_02.png-47d2e5259aead30bba9c4aadb7f54d31.stex" ]
 
 [params]
 

@@ -68,6 +68,7 @@ tracks/1/keys = {
 }
 
 [node name="scene_element" type="Node2D"]
+scale = Vector2( 0.640001, 0.640001 )
 z_index = 2
 z_as_relative = false
 script = ExtResource( 7 )

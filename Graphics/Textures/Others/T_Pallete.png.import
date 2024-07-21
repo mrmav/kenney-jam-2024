@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/T_TempFace.png-8a6c33498be117aa71a23f4bdec441de.stex"
+path="res://.import/T_Pallete.png-89cd3ee5fd2c847c7c6f1ecabe108048.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/T_TempFace.png"
-dest_files=[ "res://.import/T_TempFace.png-8a6c33498be117aa71a23f4bdec441de.stex" ]
+source_file="res://Graphics/Textures/Others/T_Pallete.png"
+dest_files=[ "res://.import/T_Pallete.png-89cd3ee5fd2c847c7c6f1ecabe108048.stex" ]
 
 [params]
 
