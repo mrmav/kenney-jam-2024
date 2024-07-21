@@ -37,7 +37,10 @@ func _get_configuration_warning():
 
 static func _reset_ids():
 	_static.id = 0
-	
+
+
+static func get_last_id() -> int:
+	return _static.id
 
 static func _get_new_id() -> int:
 	var id = _static.id
@@ -94,6 +97,15 @@ func _ready():
 	var line_scene : PackedScene = preload("res://Scenes/NodeContainer/LineConnection.tscn")
 	_build_connections(line_scene)
 	
+	if NodesColors.initialized:
+		_get_outline_color()
+	else:
+		NodesColors.connect("colors_received", self, "_get_outline_color")
+
+
+func _get_outline_color():	
+	element.get_node("outline").modulate = NodesColors.get_node_color(tree_id)
+
 
 func _build_connections(line_scene):
 	for child in get_children():

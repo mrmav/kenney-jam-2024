@@ -13,8 +13,8 @@ func _pressed():
 	var data = GlobalAccess.node_container.get_visited_ids_array()
 	
 	#endpoint : String, caller : Object, callback : String, parameters : Dictionary = {}
-	RequestManager.make_request("check", self, "_on_server_reply", {"recipe" : data})
-	
+	RequestManager.make_request("check", self, "_on_server_reply", {"recipe" : data}, true)
+
 
 func _on_server_reply(body : PoolByteArray):
 	disabled = false
