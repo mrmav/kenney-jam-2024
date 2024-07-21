@@ -5,7 +5,7 @@
 [ext_resource path="res://Graphics/Textures/Elements/T_Sphere_00.png" type="Texture" id=3]
 [ext_resource path="res://Graphics/Textures/Elements/T_Element_Outline.png" type="Texture" id=4]
 [ext_resource path="res://Graphics/Textures/Elements/T_Noise_18.png" type="Texture" id=5]
-[ext_resource path="res://Graphics/Textures/SpecificElements/Food/T_MeatSausage.png" type="Texture" id=6]
+[ext_resource path="res://Fonts/kenney_kenney-fonts/Resources/KenneyPixel-description.tres" type="DynamicFont" id=6]
 [ext_resource path="res://Scenes/Element/element.gd" type="Script" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -68,7 +68,7 @@ tracks/1/keys = {
 }
 
 [node name="scene_element" type="Node2D"]
-scale = Vector2( 0.640001, 0.640001 )
+position = Vector2( 0, -5.96046e-08 )
 z_index = 2
 z_as_relative = false
 script = ExtResource( 7 )
@@ -90,27 +90,26 @@ texture = ExtResource( 4 )
 scale = Vector2( 0.3, 0.3 )
 
 [node name="base" type="Sprite" parent="Content"]
-modulate = Color( 0.639216, 0.627451, 0.627451, 1 )
+modulate = Color( 0.227451, 0.203922, 0.203922, 1 )
 scale = Vector2( 0.35, 0.35 )
 texture = ExtResource( 3 )
 
 [node name="light" type="Sprite" parent="Content"]
-modulate = Color( 1, 1, 1, 0.388235 )
+modulate = Color( 1, 0.913725, 0.52549, 0.643137 )
 rotation = -0.289725
 scale = Vector2( 0.35, 0.35 )
 texture = ExtResource( 1 )
 
 [node name="noise01" type="Sprite" parent="Content"]
-modulate = Color( 0.603922, 0.290196, 0.290196, 1 )
+modulate = Color( 0.603922, 0.290196, 0.592157, 1 )
 scale = Vector2( 0.35, 0.35 )
 texture = ExtResource( 2 )
 
 [node name="icon" type="Sprite" parent="Content"]
 scale = Vector2( 5, 5 )
-texture = ExtResource( 6 )
 
 [node name="noise02" type="Sprite" parent="Content"]
-modulate = Color( 0.607843, 0.333333, 0.247059, 0.658824 )
+modulate = Color( 0, 0, 0, 0.658824 )
 scale = Vector2( 0.35, 0.35 )
 texture = ExtResource( 5 )
 
@@ -135,7 +134,8 @@ anchor_bottom = 1.0
 margin_right = 51.0
 margin_bottom = 14.0
 rect_scale = Vector2( 6.94668, 6.94668 )
-text = "Sausage"
+custom_fonts/font = ExtResource( 6 )
+text = "Prima Materia"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 2 )
