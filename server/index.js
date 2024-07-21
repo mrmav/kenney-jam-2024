@@ -1,7 +1,9 @@
 const express = require('express');
 var cors = require('cors')
 var bodyParser = require('body-parser')
-var mysql = require('mysql');
+const fs = require('node:fs');
+var cronJob = require("cron").CronJob;
+const Color = require('color');
 const app = express();
 const port = 3000;
 
@@ -13,9 +15,11 @@ var jsonParser = bodyParser.json()
 // create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-
+// TODO: read this from secret file later
 var good_recipe = [0, 2, 3, 20, 21]
 
+// TODO: read and save to file later
+var node_colors = [];
 
 app.get('/', (req, res) => {
   var date = new Date();
@@ -36,28 +40,53 @@ app.get('/check', (req, res) => {
   res.send(JSON.stringify(response));
 });
 
-app.post('/post-data', jsonParser, (req, res) => {
-  const data = req.body;
+app.get('/get_colors', (req, res) => {
+  
+  // open file
 
-  // Save the data of user that was sent by the client
-  console.log("Received data:", data)
+  var color_data = []
 
-  // Send a response to client that will show that the request was successfull.
-  res.send({
-    message: 'Data delivered!',
-  });
+  for(i = 0; i < node_colors.length; i++)
+  {
+    const colorhex = node_colors[i].hexa()
+    color_data.push(colorhex)
+  }
+
+  res.send(JSON.stringify(color_data.slice(0, req.query.count)));
+
+});
+
+app.get('/submit_colors', (req, res) => {
+  
+  var buff = Buffer.from(req.query.recipe, 'base64');  
+  var player_array = JSON.parse(buff.toString()); 
+
+  buff = Buffer.from(req.query.color, 'base64');
+  var player_color = JSON.parse(buff.toString())
+
+  const color = Color.rgb(player_color.r, player_color.g, player_color.b).alpha(player_color.a / 255.0)
+
+  for(i = 0; i < player_array.length; i++)
+  {
+    node_colors[player_array[i]] = node_colors[player_array[i]].mix(color)
+  }
+
+  res.send(JSON.stringify({"result": "ok"}));
+  
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
 
-  // console.log(calculateCorrectPositionPercentile(good_recipe, [10,  5,  7]));
-  // console.log(calculateCorrectPositionPercentile(good_recipe, [10,  5]));
-  // console.log(calculateCorrectPositionPercentile(good_recipe, [10]));
-  // console.log(calculateCorrectPositionPercentile(good_recipe, [10,  89,  7]));
-  // console.log(calculateCorrectPositionPercentile(good_recipe, [10, 89,  7,  5]));
-  // console.log(calculateCorrectPositionPercentile(good_recipe, [10, 89,  7,  5, 10]));
-  // console.log(calculateCorrectPositionPercentile(good_recipe, [10, 89,  7,  5, 10, 2, 4,7,7]));
+  // init array of nodes
+  node_colors = []
+  var data = JSON.parse(fs.readFileSync("node_colors.secret", { encoding: 'utf8', flag: 'r' }));
+  for(i = 0; i < data.length; i++)
+  {
+    const c = Color(data[i])
+    node_colors.push(c)
+  }
+
+  console.log(`Example app listening at http://localhost:${port}`);
 
 });
 
@@ -83,3 +112,17 @@ function calculateCorrectPositionPercentile(goodArray, testArray) {
   const percentile = (correctCount / totalComparisons) * 100;
   return percentile;
 }
+
+
+// Run this cron job every Sunday (0) at 7:00:00 AM
+// new cronJob("0 */2 * * * *", function() {
+    
+//   fs.writeFile('./node_colors.secret', JSON.stringify(node_colors), err => {
+//     if (err) {
+//       console.error(err);
+//     } else {
+//       console.log(new Date(), "Saved nodes state")
+//     }
+//   });
+
+// }, null, true);

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Fonts/kenney_kenney-fonts/Resources/KenneyPixel-description.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Graphics/Textures/Others/T_Pattern.png" type="Texture" id=2]
 [ext_resource path="res://Graphics/Textures/Elements/T_Element_Outline.png" type="Texture" id=3]
 [ext_resource path="res://Graphics/Textures/UI/T_Button_RectangleRed.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/SubmitRunColor.gd" type="Script" id=5]
 
 [sub_resource type="ButtonGroup" id=1]
 
@@ -70,6 +71,7 @@ anchor_bottom = 1.0
 custom_fonts/font = ExtResource( 1 )
 text = "Retry"
 flat = true
+script = ExtResource( 5 )
 
 [node name="TintRun" type="Control" parent="HBoxContainer"]
 margin_left = 432.0

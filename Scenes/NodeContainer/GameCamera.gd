@@ -7,14 +7,15 @@ export(float) var drag_max_dist = 60
 var zoomed_in = false
 var anchor_position : Vector2 = Vector2.ZERO
 
+onready var container = get_parent()
 
 onready var input_catch = get_node_or_null("../CanvasLayer/CatchInput")
 
 func _ready():
-	GlobalAccess.node_container.connect("node_selected", self, "_on_node_selected")
+	container.connect("node_selected", self, "_on_node_selected")
 	
-	yield(GlobalAccess.node_container, "ready")
-	_on_node_selected(GlobalAccess.node_container.selected_node)
+	yield(container, "ready")
+	_on_node_selected(container.selected_node)
 	
 	zoom = Vector2(zoomed_out_amount, zoomed_out_amount)
 	input_catch.connect("zoom", self, "_on_zoom")

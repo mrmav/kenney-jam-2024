@@ -19,10 +19,11 @@ func _enter_tree():
 	TreeNode._reset_ids()
 	
 	if not Engine.editor_hint:
-		GlobalAccess.node_container = self		
+		GlobalAccess.node_container = self
 	
 
 func _ready():
+	GlobalAccess.node_container = self
 	
 	if Engine.editor_hint:
 		return
