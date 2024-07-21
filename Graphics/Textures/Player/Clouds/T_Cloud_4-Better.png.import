@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/T_TempFace.png-fb14abb44c922523f9aebe21e7fda638.stex"
+path="res://.import/T_Cloud_4-Better.png-97cddb4cb757c28b64e2a18880d07c1a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Audio/T_TempFace.png"
-dest_files=[ "res://.import/T_TempFace.png-fb14abb44c922523f9aebe21e7fda638.stex" ]
+source_file="res://Graphics/Textures/Player/Clouds/T_Cloud_4-Better.png"
+dest_files=[ "res://.import/T_Cloud_4-Better.png-97cddb4cb757c28b64e2a18880d07c1a.stex" ]
 
 [params]
 

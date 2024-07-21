@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scenes/Character/MoveRectUpAndDown.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Character/Eye_Follow.gd" type="Script" id=2]
@@ -7,22 +7,29 @@
 [ext_resource path="res://Graphics/Textures/Player/T_Eye_Black.png" type="Texture" id=5]
 [ext_resource path="res://Graphics/Textures/Player/T_Eye_White.png" type="Texture" id=6]
 [ext_resource path="res://Graphics/Textures/Player/T_Eye_Glow.png" type="Texture" id=7]
-[ext_resource path="res://Graphics/Textures/Others/T_Pattern.png" type="Texture" id=8]
+[ext_resource path="res://Graphics/Textures/Others/T_Pattern_46.png" type="Texture" id=8]
 [ext_resource path="res://Graphics/Textures/Player/Clouds/T_Cloud_5.png" type="Texture" id=9]
 [ext_resource path="res://Graphics/Shaders/sprite_mask.gdshader" type="Shader" id=10]
 [ext_resource path="res://Graphics/Textures/Player/Clouds/T_Cloud_4.png" type="Texture" id=11]
 [ext_resource path="res://Graphics/Textures/Player/Clouds/T_Cloud_1.png" type="Texture" id=12]
 [ext_resource path="res://Scenes/Character/ribbitious.gd" type="Script" id=13]
+[ext_resource path="res://Graphics/Textures/Player/T_FacialHair_01.png" type="Texture" id=14]
+[ext_resource path="res://Fonts/kenney_kenney-fonts/Resources/KenneyPixel.tres" type="DynamicFont" id=15]
+[ext_resource path="res://Graphics/Textures/Player/Clouds/T_Cloud_4-Better.png" type="Texture" id=16]
+[ext_resource path="res://Graphics/Textures/UI/T_PanelBorder-026.png" type="Texture" id=17]
+[ext_resource path="res://Fonts/kenney_kenney-fonts/Resources/KenneyPixel-description.tres" type="DynamicFont" id=18]
+[ext_resource path="res://Graphics/Textures/UI/T_BannerHanging.png" type="Texture" id=19]
+[ext_resource path="res://Graphics/Textures/UI/T_Button_RectangleMetal.png" type="Texture" id=20]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 10 )
-shader_param/rect_size = 3.241
+shader_param/rect_size = 3.052
 shader_param/ratio_width = 1.0
 shader_param/ratio_height = 0.61
 shader_param/location_x = 0.313
-shader_param/location_y = -0.251
+shader_param/location_y = -0.09
 shader_param/invert_mask = true
-shader_param/mask_texture = ExtResource( 11 )
+shader_param/mask_texture = ExtResource( 16 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "A_clouds_idle"
@@ -73,13 +80,23 @@ anchor_bottom = 1.0
 mouse_filter = 2
 
 [node name="Background" type="TextureRect" parent="."]
-self_modulate = Color( 0.333333, 0.227451, 0.227451, 0.862745 )
+self_modulate = Color( 0.333333, 0.227451, 0.227451, 0.631373 )
 material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 texture = ExtResource( 8 )
 stretch_mode = 2
+
+[node name="Background_Border" type="NinePatchRect" parent="."]
+modulate = Color( 0.298039, 0.298039, 0.298039, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 17 )
+patch_margin_left = 37
+patch_margin_top = 36
+patch_margin_right = 36
+patch_margin_bottom = 37
 
 [node name="Clouds" type="Control" parent="."]
 anchor_right = 1.0
@@ -124,13 +141,69 @@ rect_pivot_offset = Vector2( 140.93, 86.0814 )
 mouse_filter = 2
 texture = ExtResource( 9 )
 
+[node name="SubmitText" type="Control" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -155.0
+margin_top = 4.0
+margin_right = 145.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 300, 100 )
+
+[node name="rope_left" type="NinePatchRect" parent="SubmitText"]
+margin_top = -85.0
+margin_right = 18.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 2, 100 )
+texture = ExtResource( 20 )
+patch_margin_left = 9
+patch_margin_top = 14
+patch_margin_right = 9
+patch_margin_bottom = 10
+
+[node name="rope_right" type="NinePatchRect" parent="SubmitText"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -18.0
+margin_top = -85.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 2, 100 )
+texture = ExtResource( 20 )
+patch_margin_left = 9
+patch_margin_top = 14
+patch_margin_right = 9
+patch_margin_bottom = 10
+
+[node name="NinePatchRectLabel" type="NinePatchRect" parent="SubmitText"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -150.0
+margin_right = 150.0
+margin_bottom = 100.0
+texture = ExtResource( 19 )
+region_rect = Rect2( 1, 0, 0, 0 )
+patch_margin_left = 34
+patch_margin_top = 40
+patch_margin_right = 49
+patch_margin_bottom = 37
+
+[node name="Label" type="Label" parent="SubmitText/NinePatchRectLabel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 1, 0.945098, 0.823529, 1 )
+custom_fonts/font = ExtResource( 18 )
+text = "Trasmutate your recipe?"
+align = 1
+valign = 1
+
 [node name="Ribbitious" type="Control" parent="."]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 480, 0 )
 script = ExtResource( 13 )
-button_path = NodePath("../Button")
+hover_button_path = NodePath("../HoverButton")
+submitText_path = NodePath("../SubmitText")
 clouds_path = NodePath("../Clouds")
 
 [node name="Rect_Frog" type="TextureRect" parent="Ribbitious"]
@@ -223,7 +296,31 @@ texture = ExtResource( 7 )
 expand = true
 stretch_mode = 6
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Ribbitious"]
+[node name="Beard" type="Control" parent="Ribbitious/Rect_Frog"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+
+[node name="BeardTexture" type="TextureRect" parent="Ribbitious/Rect_Frog/Beard"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -41.0
+margin_right = 40.0
+margin_bottom = 9.0
+rect_min_size = Vector2( 80, 50 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 5
+
+[node name="NinePatchRectName" type="NinePatchRect" parent="Ribbitious"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -238,21 +335,23 @@ patch_margin_top = 43
 patch_margin_right = 205
 patch_margin_bottom = 58
 
-[node name="Label" type="Label" parent="Ribbitious/NinePatchRect"]
+[node name="Label" type="Label" parent="Ribbitious/NinePatchRectName"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 30.0
-margin_top = 30.0
+margin_top = 27.0
 margin_right = -30.0
-margin_bottom = -40.0
+margin_bottom = -38.0
 theme = SubResource( 2 )
+custom_colors/font_color = Color( 1, 0.945098, 0.823529, 1 )
+custom_fonts/font = ExtResource( 15 )
 text = "LORD RIBBITIOUS"
 align = 1
 valign = 3
 autowrap = true
 uppercase = true
 
-[node name="Button" type="Button" parent="."]
+[node name="HoverButton" type="Button" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 anchor_top = 1.0
 anchor_right = 1.0
