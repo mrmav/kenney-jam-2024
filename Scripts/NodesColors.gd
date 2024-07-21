@@ -32,7 +32,7 @@ func _on_received_colors(body):
 		print("ERROR PARSING MESSAGE")
 	
 	for color in res.result:
-		print(color.to_lower().lstrip("#"))
+		#print(color.to_lower().lstrip("#"))
 		
 		var alpha = color.substr(color.length() - 2, 2)
 		var base = color.substr(1, 6)
@@ -40,7 +40,7 @@ func _on_received_colors(body):
 		#node_colors_array.append(Color8(color.color[0], color.color[1], color.color[2], color.valpha))
 		node_colors_array.append(Color(alpha + base))
 	
-	print(node_colors_array[0])
+	#print(node_colors_array[0])
 	
 	initialized = true
 	emit_signal("colors_received")
