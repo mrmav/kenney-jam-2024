@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/NodeContainer/NodeContainer.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/NodeContainer/TreeNode.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Element/scene_element.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/NodeContainer/GameCamera.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/NodeContainer/CatchInput.gd" type="Script" id=5]
 
 [node name="NodeContainer" type="Node2D"]
 script = ExtResource( 1 )
@@ -11,6 +12,17 @@ __meta__ = {
 "_edit_lock_": true
 }
 tree_root_path = NodePath("TreeRoot")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CatchInput" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="TreeRoot" type="Node2D" parent="."]
 position = Vector2( -6.94275, -8.62184 )
@@ -146,4 +158,6 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_lock_": true
 }
-zoom_amount = 0.8
+zoomed_in_amount = 3.0
+zoomed_out_amount = 1.5
+drag_max_dist = 300.0

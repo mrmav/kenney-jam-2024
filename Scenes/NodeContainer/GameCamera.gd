@@ -1,40 +1,55 @@
 extends Camera2D
 
-export(Vector2) var zoom_min_max = Vector2(1, 3)
-export(float) var zoom_amount = 0.1
+export(float) var zoomed_in_amount = 4
+export(float) var zoomed_out_amount = 1
+export(float) var drag_max_dist = 60
+
+var zoomed_in = false
+var anchor_position : Vector2 = Vector2.ZERO
+
+
+
+onready var input_catch = get_node_or_null("../CanvasLayer/CatchInput")
 
 func _ready():
 	GlobalAccess.node_container.connect("node_selected", self, "_on_node_selected")
 	
 	yield(GlobalAccess.node_container, "ready")
 	_on_node_selected(GlobalAccess.node_container.selected_node)
+	
+	zoom = Vector2(zoomed_out_amount, zoomed_out_amount)
+	input_catch.connect("zoom", self, "_on_zoom")
+	input_catch.connect("drag", self, "_on_drag")
+
 
 var tween = null
-func _process(delta):
+func _on_zoom():
 	
 	if tween and tween.is_running():
-		print("tweeen trunning ")
 		return
 	
-	var new_zoom = zoom.x
+	var new_zoom = zoomed_out_amount if zoomed_in else zoomed_in_amount
+
+	tween = get_tree().create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_QUAD)
+	tween.tween_property(self, "zoom", Vector2(new_zoom, new_zoom), 0.2)
+	tween.play()
 	
-	if Input.is_action_just_released("zoom_in"):
-		new_zoom -= zoom_amount
-		
-	if Input.is_action_just_released("zoom_out"):
-		new_zoom += zoom_amount
+	zoomed_in = !zoomed_in
+
+
+func _on_drag(dist : Vector2):
 	
-	if new_zoom != zoom.x:		
-		var a = clamp(new_zoom, zoom_min_max.x, zoom_min_max.y)
-		
-		tween = get_tree().create_tween()
-		tween.set_ease(Tween.EASE_OUT)
-		tween.set_trans(Tween.TRANS_ELASTIC)
-		tween.tween_property(self, "zoom", Vector2(a, a), 0.6)
-		tween.play()
-		print("playe twween ")
+	var res_pos = global_position - dist
 	
+	if res_pos.distance_to(anchor_position) > drag_max_dist:
+		return
 	
+	global_position = res_pos
+
+
+
 func _on_node_selected(node : TreeNode):
-	print(node.global_position)
-	global_position = node.global_position
+	anchor_position = node.global_position
+	global_position = anchor_position
