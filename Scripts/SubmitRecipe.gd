@@ -19,3 +19,9 @@ func _pressed():
 func _on_server_reply(body : PoolByteArray):
 	disabled = false
 	print(body.get_string_from_utf8())
+	
+	var res = JSON.parse(body.get_string_from_utf8())
+	if res.error != OK:
+		print("ERROR PARSING MESSAGE")
+	
+	GlobalAccess.emit_signal("received_results", res.result)

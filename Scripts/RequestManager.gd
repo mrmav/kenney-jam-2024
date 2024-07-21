@@ -3,9 +3,9 @@ extends Node
 var domain = "http://localhost:3000"
 
 func _ready():
+	domain = "https://mrmav-jam.com"
 	
-	if not OS.is_debug_build():
-		domain = "https://mrmav-jam.com"
+	#if not OS.is_debug_build():
 
 
 func make_request(endpoint : String, caller : Object, callback : String, parameters : Dictionary = {}):

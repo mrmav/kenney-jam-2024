@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Scenes/Character/MoveRectUpAndDown.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Character/Eye_Follow.gd" type="Script" id=2]
@@ -7,8 +7,9 @@
 [ext_resource path="res://Graphics/Textures/Player/T_Eye_Black.png" type="Texture" id=5]
 [ext_resource path="res://Graphics/Textures/Player/T_Eye_White.png" type="Texture" id=6]
 [ext_resource path="res://Graphics/Textures/Player/T_Eye_Glow.png" type="Texture" id=7]
-[ext_resource path="res://Graphics/Textures/Others/T_Pattern_46.png" type="Texture" id=8]
+[ext_resource path="res://Graphics/Textures/Others/T_Pattern_56.png" type="Texture" id=8]
 [ext_resource path="res://Graphics/Textures/Player/Clouds/T_Cloud_5.png" type="Texture" id=9]
+[ext_resource path="res://Graphics/Textures/Others/T_Pallete.png" type="Texture" id=10]
 [ext_resource path="res://Graphics/Textures/Player/Clouds/T_Cloud_4.png" type="Texture" id=11]
 [ext_resource path="res://Graphics/Textures/Player/Clouds/T_Cloud_1.png" type="Texture" id=12]
 [ext_resource path="res://Scenes/Character/ribbitious.gd" type="Script" id=13]
@@ -19,6 +20,7 @@
 [ext_resource path="res://Fonts/kenney_kenney-fonts/Resources/KenneyPixel-description.tres" type="DynamicFont" id=18]
 [ext_resource path="res://Graphics/Textures/UI/T_BannerHanging.png" type="Texture" id=19]
 [ext_resource path="res://Graphics/Textures/UI/T_Button_RectangleMetal.png" type="Texture" id=20]
+[ext_resource path="res://Scripts/SubmitRecipe.gd" type="Script" id=21]
 
 [sub_resource type="Shader" id=4]
 code = "shader_type canvas_item;
@@ -62,9 +64,9 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 3.24901 ),
+"transitions": PoolRealArray( 3.24901, 2.46229 ),
 "update": 0,
-"values": [ 2.0, -0.092 ]
+"values": [ -0.092, 2.0 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -146,7 +148,7 @@ anchor_bottom = 1.0
 mouse_filter = 2
 
 [node name="Background" type="TextureRect" parent="."]
-self_modulate = Color( 0.333333, 0.227451, 0.227451, 0.631373 )
+self_modulate = Color( 0.333333, 0.227451, 0.227451, 0.768627 )
 material = SubResource( 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -158,6 +160,10 @@ stretch_mode = 2
 anims/A_backgroundSwitch_off = SubResource( 5 )
 anims/A_backgroundSwitch_on = SubResource( 6 )
 anims/RESET = SubResource( 7 )
+
+[node name="TPallete" type="Sprite" parent="Background"]
+position = Vector2( 418, -123 )
+texture = ExtResource( 10 )
 
 [node name="Background_Border" type="NinePatchRect" parent="."]
 modulate = Color( 0.298039, 0.298039, 0.298039, 1 )
@@ -431,3 +437,4 @@ anchor_bottom = 1.0
 margin_left = 380.0
 margin_top = -83.0
 margin_right = -380.0
+script = ExtResource( 21 )
