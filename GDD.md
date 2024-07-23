@@ -1,5 +1,6 @@
 # GDD - Magnum Opus The Quest.
 v0.1
+TODO: Create a Google Doc and upload this GDD before deadline.
 
 **A Game By:**
 * mrmav @ https://mrmav.itch.io/
