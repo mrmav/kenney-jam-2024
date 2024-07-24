@@ -58,7 +58,7 @@ app.get('/get_colors', (req, res) => {
 
 app.get('/submit_colors', (req, res) => {
   
-  var buff = Buffer.from(req.query.recipe, 'base64');  
+  var buff = Buffer.from(req.query.recipe, 'base64');
   var player_array = JSON.parse(buff.toString()); 
 
   buff = Buffer.from(req.query.color, 'base64');

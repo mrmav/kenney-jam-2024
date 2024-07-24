@@ -7,6 +7,10 @@ var post_endpoint = "/post-data"
 var http_request : HTTPRequest = null
 
 func _ready():
+	
+	if OS.has_feature("web"):
+		queue_free()
+	
 	# Create an HTTP request node and connect its completion signal.
 	http_request = HTTPRequest.new()
 	add_child(http_request)

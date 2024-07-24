@@ -52,5 +52,5 @@ func _pressed():
 
 func _on_server_reply(body : PoolByteArray):
 	disabled = false
-	
+	GlobalAccess.reset_state()
 	get_tree().change_scene("res://Main.tscn")

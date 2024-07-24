@@ -2,10 +2,7 @@ const fs = require('node:fs');
 const Color = require('color');
 const opacity = require('hex-color-opacity');
 
-
 const TOTAL_POSSIBLE_NODES = 268
-
-
 
 function createData() 
 {

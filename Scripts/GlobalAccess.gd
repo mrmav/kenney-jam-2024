@@ -12,3 +12,6 @@ func _set_node_container(value):
 
 func get_node_container() -> Node2D:
 	return node_container
+	
+func reset_state():
+	node_container = null
