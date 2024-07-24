@@ -398,4 +398,4 @@ __meta__ = {
 }
 zoomed_in_amount = 3.0
 zoomed_out_amount = 1.5
-drag_max_dist = 300.0
+drag_max_dist = 1024.0

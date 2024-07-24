@@ -2,7 +2,7 @@ extends Camera2D
 
 export(float) var zoomed_in_amount = 4
 export(float) var zoomed_out_amount = 1
-export(float) var drag_max_dist = 60
+export(float) var drag_max_dist = 600
 
 var zoomed_in = false
 var anchor_position : Vector2 = Vector2.ZERO

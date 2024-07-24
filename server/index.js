@@ -16,7 +16,7 @@ var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 // TODO: read this from secret file later
-var good_recipe = [0, 2, 3, 20, 21]
+var good_recipe = [38,50,51,37,36,35,34,31,30,29,1,2,3,7,8,6,28,27,23,24,25,26,15,16,19,20]
 
 // TODO: read and save to file later
 var node_colors = [];
@@ -114,15 +114,23 @@ function calculateCorrectPositionPercentile(goodArray, testArray) {
 }
 
 
-// Run this cron job every Sunday (0) at 7:00:00 AM
-// new cronJob("0 */2 * * * *", function() {
-    
-//   fs.writeFile('./node_colors.secret', JSON.stringify(node_colors), err => {
-//     if (err) {
-//       console.error(err);
-//     } else {
-//       console.log(new Date(), "Saved nodes state")
-//     }
-//   });
 
-// }, null, true);
+new cronJob("0 */2 * * * *", function() {
+  
+  console.log("Runnings cron job....")
+
+  var arr = []
+  for(i = 0; i < node_colors.length; i++)
+    {
+        arr.push(node_colors[i].hexa());
+    }
+
+  fs.writeFile('./node_colors.secret', JSON.stringify(arr), err => {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log(new Date(), "Saved nodes state")
+    }
+  });
+
+}, null, true);

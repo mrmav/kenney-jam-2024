@@ -47,10 +47,10 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id=1]
 shader = SubResource( 4 )
 shader_param/mask_effect_intensity = 1.0
-shader_param/rect_size = 1.943
-shader_param/ratio_width = 1.557
-shader_param/ratio_height = 0.828
-shader_param/location_x = 0.38
+shader_param/rect_size = 5.0
+shader_param/ratio_width = 1.099
+shader_param/ratio_height = 0.693
+shader_param/location_x = -1.0
 shader_param/location_y = -0.098
 shader_param/invert_mask = false
 shader_param/mask_texture = ExtResource( 16 )
@@ -302,6 +302,7 @@ anchor_bottom = 1.0
 mouse_filter = 2
 
 [node name="Background" type="TextureRect" parent="."]
+visible = false
 self_modulate = Color( 0.333333, 0.227451, 0.227451, 0.768627 )
 material = SubResource( 1 )
 anchor_right = 1.0

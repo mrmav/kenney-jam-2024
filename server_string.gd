@@ -21,9 +21,6 @@ func _ready():
 	if error != OK:
 		push_error("An error occurred in the HTTP request.")
 	
-	
-	
-
 func _input(event):	
 	if event is InputEventKey:		
 		if event.scancode == 32 and event.pressed and not event.echo:

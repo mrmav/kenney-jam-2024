@@ -61,6 +61,7 @@ func find_connection_between(a, b) -> Line2D:
 	return conn if conn else conn2
 	
 
+var pulsate_tween = null
 func _confirm_selection(node):
 		
 	var l_conn = find_connection_between(selected_node, node)	
@@ -72,6 +73,16 @@ func _confirm_selection(node):
 	print(node.name)
 	emit_signal("node_selected", node)
 	node.element.get_node("AnimationPlayer").play("on_selected")
+	
+	# pulsate
+	if pulsate_tween:
+		pulsate_tween.stop()
+	pulsate_tween = create_tween()
+	pulsate_tween.tween_property(selected_node.element, "scale", Vector2(1.1, 1.1), 1.2)
+	pulsate_tween.tween_property(selected_node.element, "scale", Vector2(0.9, 0.9), 1.2)
+	pulsate_tween.set_loops()
+	pulsate_tween.set_ease(Tween.EASE_IN_OUT)
+	pulsate_tween.play()
 	
 	var possible = _check_possible_moves()
 	if not possible:

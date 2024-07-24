@@ -27,7 +27,7 @@ func get_checked_color():
 
 func _pressed():
 	
-	var color : Color = get_checked_color()
+	var color = get_checked_color()
 	if color == null:
 		return
 	

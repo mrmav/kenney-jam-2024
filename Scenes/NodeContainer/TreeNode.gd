@@ -97,10 +97,10 @@ func _ready():
 	var line_scene : PackedScene = preload("res://Scenes/NodeContainer/LineConnection.tscn")
 	_build_connections(line_scene)
 	
-	if NodesColors.initialized:
-		_get_outline_color()
-	else:
-		NodesColors.connect("colors_received", self, "_get_outline_color")
+#	if NodesColors.initialized:
+#		_get_outline_color()
+#	else:
+	NodesColors.connect("colors_received", self, "_get_outline_color")
 
 
 func _get_outline_color():	
