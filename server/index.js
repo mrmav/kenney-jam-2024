@@ -16,7 +16,9 @@ var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 // TODO: read this from secret file later
-var good_recipe = [38,50,51,37,36,35,34,31,30,29,1,2,3,7,8,6,28,27,23,24,25,26,15,16,19,20]
+var good_recipe = [0, 29, 30, 31, 34, 35, 36, 37, 51, 50, 38, 1, 2, 3, 7, 8, 6, 28, 27, 23, 24, 25, 26, 15, 16, 19, 20]
+
+
 
 // TODO: read and save to file later
 var node_colors = [];
@@ -32,11 +34,14 @@ app.get('/check', (req, res) => {
   var buff = Buffer.from(req.query.recipe, 'base64');  
   var player_array = JSON.parse(buff.toString());  
 
-  console.log("Checking player recipe: " + player_array.toString())
+  console.log(new Date(), "Checking player recipe: " + player_array.toString())
 
   var response = {
     "result": calculateCorrectPositionPercentile(good_recipe, player_array)
   }
+
+  console.log(new Date(), "Player got: " + response.result.toString())
+
   res.send(JSON.stringify(response));
 });
 
