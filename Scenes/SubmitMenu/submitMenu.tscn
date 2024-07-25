@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Fonts/kenney_kenney-fonts/Resources/KenneyPixel-description.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Graphics/Textures/Others/T_Pattern.png" type="Texture" id=2]
 [ext_resource path="res://Graphics/Textures/Elements/T_Element_Outline.png" type="Texture" id=3]
 [ext_resource path="res://Graphics/Textures/UI/T_Button_RectangleRed.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/SubmitRunColor.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/ScoreLabel.gd" type="Script" id=6]
 
 [sub_resource type="ButtonGroup" id=1]
 
@@ -42,17 +43,17 @@ margin_right = 100.0
 margin_bottom = 102.0
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/RunInfo/VBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/RunInfo/VBoxContainer"]
+margin_top = 43.0
 margin_right = 200.0
-margin_bottom = 124.0
-rect_min_size = Vector2( 200, 124 )
-custom_fonts/normal_font = ExtResource( 1 )
-text = "SCORE: You Suck!"
+margin_bottom = 57.0
+text = "Your Score: %1.2f%%"
+script = ExtResource( 6 )
 
 [node name="Control" type="Control" parent="HBoxContainer/RunInfo/VBoxContainer"]
-margin_top = 128.0
+margin_top = 61.0
 margin_right = 200.0
-margin_bottom = 228.0
+margin_bottom = 161.0
 rect_min_size = Vector2( 0, 100 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/RunInfo/VBoxContainer/Control"]

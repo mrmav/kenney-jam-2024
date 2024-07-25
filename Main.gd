@@ -7,6 +7,7 @@ func _ready():
 	GlobalAccess.connect("received_results", self, "_on_results")
 
 func _on_results(result):
+	ScoreManager.set_player_score(float(result.result))
 	GlobalAccess.run_nodes = GlobalAccess.node_container.get_visited_ids_array().duplicate()
 	get_tree().change_scene("res://Scenes/SubmitMenu/submitMenu.tscn")
 	pass
