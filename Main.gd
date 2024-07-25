@@ -1,8 +1,10 @@
 extends Node
 
+signal game_ready
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	NodesColors.connect("colors_received", self, "emit_signal", ["game_ready"])
 	NodesColors.emit_signal("request_colors")
 	GlobalAccess.connect("received_results", self, "_on_results")
 
