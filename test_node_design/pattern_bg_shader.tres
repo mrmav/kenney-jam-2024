@@ -1,0 +1,45 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+// from:https://godotshaders.com/shader/green-screen-chromakey/
+uniform float similarity : hint_range(0.0,1.0) = 0.4;
+uniform float smoothness : hint_range(0.00,1.0) = 0.08;
+uniform float spill : hint_range(0.0,1.0) = 0.1;
+
+const vec4 key_color = vec4(0,1,0,1);
+
+// From https://github.com/libretro/glsl-shaders/blob/master/nnedi3/shaders/rgb-to-yuv.glsl
+vec2 RGBtoUV(vec3 rgb) {
+  return vec2(
+    rgb.r * -0.169 + rgb.g * -0.331 + rgb.b *  0.5    + 0.5,
+    rgb.r *  0.5   + rgb.g * -0.419 + rgb.b * -0.081  + 0.5
+  );
+}
+
+vec4 ProcessChromaKeyValue(vec4 inputColor) {
+  float chromaDist = distance(RGBtoUV(inputColor.rgb), RGBtoUV(key_color.rgb));
+
+  float baseMask = chromaDist - similarity;
+  float fullMask = pow(clamp(baseMask / smoothness, 0., 1.), 1.5);
+  inputColor.a = fullMask;
+
+  float spillVal = pow(clamp(baseMask / spill, 0., 1.), 1.5);
+  float desat = clamp(inputColor.r * 0.2126 + inputColor.g * 0.7152 + inputColor.b * 0.0722, 0., 1.);
+  inputColor.rgb = mix(vec3(desat, desat, desat), inputColor.rgb, spillVal);
+
+  return inputColor;
+}
+
+void fragment()
+{
+	vec4 co = texture(TEXTURE, UV);
+	co += key_color; // add green for chroma key. It will make the black green and untouch white
+	co = clamp(co, vec4(0.0), vec4(1.0));
+	
+	COLOR = ProcessChromaKeyValue(co);
+}
+
+
+"
