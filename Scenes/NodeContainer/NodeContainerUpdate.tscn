@@ -40,6 +40,7 @@ element_scene = ExtResource( 3 )
 position = Vector2( 682, 2 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 7 )
+bridges = [ NodePath("TreeNode6/TreeNode6/TreeNode6/TreeNode8/TreeNode8/TreeNode8/TreeNode8/TreeNode8"), NodePath("TreeNode6/TreeNode6/TreeNode6/TreeNode7") ]
 tree_id = 1
 
 [node name="TreeNode6" type="Node2D" parent="TreeRoot/TreeNode2"]
