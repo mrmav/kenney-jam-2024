@@ -383,9 +383,9 @@ color = Color( 0, 0, 0, 1 )
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -155.0
-margin_top = -113.0
+margin_top = -102.0
 margin_right = 145.0
-margin_bottom = -13.0
+margin_bottom = -2.0
 rect_min_size = Vector2( 300, 100 )
 
 [node name="rope_left" type="NinePatchRect" parent="SubmitText"]
@@ -536,6 +536,7 @@ clouds_path = NodePath("../Clouds")
 background_animation_path = NodePath("../Background/AnimationPlayer")
 char_animation_player_path = NodePath("../AnimationPlayerChar")
 dismiss_btn_nodepath = NodePath("../SubmitText/HBoxContainer/Dismiss")
+needed_hover_time_sec = 0.5
 
 [node name="Rect_Frog" type="TextureRect" parent="Ribbitious"]
 anchor_left = 0.5
