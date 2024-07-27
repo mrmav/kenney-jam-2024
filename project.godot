@@ -61,6 +61,7 @@ GlobalAccess="*res://Scripts/GlobalAccess.gd"
 RequestManager="*res://Scripts/RequestManager.gd"
 NodesColors="*res://Scripts/NodesColors.gd"
 ScoreManager="*res://Scripts/ScoreManager.gd"
+PlayerManager="*res://Scripts/PlayerManager.gd"
 
 [display]
 
