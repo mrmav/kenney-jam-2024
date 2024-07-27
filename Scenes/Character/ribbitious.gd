@@ -6,6 +6,7 @@ export var clouds_path: NodePath
 export var background_animation_path: NodePath
 export var char_animation_player_path: NodePath
 export var dismiss_btn_nodepath: NodePath
+export var beard_nodepath: NodePath
 
 export(float) var needed_hover_time_sec = 1.0
 
@@ -15,6 +16,7 @@ var cloud: Control
 var background_animation: AnimationPlayer
 var char_animation_player: AnimationPlayer
 var dismiss_btn: Button
+var beard
 
 var start_offset = Vector2(0, 100)
 var start_offset_submit = Vector2(0, -150)
@@ -31,6 +33,7 @@ func _ready():
 	background_animation = get_node(background_animation_path) as AnimationPlayer
 	char_animation_player = get_node(char_animation_player_path) as AnimationPlayer
 	dismiss_btn = get_node(dismiss_btn_nodepath)
+	beard = get_node(beard_nodepath)
 
 	hover_button.connect("mouse_entered", self, "_on_HoverButton_mouse_entered")
 	hover_button.connect("mouse_exited", self, "_on_HoverButton_mouse_leave")
@@ -50,6 +53,8 @@ func _process(_delta):
 func _on_HoverButton_mouse_entered() -> void:
 	if submit_open:
 		return
+
+	beard.animate()
 
 	_target_over_time = Time.get_ticks_msec() + needed_hover_time_sec * 1000.0
 

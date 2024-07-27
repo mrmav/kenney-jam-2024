@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Scenes/Character/MoveRectUpAndDown.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Character/Eye_Follow.gd" type="Script" id=2]
@@ -9,13 +9,14 @@
 [ext_resource path="res://Graphics/Textures/Player/T_Eye_Glow.png" type="Texture" id=7]
 [ext_resource path="res://Graphics/Textures/Others/T_Pattern_56.png" type="Texture" id=8]
 [ext_resource path="res://Graphics/Textures/UI/T_Button_RectangleRed.png" type="Texture" id=9]
+[ext_resource path="res://Fonts/Varela_Round/VarelaRound-p.tres" type="DynamicFont" id=10]
+[ext_resource path="res://Fonts/Varela_Round/VarelaRound-h3.tres" type="DynamicFont" id=11]
 [ext_resource path="res://Graphics/Textures/Player/Clouds/T_Cloud_1.png" type="Texture" id=12]
 [ext_resource path="res://Scenes/Character/ribbitious.gd" type="Script" id=13]
 [ext_resource path="res://Graphics/Textures/Player/T_FacialHair_01.png" type="Texture" id=14]
-[ext_resource path="res://Fonts/kenney_kenney-fonts/Resources/KenneyPixel.tres" type="DynamicFont" id=15]
+[ext_resource path="res://Scenes/Character/Beard.gd" type="Script" id=15]
 [ext_resource path="res://Graphics/Textures/Player/Clouds/T_Cloud_4-Better.png" type="Texture" id=16]
 [ext_resource path="res://Graphics/Textures/UI/T_PanelBorder-026.png" type="Texture" id=17]
-[ext_resource path="res://Fonts/kenney_kenney-fonts/Resources/KenneyPixel-description.tres" type="DynamicFont" id=18]
 [ext_resource path="res://Graphics/Textures/UI/T_BannerHanging.png" type="Texture" id=19]
 [ext_resource path="res://Graphics/Textures/UI/T_Button_RectangleMetal.png" type="Texture" id=20]
 [ext_resource path="res://Scripts/SubmitRecipe.gd" type="Script" id=21]
@@ -421,12 +422,13 @@ anchor_bottom = 0.5
 margin_left = -125.0
 margin_top = -4.0
 margin_right = 125.0
-margin_bottom = 55.9999
+margin_bottom = 56.0
 custom_constants/separation = 16
 
 [node name="Button" type="Button" parent="SubmitText/HBoxContainer"]
 margin_right = 117.0
 margin_bottom = 59.0
+mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 flat = true
@@ -455,8 +457,10 @@ patch_margin_right = 10
 patch_margin_bottom = 10
 
 [node name="Label" type="Label" parent="SubmitText/HBoxContainer/Button"]
+modulate = Color( 1, 0.945098, 0.823529, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 11 )
 text = "Yes!"
 align = 1
 valign = 1
@@ -465,6 +469,7 @@ valign = 1
 margin_left = 133.0
 margin_right = 250.0
 margin_bottom = 59.0
+mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 flat = true
@@ -492,8 +497,10 @@ patch_margin_right = 10
 patch_margin_bottom = 10
 
 [node name="Label" type="Label" parent="SubmitText/HBoxContainer/Dismiss"]
+modulate = Color( 1, 0.945098, 0.823529, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 10 )
 text = "...let me
 check again."
 align = 1
@@ -513,13 +520,21 @@ patch_margin_right = 49
 patch_margin_bottom = 37
 
 [node name="Label" type="Label" parent="SubmitText/NinePatchRectLabel2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -123.0
+margin_top = -42.0
+margin_right = 163.0
+margin_bottom = 58.0
+rect_scale = Vector2( 0.858227, 0.858227 )
 custom_colors/font_color = Color( 1, 0.945098, 0.823529, 1 )
-custom_fonts/font = ExtResource( 18 )
+custom_fonts/font = ExtResource( 11 )
 text = "Trasmutate your recipe?"
 align = 1
 valign = 1
+autowrap = true
 
 [node name="Ribbitious" type="Control" parent="."]
 anchor_top = 1.0
@@ -536,6 +551,7 @@ clouds_path = NodePath("../Clouds")
 background_animation_path = NodePath("../Background/AnimationPlayer")
 char_animation_player_path = NodePath("../AnimationPlayerChar")
 dismiss_btn_nodepath = NodePath("../SubmitText/HBoxContainer/Dismiss")
+beard_nodepath = NodePath("Rect_Frog/Beard")
 needed_hover_time_sec = 0.5
 
 [node name="Rect_Frog" type="TextureRect" parent="Ribbitious"]
@@ -552,6 +568,26 @@ expand = true
 stretch_mode = 6
 script = ExtResource( 1 )
 
+[node name="Eye_Left" type="Control" parent="Ribbitious/Rect_Frog"]
+anchor_left = 0.327
+anchor_top = 0.152
+anchor_right = 0.327
+anchor_bottom = 0.152
+margin_left = -22.4
+margin_top = -22.4
+margin_right = 22.6
+margin_bottom = 22.6
+rect_min_size = Vector2( 45, 45 )
+rect_pivot_offset = Vector2( 22.5, 22.5 )
+
+[node name="Rect_Eye_White" type="TextureRect" parent="Ribbitious/Rect_Frog/Eye_Left"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 22.5, 22.5 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+
 [node name="Eye_Right" type="Control" parent="Ribbitious/Rect_Frog"]
 anchor_left = 0.682
 anchor_top = 0.152
@@ -566,7 +602,6 @@ rect_pivot_offset = Vector2( 22.5, 22.5 )
 script = ExtResource( 2 )
 base_eye_path = NodePath("Rect_Eye_White")
 pupil_path = NodePath("Rect_Eye_Black")
-glow_path = NodePath("Rect_Eye_Glow")
 eye_radius = 5.0
 
 [node name="Rect_Eye_White" type="TextureRect" parent="Ribbitious/Rect_Frog/Eye_Right"]
@@ -585,7 +620,7 @@ texture = ExtResource( 5 )
 expand = true
 stretch_mode = 6
 
-[node name="Rect_Eye_Glow" type="TextureRect" parent="Ribbitious/Rect_Frog/Eye_Right"]
+[node name="Rect_Eye_Glow" type="TextureRect" parent="Ribbitious/Rect_Frog/Eye_Right/Rect_Eye_Black"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 22.5, 22.5 )
@@ -593,40 +628,17 @@ texture = ExtResource( 7 )
 expand = true
 stretch_mode = 6
 
-[node name="Eye_Left" type="Control" parent="Ribbitious/Rect_Frog"]
-anchor_left = 0.327
-anchor_top = 0.152
-anchor_right = 0.327
-anchor_bottom = 0.152
-margin_left = -22.4
-margin_top = -22.4
-margin_right = 22.6
-margin_bottom = 22.6
-rect_min_size = Vector2( 45, 45 )
-rect_pivot_offset = Vector2( 22.5, 22.5 )
-script = ExtResource( 2 )
-base_eye_path = NodePath("Rect_Eye_White")
-pupil_path = NodePath("Rect_Eye_Black")
-glow_path = NodePath("Rect_Eye_Glow")
-eye_radius = 5.0
-
-[node name="Rect_Eye_White" type="TextureRect" parent="Ribbitious/Rect_Frog/Eye_Left"]
+[node name="Rect_Eye_Black" type="TextureRect" parent="Ribbitious/Rect_Frog/Eye_Right/Rect_Eye_Black"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 22.5, 22.5 )
-texture = ExtResource( 6 )
-expand = true
-stretch_mode = 5
-
-[node name="Rect_Eye_Black" type="TextureRect" parent="Ribbitious/Rect_Frog/Eye_Left"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+margin_left = -71.0
+margin_right = -71.0
 rect_pivot_offset = Vector2( 22.5, 22.5 )
 texture = ExtResource( 5 )
 expand = true
 stretch_mode = 6
 
-[node name="Rect_Eye_Glow" type="TextureRect" parent="Ribbitious/Rect_Frog/Eye_Left"]
+[node name="Rect_Eye_Glow" type="TextureRect" parent="Ribbitious/Rect_Frog/Eye_Right/Rect_Eye_Black/Rect_Eye_Black"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 22.5, 22.5 )
@@ -639,24 +651,25 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 20.0
-margin_bottom = 20.0
+margin_left = -40.0
+margin_top = -50.0
+margin_right = 41.0
+margin_bottom = -14.0
+rect_pivot_offset = Vector2( 40, 20 )
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="BeardTexture" type="TextureRect" parent="Ribbitious/Rect_Frog/Beard"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -40.0
-margin_top = -41.0
-margin_right = 40.0
-margin_bottom = 9.0
-rect_min_size = Vector2( 80, 50 )
+anchor_right = 1.0
+anchor_bottom = 1.0
 texture = ExtResource( 14 )
 expand = true
-stretch_mode = 5
+stretch_mode = 6
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="NinePatchRectName" type="NinePatchRect" parent="Ribbitious"]
 anchor_left = 0.5
@@ -674,15 +687,17 @@ patch_margin_right = 190
 patch_margin_bottom = 58
 
 [node name="Label" type="Label" parent="Ribbitious/NinePatchRectName"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 30.0
-margin_top = 27.0
-margin_right = -30.0
-margin_bottom = -38.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -169.5
+margin_top = -22.5
+margin_right = 169.5
+margin_bottom = 18.5
 theme = SubResource( 2 )
 custom_colors/font_color = Color( 1, 0.945098, 0.823529, 1 )
-custom_fonts/font = ExtResource( 15 )
+custom_fonts/font = ExtResource( 11 )
 text = "LORD RIBBITIOUS"
 align = 1
 valign = 3
