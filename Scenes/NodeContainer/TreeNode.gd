@@ -83,7 +83,7 @@ func _on_user_click():
 
 	
 func _ready():
-		
+	
 	for b in bridges:
 		bridge_nodes.append(get_node_or_null(b))
 		
@@ -93,7 +93,6 @@ func _ready():
 		
 		update()
 		return
-	
 	
 	# create a line connection to my parent child and incested nodes.
 	var line_scene : PackedScene = preload("res://Scenes/NodeContainer/LineConnection.tscn")

@@ -1,0 +1,251 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/NodeContainer/NodeContainer.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/NodeContainer/TreeNode.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Element/scene_element.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/NodeContainer/GameCamera.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/NodeContainer/CatchInput.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Element/Variants/scene_element_wood.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Graphics/Textures/T_Icon.png" type="Texture" id=14]
+
+[node name="NodeContainer" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+tree_root_path = NodePath("TreeRoot")
+
+[node name="TIcon" type="Sprite" parent="."]
+visible = false
+position = Vector2( 13, -803 )
+scale = Vector2( 9.85157, 9.85157 )
+texture = ExtResource( 14 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CatchInput" type="Control" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TreeRoot" type="Node2D" parent="."]
+script = ExtResource( 2 )
+element_scene = ExtResource( 3 )
+
+[node name="TreeNode2" type="Node2D" parent="TreeRoot"]
+position = Vector2( 682, 2 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+tree_id = 1
+
+[node name="TreeNode6" type="Node2D" parent="TreeRoot/TreeNode2"]
+position = Vector2( 3, -231 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+tree_id = 2
+
+[node name="TreeNode6" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6"]
+position = Vector2( 7, -364 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+tree_id = 3
+
+[node name="TreeNode6" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6"]
+position = Vector2( -408, 2 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+tree_id = 4
+
+[node name="TreeNode6" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6"]
+position = Vector2( -283, 5 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+tree_id = 5
+
+[node name="TreeNode9" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode6"]
+position = Vector2( -376, 3 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+bridges = [ NodePath("TreeNode6/TreeNode6") ]
+tree_id = 6
+
+[node name="TreeNode6" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode9"]
+position = Vector2( -432, -6 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+bridges = [ NodePath("../TreeNode8/TreeNode8/TreeNode8"), NodePath("TreeNode6/TreeNode6"), NodePath("../TreeNode8/TreeNode8") ]
+tree_id = 7
+
+[node name="TreeNode6" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode9/TreeNode6"]
+position = Vector2( 433, 340 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+tree_id = 8
+
+[node name="TreeNode6" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode9/TreeNode6/TreeNode6"]
+position = Vector2( -449, 4 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+tree_id = 9
+
+[node name="TreeNode6" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode9/TreeNode6/TreeNode6/TreeNode6"]
+position = Vector2( -5, 239 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+tree_id = 10
+
+[node name="TreeNode6" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode9/TreeNode6/TreeNode6/TreeNode6/TreeNode6"]
+position = Vector2( -5, 239 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+tree_id = 11
+
+[node name="TreeNode7" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode9/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode6"]
+position = Vector2( -185, 205 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+tree_id = 12
+
+[node name="TreeNode8" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode9/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode7"]
+position = Vector2( -187, 235 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+tree_id = 13
+
+[node name="TreeNode8" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode9/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode7/TreeNode8"]
+position = Vector2( 360, 1 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+tree_id = 14
+
+[node name="TreeNode9" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode9/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode7/TreeNode8/TreeNode8"]
+position = Vector2( 197, -237 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+tree_id = 15
+
+[node name="TreeNode9" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode9/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode7/TreeNode8/TreeNode8/TreeNode9"]
+position = Vector2( 166, 227 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+tree_id = 16
+
+[node name="TreeNode9" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode9/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode7/TreeNode8/TreeNode8/TreeNode9/TreeNode9"]
+position = Vector2( 479, -5 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+tree_id = 17
+
+[node name="TreeNode9" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode9/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode7/TreeNode8/TreeNode8/TreeNode9/TreeNode9/TreeNode9"]
+position = Vector2( 389, -2 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+tree_id = 18
+
+[node name="TreeNode9" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode9/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode7/TreeNode8/TreeNode8/TreeNode9/TreeNode9/TreeNode9/TreeNode9"]
+position = Vector2( 244, 151 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+tree_id = 19
+
+[node name="TreeNode10" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode9/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode7/TreeNode8/TreeNode8/TreeNode9/TreeNode9/TreeNode9/TreeNode9/TreeNode9"]
+position = Vector2( 223, -151 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+tree_id = 20
+
+[node name="TreeNode10" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode9/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode7/TreeNode8/TreeNode8/TreeNode9/TreeNode9/TreeNode9/TreeNode9/TreeNode9/TreeNode10"]
+position = Vector2( -228, -172 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+tree_id = 21
+
+[node name="TreeNode8" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode9"]
+position = Vector2( -442, -348 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+tree_id = 22
+
+[node name="TreeNode8" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode9/TreeNode8"]
+position = Vector2( -387, -3 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+tree_id = 23
+
+[node name="TreeNode8" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode9/TreeNode8/TreeNode8"]
+position = Vector2( -5, 343 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+tree_id = 24
+
+[node name="TreeNode8" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode9/TreeNode8/TreeNode8/TreeNode8"]
+position = Vector2( -6, 344 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+bridges = [ NodePath("../../../../TreeNode6/TreeNode6/TreeNode6") ]
+tree_id = 25
+
+[node name="TreeNode7" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode9"]
+position = Vector2( -9, -346 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+tree_id = 26
+
+[node name="TreeNode8" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6"]
+position = Vector2( 137, -225 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+tree_id = 27
+
+[node name="TreeNode8" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode8"]
+position = Vector2( 275, -146 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+bridges = [ NodePath("../../..") ]
+tree_id = 28
+
+[node name="TreeNode8" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode8/TreeNode8"]
+position = Vector2( 257, 133 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+tree_id = 29
+
+[node name="TreeNode8" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode8/TreeNode8/TreeNode8"]
+position = Vector2( 119, 236 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+relevant = false
+bridges = [ NodePath("../../../../..") ]
+tree_id = 30
+
+[node name="TreeNode8" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode8/TreeNode8/TreeNode8/TreeNode8"]
+position = Vector2( -113, 265 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+relevant = false
+bridges = [ NodePath("../../../../../../.."), NodePath("../..") ]
+tree_id = 31
+
+[node name="TreeNode7" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6"]
+position = Vector2( 140, 260 )
+script = ExtResource( 2 )
+element_scene = ExtResource( 7 )
+bridges = [ NodePath("../../..") ]
+tree_id = 32
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 2.06, 2.06 )
+smoothing_enabled = true
+editor_draw_screen = false
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+zoomed_in_amount = 3.0
+zoomed_out_amount = 1.5
+drag_max_dist = 300.0
