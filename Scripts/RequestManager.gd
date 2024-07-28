@@ -4,7 +4,6 @@ var domain = "http://localhost:3000"
 
 func _enter_tree():
 	
-	if not OS.is_debug_build():
 		domain = "https://mrmav-jam.com"
 
 
