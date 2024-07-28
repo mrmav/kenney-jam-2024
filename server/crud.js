@@ -11,9 +11,9 @@ const CreateItem = (uuid, name, last_access, callback) => {
 };
 
 // READ
-const ReadItems = (callback) => {
-  const sql = `SELECT * FROM players`;
-  db.all(sql, [], callback);
+const ReadItems = (count, callback) => {
+  const sql = `SELECT id, name, best_score FROM players WHERE best_score IS NOT NULL ORDER BY best_score DESC LIMIT ?`;
+  db.all(sql, [count], callback);
 };
 
 // READ ITEM

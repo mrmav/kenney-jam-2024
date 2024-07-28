@@ -183,7 +183,7 @@ new cronJob(
 // TEST DB
 
 app.get("/players", (req, res) => {
-  ReadItems((err, rows) => {
+  ReadItems(50, (err, rows) => {
     if (err) {
       console.log(err);
       res.status(500).send(err.message);

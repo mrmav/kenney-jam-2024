@@ -5,6 +5,8 @@ signal received_player_data
 var cfg_file_path: String = "user://player.cfg"
 var cfg_file: ConfigFile = null
 
+var restored = false
+
 
 func fetch_player_data():
 	# Check if we have a uuid stored.
@@ -36,6 +38,7 @@ func _on_player_data(response: PoolByteArray) -> void:
 		cfg_file.set_value("player", "id", int(parsed.result.id))
 		cfg_file.save(cfg_file_path)
 
+		restored = true
 		emit_signal("received_player_data")
 
 
@@ -44,6 +47,10 @@ func get_name() -> String:
 		"%s#%d"
 		% [cfg_file.get_value("player", "name", null), cfg_file.get_value("player", "id", 0)]
 	)
+
+
+func get_name_dict(dict: Dictionary) -> String:
+	return "%s#%d" % [dict.name, dict.id]
 
 
 func get_uuid() -> String:
