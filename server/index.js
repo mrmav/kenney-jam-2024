@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const fs = require("node:fs");
 const cronJob = require("cron").CronJob;
 const Color = require("color");
+const uuidValidate = require("uuid").validate
 const app = express();
 const port = 3000;
 const {
@@ -41,18 +42,40 @@ app.get("/", (req, res) => {
 
 // Checks for a recipe provided in the query params.
 app.get("/check", (req, res) => {
-  var buff = Buffer.from(req.query.recipe, "base64");
+
+  var buff = Buffer.from(req.query.uuid, "base64");
+  var player_uuid = buff.toString();
+
+  if (!uuidValidate(player_uuid)) {
+    res.status(500).send(JSON.stringify({ code: 1 }));
+    return;
+  }
+
+  buff = Buffer.from(req.query.recipe, "base64");
   var player_array = JSON.parse(buff.toString());
 
   console.log(new Date(), "Checking player recipe: " + player_array.toString());
 
-  var response = {
+  var data = {
     result: CheckSubmittedArray(good_recipe, player_array),
+    code: 0
   };
 
-  console.log(new Date(), "Player got: " + response.result.toString());
+  console.log(new Date(), "Player got: " + data.result.toString());
 
-  res.send(JSON.stringify(response));
+  var success = true;
+  UpdateItem(player_uuid, data.result, (err) => {
+    if (err) {
+      console.log(err);
+      data.code = 1;
+      res.status(500).send(JSON.stringify(data));
+
+      return;
+    }
+
+    res.status(200).send(JSON.stringify(data));
+  });
+
 });
 
 // Used to retrieve the node colors state.
@@ -69,6 +92,7 @@ app.get("/get_colors", (req, res) => {
 
 // Path to submit round colors. This should be a POST, but oh well.
 app.get("/submit_colors", (req, res) => {
+
   // decode the player submitted array
   var buff = Buffer.from(req.query.recipe, "base64");
   var player_array = JSON.parse(buff.toString());
@@ -200,7 +224,7 @@ function createAndStoreNewPlayer(res) {
   CreateItem(playerInfo.uuid, playerInfo.name, Date.now(), (err, data) => {
     if (err) {
       console.log(err);
-      res.status(500).send(JSON.stringify({code: 1}));
+      res.status(500).send(JSON.stringify({ code: 1 }));
     } else {
       res
         .status(200)

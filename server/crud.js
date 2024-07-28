@@ -31,16 +31,12 @@ const ReadItem = (uuid, callback) => {
 
 // UPDATE ITEM
 const UpdateItem = (
-  id,
   uuid,
-  name,
-  best_score,
-  attempts,
-  last_access,
+  score,
   callback
 ) => {
-  const sql = `UPDATE players SET uuid = ?, name = ?, best_score = ?, attempts = ?, last_access = ? WHERE id = ?`;
-  db.run(sql, [uuid, name, best_score, attempts, last_access], callback);
+  const sql = `UPDATE players SET best_score = MAX(IFNULL(best_score, 0.0), ?), attempts = IFNULL(attempts, 0) + 1, last_access = ? WHERE uuid = ?`;
+  db.run(sql, [score, Date.now(), uuid], callback);
 };
 
 // DELETE ITEM

@@ -39,8 +39,12 @@ func _on_player_data(response: PoolByteArray) -> void:
 		emit_signal("received_player_data")
 
 
-func get_player_name() -> String:
+func get_name() -> String:
 	return (
 		"%s#%d"
 		% [cfg_file.get_value("player", "name", null), cfg_file.get_value("player", "id", 0)]
 	)
+
+
+func get_uuid() -> String:
+	return cfg_file.get_value("player", "uuid", "")
