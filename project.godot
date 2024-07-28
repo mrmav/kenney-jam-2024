@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "ColorPulse",
+"language": "GDScript",
+"path": "res://Scenes/SubmitMenu/ColorPulse.gd"
+}, {
+"base": "Node",
+"class": "EffectColors",
+"language": "GDScript",
+"path": "res://Scripts/EffectColors.gd"
+}, {
 "base": "Reference",
 "class": "Enums",
 "language": "GDScript",
@@ -30,6 +40,8 @@ _global_script_classes=[ {
 "path": "res://Scenes/NodeContainer/TreeNode.gd"
 } ]
 _global_script_class_icons={
+"ColorPulse": "",
+"EffectColors": "",
 "Enums": "",
 "SubmitButton": "",
 "SubmitRunColorButton": "",
@@ -48,6 +60,7 @@ boot_splash/minimum_display_time=2
 GlobalAccess="*res://Scripts/GlobalAccess.gd"
 RequestManager="*res://Scripts/RequestManager.gd"
 NodesColors="*res://Scripts/NodesColors.gd"
+ScoreManager="*res://Scripts/ScoreManager.gd"
 
 [display]
 
@@ -64,12 +77,12 @@ common/snap_controls_to_pixels=false
 
 zoom_in={
 "deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":4,"pressed":false,"doubleclick":false,"script":null)
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":4,"canceled":false,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 zoom_out={
 "deadzone": 0.5,
-"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":5,"pressed":false,"doubleclick":false,"script":null)
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":5,"canceled":false,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 

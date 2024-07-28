@@ -7,6 +7,10 @@ var post_endpoint = "/post-data"
 var http_request : HTTPRequest = null
 
 func _ready():
+	
+	if OS.has_feature("web"):
+		queue_free()
+	
 	# Create an HTTP request node and connect its completion signal.
 	http_request = HTTPRequest.new()
 	add_child(http_request)
@@ -17,9 +21,6 @@ func _ready():
 	if error != OK:
 		push_error("An error occurred in the HTTP request.")
 	
-	
-	
-
 func _input(event):	
 	if event is InputEventKey:		
 		if event.scancode == 32 and event.pressed and not event.echo:

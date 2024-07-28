@@ -1,3 +1,4 @@
+tool
 extends ColorRect
 export(float) var speed = 0.2
 
