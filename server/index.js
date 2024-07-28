@@ -180,7 +180,7 @@ app.get("/player", (req, res) => {
       if (row) {
         // could be undefined
         // player exists
-        res.status(200).send("ok");
+        res.status(200).send(JSON.stringify({ code: 0, uuid: row.uuid, name: row.name, id: row.id }));
         return;
       } else {
         // player does not exist.
@@ -200,11 +200,11 @@ function createAndStoreNewPlayer(res) {
   CreateItem(playerInfo.uuid, playerInfo.name, Date.now(), (err, data) => {
     if (err) {
       console.log(err);
-      res.status(500).send("nok");
+      res.status(500).send(JSON.stringify({code: 1}));
     } else {
       res
         .status(200)
-        .send(JSON.stringify({ uuid: playerInfo.uuid, name: playerInfo.name }));
+        .send(JSON.stringify({ code: 0, uuid: playerInfo.uuid, name: playerInfo.name, id: data.id }));
     }
   });
 }

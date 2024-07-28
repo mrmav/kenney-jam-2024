@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Scenes/Character/MoveRectUpAndDown.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Character/Eye_Follow.gd" type="Script" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://Scenes/Character/Beard.gd" type="Script" id=15]
 [ext_resource path="res://Graphics/Textures/Player/Clouds/T_Cloud_4-Better.png" type="Texture" id=16]
 [ext_resource path="res://Graphics/Textures/UI/T_PanelBorder-026.png" type="Texture" id=17]
+[ext_resource path="res://Scripts/PlayerNameLabel.gd" type="Script" id=18]
 [ext_resource path="res://Graphics/Textures/UI/T_BannerHanging.png" type="Texture" id=19]
 [ext_resource path="res://Graphics/Textures/UI/T_Button_RectangleMetal.png" type="Texture" id=20]
 [ext_resource path="res://Scripts/SubmitRecipe.gd" type="Script" id=21]
@@ -427,7 +428,7 @@ custom_constants/separation = 16
 
 [node name="Button" type="Button" parent="SubmitText/HBoxContainer"]
 margin_right = 117.0
-margin_bottom = 59.0
+margin_bottom = 60.0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -468,7 +469,7 @@ valign = 1
 [node name="Dismiss" type="Button" parent="SubmitText/HBoxContainer"]
 margin_left = 133.0
 margin_right = 250.0
-margin_bottom = 59.0
+margin_bottom = 60.0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -702,7 +703,7 @@ text = "LORD RIBBITIOUS"
 align = 1
 valign = 3
 autowrap = true
-uppercase = true
+script = ExtResource( 18 )
 
 [node name="HoverButton" type="Button" parent="."]
 modulate = Color( 1, 1, 1, 0 )
