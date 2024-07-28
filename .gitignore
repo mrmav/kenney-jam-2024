@@ -20,3 +20,4 @@ mono_crash.*.json
 exports/*
 
 *.secret
+*.db

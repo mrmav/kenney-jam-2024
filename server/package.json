@@ -16,7 +16,10 @@
     "cron": "^3.1.7",
     "express": "^4.19.2",
     "hex-color-opacity": "^0.4.2",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "sqlite3": "^5.1.7",
+    "unique-names-generator": "^4.7.1",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.8.0",

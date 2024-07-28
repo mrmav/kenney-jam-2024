@@ -118,7 +118,6 @@ func _build_connections(line_scene):
 			continue
 			
 		if node.get("TYPE_TREE_NODE"):
-			print("connection bridge between ", self, " and ", node)
 			_create_connection(self, node, line_scene)
 			
 	for sibling in get_parent().get_children():

@@ -13,18 +13,19 @@ script = ExtResource( 2 )
 script = ExtResource( 3 )
 target = Color( 0.87451, 0.713726, 0.00784314, 1 )
 
-[node name="Label" type="Label" parent="."]
-margin_right = 71.0
+[node name="position" type="Label" parent="."]
+margin_right = 62.0
 margin_bottom = 20.0
-size_flags_horizontal = 3
+rect_min_size = Vector2( 62, 0 )
+size_flags_horizontal = 5
 custom_fonts/font = ExtResource( 1 )
 text = "1st"
 align = 1
 valign = 1
 
-[node name="Label2" type="Label" parent="."]
-margin_left = 75.0
-margin_right = 147.0
+[node name="name" type="Label" parent="."]
+margin_left = 66.0
+margin_right = 157.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
@@ -32,11 +33,12 @@ text = "mrmav"
 align = 1
 valign = 1
 
-[node name="Label3" type="Label" parent="."]
-margin_left = 151.0
+[node name="score" type="Label" parent="."]
+margin_left = 161.0
 margin_right = 223.0
 margin_bottom = 20.0
-size_flags_horizontal = 3
+rect_min_size = Vector2( 62, 0 )
+size_flags_horizontal = 5
 custom_fonts/font = ExtResource( 1 )
 text = "110%"
 align = 1
