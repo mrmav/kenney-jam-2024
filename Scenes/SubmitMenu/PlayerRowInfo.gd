@@ -17,7 +17,7 @@ func _ready():
 
 
 func get_pos_suffix(i) -> String:
-	var _last_i = _suffix.size() - 1
+	var last_index = _suffix.size() - 1
 	var index = i % 10
-	index = _last_i if i >= 10 and i < 20 else index
-	return _suffix[index if index < _last_i else _last_i]
+	index = last_index if i >= 10 and i < 20 else index
+	return _suffix[index if index < last_index else last_index]
