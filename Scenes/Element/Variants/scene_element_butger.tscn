@@ -1,15 +1,27 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Element/scene_element.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Graphics/Textures/SpecificElements/Food/T_Bread.png" type="Texture" id=2]
+[ext_resource path="res://Graphics/Textures/SpecificElements/Food/T_PeanutButter.png" type="Texture" id=2]
+[ext_resource path="res://Graphics/Textures/Others/Patterns/pattern_32.png" type="Texture" id=3]
+[ext_resource path="res://Graphics/Textures/UI/KenneyFantasyUI/Border/panel-border-000.png" type="Texture" id=4]
 
 [node name="scene_element" instance=ExtResource( 1 )]
+master_color = Color( 0.69, 0.516925, 0.4485, 1 )
 
-[node name="noise01" parent="Content" index="2"]
-modulate = Color( 0.2, 0.196078, 0.647059, 1 )
+[node name="TextureRect" parent="Content" index="0"]
+texture = ExtResource( 4 )
 
-[node name="icon" parent="Content" index="3"]
+[node name="ColorRect" parent="Content/TextureRect/RectClipBG" index="0"]
+color = Color( 0.69, 0.516925, 0.4485, 1 )
+
+[node name="PatternBG" parent="Content/TextureRect/RectClipBG" index="1"]
+visible = true
+self_modulate = Color( 0.621, 0.465232, 0.40365, 1 )
+texture = ExtResource( 3 )
+
+[node name="ElementIcon" parent="Content/TextureRect" index="1"]
+rect_scale = Vector2( 1.249, 1.249 )
 texture = ExtResource( 2 )
 
-[node name="element_name" parent="Content/LabelPositioner" index="0"]
-text = "Bread"
+[node name="ElementName" parent="Content/NameLabelFrame" index="0"]
+text = "Peanut Butter"

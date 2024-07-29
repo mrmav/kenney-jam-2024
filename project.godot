@@ -24,6 +24,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Enums.gd"
 }, {
+"base": "HBoxContainer",
+"class": "PlayerInfo",
+"language": "GDScript",
+"path": "res://Scenes/SubmitMenu/PlayerRowInfo.gd"
+}, {
+"base": "Control",
+"class": "ScoreTable",
+"language": "GDScript",
+"path": "res://Scenes/SubmitMenu/ScoreTable.gd"
+}, {
 "base": "Button",
 "class": "SubmitButton",
 "language": "GDScript",
@@ -43,6 +53,8 @@ _global_script_class_icons={
 "ColorPulse": "",
 "EffectColors": "",
 "Enums": "",
+"PlayerInfo": "",
+"ScoreTable": "",
 "SubmitButton": "",
 "SubmitRunColorButton": "",
 "TreeNode": ""

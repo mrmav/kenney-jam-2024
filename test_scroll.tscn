@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://test_node_design/2d_scroll.tres" type="Shader" id=1]
+[ext_resource path="res://test_node_design/kenney_pattern-pack/PNG/Double/pattern_44.png" type="Texture" id=2]
+[ext_resource path="res://test_node_design/kenney_patterns_shader.tres" type="Material" id=3]
+[ext_resource path="res://test_node_design/kenney_pattern-pack/Tilesheet/patternPack_tilesheet.png" type="Texture" id=5]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/scroll_speed = 0.046
+shader_param/angle_degrees = 142.852
+shader_param/repeat_x = 1.0
+shader_param/repeat_y = 1.0
+shader_param/row_offset = 0.295
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = ExtResource( 3 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 255.0
+margin_top = 71.0
+margin_right = 3826.0
+margin_bottom = 2352.0
+rect_scale = Vector2( 0.145, 0.145 )
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 2
+
+[node name="Control" type="TextureRect" parent="."]
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )

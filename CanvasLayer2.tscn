@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/ColorRect.gd" type="Script" id=1]
+[ext_resource path="res://Graphics/Textures/Others/Patterns/pattern_40.png" type="Texture" id=2]
+[ext_resource path="res://Graphics/Shaders/pattern_bg_shader.tres" type="Shader" id=3]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 3 )
+shader_param/scale = Vector2( 1, 1 )
+shader_param/similarity = 0.212
+shader_param/smoothness = 0.16
+shader_param/spill = 1.0
+
+[node name="ColorRect" type="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -448.0
+margin_bottom = -28.0
+mouse_filter = 2
+color = Color( 0.73033, 0.5168, 0.76, 1 )
+script = ExtResource( 1 )
+speed = 0.05
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 0.693813, 0.49096, 0.722, 1 )
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 2

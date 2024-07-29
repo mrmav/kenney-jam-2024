@@ -6,6 +6,7 @@ signal node_selected
 signal no_more_moves_posssible
 
 export(NodePath) var tree_root_path = null
+export(bool) var debug_mode = true
 
 onready var tree_root = get_node_or_null(tree_root_path)
 onready var camera = get_node_or_null("Camera2D")

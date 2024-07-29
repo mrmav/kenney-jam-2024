@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://Graphics/Shaders/pattern_bg_shader.tres" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/scale = Vector2( 7, 7 )
+shader_param/similarity = 0.212
+shader_param/smoothness = 0.16
+shader_param/spill = 1.0

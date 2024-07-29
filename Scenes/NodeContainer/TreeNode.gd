@@ -15,6 +15,8 @@ export(bool) var relevant = true
 export(Array, NodePath) var bridges = []
 export(int) var tree_id setget _set_id, get_id
 
+var received_color = Color.white
+
 func _set_id(value):
 	return
 
@@ -103,9 +105,11 @@ func _ready():
 	NodesColors.connect("colors_received", self, "_get_outline_color")
 
 
-func _get_outline_color():	
-	element.get_node("outline").modulate = NodesColors.get_node_color(tree_id)
-
+func _get_outline_color():
+	var color = NodesColors.get_node_color(tree_id)
+	color.a = 1
+	received_color = color
+	element.get_node("Content/TextureRect").self_modulate = color
 
 func _build_connections(line_scene):
 	for child in get_children():
@@ -209,6 +213,6 @@ func _draw():
 		color.a = 0.3
 		draw_circle(Vector2.ZERO, (size_node.get_rect().size * size_node.scale).x / 2.0, color)
 	
-	if OS.is_debug_build():
+	if OS.is_debug_build() and not owner.debug_mode:
 		draw_string(preload("res://Fonts/kenney_kenney-fonts/Resources/KenneyPixel_debug.tres"), Vector2.ZERO, str(tree_id), Color.red)
 	

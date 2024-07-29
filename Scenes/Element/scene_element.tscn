@@ -1,15 +1,18 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://Graphics/Textures/Elements/T_Light_00.png" type="Texture" id=1]
-[ext_resource path="res://Graphics/Textures/Elements/T_Noise_20.png" type="Texture" id=2]
-[ext_resource path="res://Graphics/Textures/Elements/T_Sphere_00.png" type="Texture" id=3]
-[ext_resource path="res://Graphics/Textures/Elements/T_Element_Outline.png" type="Texture" id=4]
-[ext_resource path="res://Graphics/Textures/Elements/T_Noise_18.png" type="Texture" id=5]
-[ext_resource path="res://Fonts/kenney_kenney-fonts/Resources/KenneyPixel-description.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Graphics/Textures/Others/Patterns/pattern_82.png" type="Texture" id=1]
+[ext_resource path="res://Graphics/Shaders/kenney_patterns_shader.tres" type="Material" id=2]
+[ext_resource path="res://Graphics/Textures/UI/KenneyFantasyUI/Border/panel-border-003.png" type="Texture" id=3]
+[ext_resource path="res://Graphics/Textures/SpecificElements/Food/T_Pear.png" type="Texture" id=4]
+[ext_resource path="res://Fonts/Varela_Round/VarelaRound-p.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Graphics/Textures/UI/KenneyFantasyUI/Panel/panel-000.png" type="Texture" id=6]
 [ext_resource path="res://Scenes/Element/element.gd" type="Script" id=7]
+[ext_resource path="res://gradient_effect.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/Element/ElementName.gd" type="Script" id=9]
+[ext_resource path="res://Scenes/Element/NameLabelFrame.gd" type="Script" id=10]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 250.0
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 160, 160 )
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -71,70 +74,120 @@ tracks/1/keys = {
 z_index = 2
 z_as_relative = false
 script = ExtResource( 7 )
-outline_path = NodePath("outline")
-sphere_path = NodePath("Content/base")
-light_path = NodePath("Content/light")
-noise01_path = NodePath("Content/noise01")
-icon_path = NodePath("Content/icon")
-noise02_path = NodePath("Content/noise02")
+master_color = Color( 0.215686, 0.282353, 0.411765, 1 )
+icon_path = NodePath("Content/TextureRect/ElementIcon")
 area2D_path = NodePath("Content/Area2D")
-description_path = NodePath("Content/LabelPositioner/element_name")
-description_tween_path = NodePath("Content/Tween")
+description_path = NodePath("Content/NameLabelFrame/ElementName")
+tool_tip_path = NodePath("Content/NameLabelFrame")
 
 [node name="outline" type="Sprite" parent="."]
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 4 )
+visible = false
+scale = Vector2( 0.217909, 0.217909 )
+texture = ExtResource( 8 )
 
 [node name="Content" type="Node2D" parent="."]
 scale = Vector2( 0.3, 0.3 )
 
-[node name="base" type="Sprite" parent="Content"]
-modulate = Color( 0.227451, 0.203922, 0.203922, 1 )
-scale = Vector2( 0.35, 0.35 )
+[node name="TextureRect" type="NinePatchRect" parent="Content"]
+margin_left = -118.0
+margin_top = -118.0
+margin_right = 51.0
+margin_bottom = 51.0
+rect_scale = Vector2( 1.88, 1.88 )
+rect_pivot_offset = Vector2( 48, 48 )
+mouse_default_cursor_shape = 2
 texture = ExtResource( 3 )
+patch_margin_left = 21
+patch_margin_top = 21
+patch_margin_right = 21
+patch_margin_bottom = 21
 
-[node name="light" type="Sprite" parent="Content"]
-modulate = Color( 1, 0.913725, 0.52549, 0.643137 )
-rotation = -0.289725
-scale = Vector2( 0.35, 0.35 )
+[node name="RectClipBG" type="Control" parent="Content/TextureRect"]
+show_behind_parent = true
+anchor_left = 0.118343
+anchor_top = 0.118343
+anchor_right = 0.881657
+anchor_bottom = 0.881657
+rect_clip_content = true
+mouse_filter = 2
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="Content/TextureRect/RectClipBG"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.215686, 0.282353, 0.411765, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PatternBG" type="TextureRect" parent="Content/TextureRect/RectClipBG"]
+visible = false
+self_modulate = Color( 0.0647059, 0.0847059, 0.123529, 1 )
+material = ExtResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
 texture = ExtResource( 1 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": true
+}
 
-[node name="noise01" type="Sprite" parent="Content"]
-modulate = Color( 0.603922, 0.290196, 0.592157, 1 )
-scale = Vector2( 0.35, 0.35 )
-texture = ExtResource( 2 )
+[node name="ElementIcon" type="TextureRect" parent="Content/TextureRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -66.5
+margin_top = -66.5
+margin_right = 66.5
+margin_bottom = 66.5
+rect_pivot_offset = Vector2( 67.234, 83.1914 )
+mouse_filter = 2
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 5
 
-[node name="icon" type="Sprite" parent="Content"]
-scale = Vector2( 5, 5 )
+[node name="NameLabelFrame" type="NinePatchRect" parent="Content"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 287.0
+margin_top = 3.0
+margin_right = 474.0
+margin_bottom = 29.0
+rect_scale = Vector2( 3.47675, 3.47675 )
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 96, 96 )
+patch_margin_left = 25
+patch_margin_top = 25
+patch_margin_right = 25
+patch_margin_bottom = 25
+script = ExtResource( 10 )
 
-[node name="noise02" type="Sprite" parent="Content"]
-modulate = Color( 0, 0, 0, 0.658824 )
-scale = Vector2( 0.35, 0.35 )
-texture = ExtResource( 5 )
+[node name="ElementName" type="Label" parent="Content/NameLabelFrame"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 5 )
+text = "Raviouli"
+align = 1
+valign = 1
+script = ExtResource( 9 )
 
 [node name="Area2D" type="Area2D" parent="Content"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Content/Area2D"]
-shape = SubResource( 1 )
+visible = false
+shape = SubResource( 4 )
 one_way_collision_margin = 0.0
-
-[node name="Tween" type="Tween" parent="Content"]
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Content"]
-remote_path = NodePath("../LabelPositioner")
-
-[node name="LabelPositioner" type="Node2D" parent="Content"]
-
-[node name="element_name" type="Label" parent="Content/LabelPositioner"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_right = 51.0
-margin_bottom = 14.0
-rect_scale = Vector2( 6.94668, 6.94668 )
-custom_fonts/font = ExtResource( 6 )
-text = "Prima Materia"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 2 )

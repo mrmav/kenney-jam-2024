@@ -19,3 +19,5 @@ func _process(delta):
 	value += delta * speed
 	var v = float(int(value * 1000) % 1000) / 1000.0
 	color = color.from_hsv(v, color.s, color.v)
+	
+	$TextureRect.modulate = color.darkened(0.05)

@@ -1,0 +1,202 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Graphics/Textures/Others/Patterns/pattern_08.png" type="Texture" id=1]
+[ext_resource path="res://Graphics/Textures/Others/Patterns/pattern_23.png" type="Texture" id=2]
+[ext_resource path="res://Graphics/Shaders/kenney_patterns_shader.tres" type="Material" id=3]
+[ext_resource path="res://Graphics/Textures/Others/Patterns/pattern_12.png" type="Texture" id=4]
+[ext_resource path="res://Graphics/Textures/Others/Patterns/pattern_82.png" type="Texture" id=13]
+[ext_resource path="res://Graphics/Textures/UI/KenneyFantasyUI/Border/panel-border-003.png" type="Texture" id=14]
+[ext_resource path="res://Graphics/Textures/SpecificElements/Food/T_Pear.png" type="Texture" id=15]
+
+[node name="test_node_design" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LineConnection" type="Line2D" parent="."]
+visible = false
+modulate = Color( 0.737255, 0.760784, 0.980392, 1 )
+points = PoolVector2Array( 322, 172, 611, 259 )
+default_color = Color( 1, 1, 1, 1 )
+texture_mode = 2
+joint_mode = 2
+sharp_limit = 2.063
+round_precision = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+self_modulate = Color( 0.41, 0.872167, 1, 1 )
+margin_left = 57.0
+margin_top = 240.0
+margin_right = 153.0
+margin_bottom = 336.0
+rect_scale = Vector2( 1.19499, 1.19499 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 5
+
+[node name="RectClipBG" type="Control" parent="TextureRect"]
+show_behind_parent = true
+anchor_left = 0.197917
+anchor_top = 0.197917
+anchor_right = 0.802083
+anchor_bottom = 0.802083
+rect_clip_content = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect/RectClipBG"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.2993, 0.636682, 0.73, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PatternBG" type="TextureRect" parent="TextureRect/RectClipBG"]
+self_modulate = Color( 0.133333, 0.145098, 0.176471, 1 )
+material = ExtResource( 3 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": true
+}
+
+[node name="ElementIcon" type="TextureRect" parent="TextureRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 32.5359, 40.0674 )
+texture = ExtResource( 15 )
+expand = true
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+self_modulate = Color( 0.968627, 0.227451, 0.227451, 1 )
+margin_left = 57.0
+margin_top = 240.0
+margin_right = 153.0
+margin_bottom = 336.0
+rect_scale = Vector2( 1.19499, 1.19499 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 5
+
+[node name="RectClipBG" type="Control" parent="TextureRect2"]
+show_behind_parent = true
+anchor_left = 0.197917
+anchor_top = 0.197917
+anchor_right = 0.802083
+anchor_bottom = 0.802083
+rect_clip_content = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect2/RectClipBG"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.117647, 0.388235, 0.301961, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect2/RectClipBG"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 0
+
+[node name="PatternBG" type="TextureRect" parent="TextureRect2/RectClipBG/HBoxContainer"]
+material = ExtResource( 3 )
+margin_right = 14.0
+margin_bottom = 57.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.39
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": true
+}
+
+[node name="PatternBG2" type="TextureRect" parent="TextureRect2/RectClipBG/HBoxContainer"]
+self_modulate = Color( 0.133333, 0.145098, 0.176471, 1 )
+material = ExtResource( 3 )
+margin_left = 14.0
+margin_right = 33.0
+margin_bottom = 57.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.36
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": true
+}
+
+[node name="PatternBG3" type="TextureRect" parent="TextureRect2/RectClipBG/HBoxContainer"]
+self_modulate = Color( 0.65098, 0.14902, 0.0666667, 1 )
+material = ExtResource( 3 )
+margin_left = 33.0
+margin_right = 38.0
+margin_bottom = 57.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": true
+}
+
+[node name="PatternBG4" type="TextureRect" parent="TextureRect2/RectClipBG/HBoxContainer"]
+self_modulate = Color( 0.835294, 0.788235, 0.0588235, 1 )
+material = ExtResource( 3 )
+margin_left = 38.0
+margin_right = 57.0
+margin_bottom = 57.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.36
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": true
+}
+
+[node name="ElementIcon" type="TextureRect" parent="TextureRect2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+rect_pivot_offset = Vector2( 32.5359, 40.0674 )
+texture = ExtResource( 15 )
+expand = true
+stretch_mode = 5
