@@ -1,18 +1,32 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Element/scene_element.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Graphics/Textures/SpecificElements/Food/T_Bread.png" type="Texture" id=2]
+[ext_resource path="res://Graphics/Textures/UI/KenneyFantasyUI/Border/panel-border-013.png" type="Texture" id=3]
+[ext_resource path="res://Graphics/Textures/Others/Patterns/pattern_16.png" type="Texture" id=4]
 
 [node name="scene_element" instance=ExtResource( 1 )]
+master_color = Color( 1, 0.879, 0.78, 1 )
 
-[node name="light" parent="Content" index="1"]
-modulate = Color( 1, 1, 1, 1 )
+[node name="TextureRect" parent="Content" index="0"]
+texture = ExtResource( 3 )
 
-[node name="noise01" parent="Content" index="2"]
-modulate = Color( 1, 1, 1, 1 )
+[node name="RectClipBG" parent="Content/TextureRect" index="0"]
+anchor_left = 0.0710059
+anchor_top = 0.0710059
+anchor_right = 0.928994
+anchor_bottom = 0.928994
 
-[node name="icon" parent="Content" index="3"]
+[node name="ColorRect" parent="Content/TextureRect/RectClipBG" index="0"]
+color = Color( 1, 0.879, 0.78, 1 )
+
+[node name="PatternBG" parent="Content/TextureRect/RectClipBG" index="1"]
+visible = true
+self_modulate = Color( 0.9, 0.7911, 0.702, 1 )
+texture = ExtResource( 4 )
+
+[node name="ElementIcon" parent="Content/TextureRect" index="1"]
 texture = ExtResource( 2 )
 
-[node name="element_name" parent="Content/LabelPositioner" index="0"]
+[node name="ElementName" parent="Content/NameLabelFrame" index="0"]
 text = "Bread"

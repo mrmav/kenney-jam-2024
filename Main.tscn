@@ -6,8 +6,8 @@
 [ext_resource path="res://test_node_design/test_node_design.tscn" type="PackedScene" id=4]
 [ext_resource path="res://CanvasLayer2.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Main.gd" type="Script" id=6]
-[ext_resource path="res://test_node_design/2d_scroll.tres" type="Shader" id=9]
-[ext_resource path="res://test_node_design/kenney_pattern-pack/PNG/Double/pattern_01.png" type="Texture" id=10]
+[ext_resource path="res://Graphics/Shaders/2d_scroll.tres" type="Shader" id=9]
+[ext_resource path="res://Graphics/Textures/Others/Patterns/pattern_01.png" type="Texture" id=10]
 
 [sub_resource type="ShaderMaterial" id=3]
 shader = ExtResource( 9 )
@@ -92,7 +92,7 @@ gui_snap_controls_to_pixels = false
 [node name="CanvasLayer2" parent="Viewport" instance=ExtResource( 5 )]
 margin_right = 0.0
 margin_bottom = 0.0
-color = Color( 0.35, 0.3038, 0.273, 1 )
+color = Color( 0.35, 0.318738, 0.273, 1 )
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 layer = -100
@@ -107,10 +107,10 @@ expand = true
 stretch_mode = 2
 
 [node name="NodeContainer" parent="." instance=ExtResource( 2 )]
-visible = false
 position = Vector2( 489, 206 )
 
 [node name="test_node_design" parent="." instance=ExtResource( 4 )]
+visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
