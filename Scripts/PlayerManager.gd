@@ -56,3 +56,7 @@ func get_name_dict(dict: Dictionary) -> String:
 
 func get_uuid() -> String:
 	return cfg_file.get_value("player", "uuid", "")
+
+
+func get_id() -> int:
+	return int(cfg_file.get_value("player", "id", ""))

@@ -5,6 +5,7 @@ onready var description = $ElementName
 func _ready():
 	GlobalAccess.connect("show_element_description", self, "display_description")
 	GlobalAccess.connect("hide_element_description", self, "hide_description")
+	hide_description()
 	
 	
 func _process(_delta):
@@ -42,5 +43,6 @@ func display_description(text):
 
 func hide_description():
 	visible = false
-	description_tween.kill()
+	if description_tween:
+		description_tween.kill()
 	description.percent_visible = 0
