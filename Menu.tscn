@@ -48,10 +48,10 @@ gui_snap_controls_to_pixels = false
 [node name="CanvasLayer2" parent="Viewport" instance=ExtResource( 2 )]
 margin_right = 256.0
 margin_bottom = 256.0
-color = Color( 0.27451, 0.34902, 0.313702, 1 )
+color = Color( 0.27451, 0.34902, 0.315491, 1 )
 
 [node name="TextureRect" parent="Viewport/CanvasLayer2" index="0"]
-modulate = Color( 0.260785, 0.331569, 0.298017, 1 )
+modulate = Color( 0.260785, 0.331569, 0.299716, 1 )
 texture = ExtResource( 4 )
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
