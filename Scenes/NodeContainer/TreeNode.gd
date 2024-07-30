@@ -69,7 +69,7 @@ func _enter_tree():
 	# Instances the element of this node
 	element = element_scene.instance()
 	element.z_as_relative = false
-	element.z_index = Enums.ZIndex.Elements	
+	element.z_index = Enums.ZIndex.Elements
 	add_child(element)
 	
 	z_as_relative = false

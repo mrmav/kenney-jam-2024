@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Graphics/Textures/Others/Patterns/pattern_82.png" type="Texture" id=1]
 [ext_resource path="res://Graphics/Shaders/kenney_patterns_shader.tres" type="Material" id=2]
@@ -8,8 +8,9 @@
 [ext_resource path="res://Graphics/Textures/UI/KenneyFantasyUI/Panel/panel-000.png" type="Texture" id=6]
 [ext_resource path="res://Scenes/Element/element.gd" type="Script" id=7]
 [ext_resource path="res://gradient_effect.png" type="Texture" id=8]
-[ext_resource path="res://Scenes/Element/ElementName.gd" type="Script" id=9]
-[ext_resource path="res://Scenes/Element/NameLabelFrame.gd" type="Script" id=10]
+[ext_resource path="res://Graphics/Textures/Particles/star_01.png" type="Texture" id=11]
+[ext_resource path="res://Audio/switch-b.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Graphics/Shaders/MENU_PARTIUCLES_PARTICLES.tres" type="Material" id=13]
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 160, 160 )
@@ -40,9 +41,33 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("CPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AudioStreamPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=3]
-resource_name = "on_selected"
+resource_name = "darken"
 length = 0.4
 step = 0.01
 tracks/0/type = "value"
@@ -69,6 +94,65 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1.106, 1.106 ), Vector2( 1, 1 ) ]
 }
+
+[sub_resource type="Animation" id=5]
+resource_name = "on_selected"
+tracks/0/type = "method"
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("CPUParticles2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AudioStreamPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Curve" id=6]
+max_value = 0.25
+_data = [ Vector2( 0, 0.0272727 ), 0.0, 0.0878099, 0, 1, Vector2( 0.828235, 0.1 ), -0.024767, -0.024767, 0, 0, Vector2( 1, 0 ), -0.582192, 0.0, 1, 0 ]
+
+[sub_resource type="Gradient" id=7]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
 [node name="scene_element" type="Node2D"]
 z_index = 2
@@ -126,7 +210,7 @@ __meta__ = {
 
 [node name="PatternBG" type="TextureRect" parent="Content/TextureRect/RectClipBG"]
 visible = false
-self_modulate = Color( 0.0647059, 0.0847059, 0.123529, 1 )
+self_modulate = Color( 0.194117, 0.254118, 0.370589, 1 )
 material = ExtResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -155,6 +239,7 @@ expand = true
 stretch_mode = 5
 
 [node name="NameLabelFrame" type="NinePatchRect" parent="Content"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -170,9 +255,9 @@ patch_margin_left = 25
 patch_margin_top = 25
 patch_margin_right = 25
 patch_margin_bottom = 25
-script = ExtResource( 10 )
 
 [node name="ElementName" type="Label" parent="Content/NameLabelFrame"]
+visible = false
 modulate = Color( 0, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -180,7 +265,6 @@ custom_fonts/font = ExtResource( 5 )
 text = "Prima Materia"
 align = 1
 valign = 1
-script = ExtResource( 9 )
 
 [node name="Area2D" type="Area2D" parent="Content"]
 
@@ -191,4 +275,32 @@ one_way_collision_margin = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 2 )
-anims/on_selected = SubResource( 3 )
+anims/darken = SubResource( 3 )
+anims/on_selected = SubResource( 5 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = ExtResource( 13 )
+emitting = false
+amount = 18
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+local_coords = false
+draw_order = 1
+texture = ExtResource( 11 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 223.18
+initial_velocity_random = 0.29
+angular_velocity = 123.42
+angular_velocity_random = 1.0
+linear_accel = -80.53
+linear_accel_random = 0.35
+scale_amount_curve = SubResource( 6 )
+color = Color( 0.215686, 0.282353, 0.411765, 1 )
+color_ramp = SubResource( 7 )
+hue_variation = 0.2
+hue_variation_random = 0.6

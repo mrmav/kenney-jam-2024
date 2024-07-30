@@ -30,6 +30,7 @@ func fetch_player_data():
 func _on_player_data(response: PoolByteArray) -> void:
 	var parsed = JSON.parse(response.get_string_from_utf8())
 	if parsed.error:
+		cfg_file.set_value("player", "name", "error :(")
 		printerr("Something went wrong.")
 
 	if parsed.result.code == OK:

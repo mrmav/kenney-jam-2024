@@ -13,7 +13,7 @@ func set_master_color(value):
 	
 	$Content/TextureRect/RectClipBG/ColorRect.color = master_color
 	$Content/TextureRect/RectClipBG/PatternBG.self_modulate = master_color.darkened(0.1)
-
+	
 
 export var icon_path : NodePath
 export var area2D_path: NodePath
@@ -30,6 +30,7 @@ var default_icon_scale: Vector2 = Vector2(1, 1)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$CPUParticles2D.color = master_color
 	icon = get_node(icon_path)
 	area2D = get_node(area2D_path)
 	description = get_node(description_path)
@@ -63,35 +64,11 @@ func _process(_delta):
 func _on_Area2D_mouse_entered() -> void:
 	# Increase the size of the sprite
 	icon.rect_scale = default_icon_scale * hover_scale
-	display_description()
+	GlobalAccess.emit_signal("show_element_description", $Content/NameLabelFrame/ElementName.text)
 	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 	
 func _on_Area2D_mouse_exited() -> void:
 	# Return to the default size
 	icon.rect_scale = default_icon_scale
-	_reset_description()
+	GlobalAccess.emit_signal("hide_element_description")
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
-
-var description_tween : SceneTreeTween = null
-func display_description():
-	description.percent_visible = 0
-		
-	description_tween = get_tree().create_tween()
-	# Use the tween to animate the `percent_visible` property from 0 to 1
-	description_tween.tween_property(
-		description, 
-		"percent_visible",
-		1, 
-		0.1*description.text.length()
-	)
-	description_tween.set_trans(Tween.TRANS_LINEAR)
-	description_tween.set_ease(Tween.EASE_IN_OUT)
-	
-	tool_tip.visible = true
-	description_tween.play()
-
-
-func _reset_description():
-	tool_tip.visible = false
-	description_tween.kill()
-	description.percent_visible = 0

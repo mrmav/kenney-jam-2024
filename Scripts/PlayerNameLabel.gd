@@ -1,5 +1,7 @@
 extends Label
 
+export(String) var prefix = ""
+export(String) var suffix = ""
 
 func _ready():
 	if not PlayerManager.restored:
@@ -11,4 +13,4 @@ func _ready():
 
 
 func _set_text():
-	text = PlayerManager.get_name()
+	text = prefix + PlayerManager.get_name() + suffix

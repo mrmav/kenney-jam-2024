@@ -1,5 +1,8 @@
 tool
 extends Node2D
+class_name NodeContainer
+
+signal show_description
 
 signal user_clicked
 signal node_selected
@@ -68,12 +71,14 @@ func _confirm_selection(node):
 	var l_conn = find_connection_between(selected_node, node)	
 	if l_conn:
 		l_conn.get_node("AnimationPlayer").play("activated")
+		selected_node.element.get_node("AnimationPlayer").play("darken")
+		
 	
+	node.element.get_node("AnimationPlayer").play("on_selected")
 	selected_node = node
-	visited_nodes.append(selected_node)	
+	visited_nodes.append(selected_node)
 	print(node.name)
 	emit_signal("node_selected", node)
-	node.element.get_node("AnimationPlayer").play("on_selected")
 	
 	# pulsate
 	if pulsate_tween:

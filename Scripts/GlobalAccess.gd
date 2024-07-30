@@ -1,6 +1,8 @@
 extends Node
 
 signal received_results
+signal show_element_description
+signal hide_element_description
 
 const GAME_COLORS = {
 	"nigredo": "#22252d", "albedo": "#c0d3ef", "citrinitas": "#dfb602", "rubedo": "#ad3b5c"
