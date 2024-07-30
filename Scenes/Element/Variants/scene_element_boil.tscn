@@ -21,7 +21,6 @@ anchor_bottom = 0.928994
 color = Color( 0.529412, 0.596078, 0.729412, 1 )
 
 [node name="PatternBG" parent="Content/TextureRect/RectClipBG" index="1"]
-visible = true
 self_modulate = Color( 0.476471, 0.536471, 0.656471, 1 )
 texture = ExtResource( 4 )
 

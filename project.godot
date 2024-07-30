@@ -72,8 +72,8 @@ boot_splash/minimum_display_time=2
 GlobalAccess="*res://Scripts/GlobalAccess.gd"
 RequestManager="*res://Scripts/RequestManager.gd"
 NodesColors="*res://Scripts/NodesColors.gd"
-ScoreManager="*res://Scripts/ScoreManager.gd"
 PlayerManager="*res://Scripts/PlayerManager.gd"
+ScoreManager="*res://Scripts/ScoreManager.gd"
 
 [display]
 
