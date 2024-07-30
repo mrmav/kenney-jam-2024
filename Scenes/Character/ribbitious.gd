@@ -30,7 +30,7 @@ func _ready():
 	hover_button = get_node(hover_button_path) as Button
 	submit_text = get_node(submitText_path) as Control
 	cloud = get_node(clouds_path) as Control
-	background_animation = get_node(background_animation_path) as AnimationPlayer
+	#background_animation = get_node(background_animation_path) as AnimationPlayer
 	char_animation_player = get_node(char_animation_player_path) as AnimationPlayer
 	dismiss_btn = get_node(dismiss_btn_nodepath)
 	beard = get_node(beard_nodepath)
@@ -73,14 +73,14 @@ func _on_Button_pressed() -> void:
 func _open():
 	print("Hello ")
 	submit_open = true
-	background_animation.play("A_backgroundSwitch_off")
+	#background_animation.play("A_backgroundSwitch_off")
 	char_animation_player.play("reveal")
 
 
 func _dismiss():
 	print("Bye ")
 	_reset()
-	background_animation.play("A_backgroundSwitch_on")
+	#background_animation.play("A_backgroundSwitch_on")
 	char_animation_player.play("reveal", -1, -1, true)
 
 

@@ -3,7 +3,7 @@
 [ext_resource path="res://Scenes/SubmitMenu/PlayerRowInfo.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Fonts/Varela_Round/VarelaRound-p.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Graphics/Textures/Elements/T_Element_Outline.png" type="Texture" id=3]
-[ext_resource path="res://Graphics/Textures/UI/T_Button_RectangleRed.png" type="Texture" id=4]
+[ext_resource path="res://Graphics/Textures/UI/KenneyFantasyUI/Panel/panel-027.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/SubmitRunColor.gd" type="Script" id=5]
 [ext_resource path="res://Scripts/ScoreLabel.gd" type="Script" id=6]
 [ext_resource path="res://Fonts/Varela_Round/VarelaRound-h1.tres" type="DynamicFont" id=7]
@@ -173,7 +173,7 @@ align = 1
 script = ExtResource( 12 )
 
 [node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/RunInfo"]
-modulate = Color( 0.79038, 0.53, 1, 1 )
+modulate = Color( 0.91728, 0.53, 1, 1 )
 margin_top = 108.0
 margin_right = 473.0
 margin_bottom = 148.0
@@ -327,7 +327,7 @@ text = "Reaching unity and enlightenment."
 [node name="ButtonsContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 384.0
 margin_right = 473.0
-margin_bottom = 472.0
+margin_bottom = 460.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
@@ -339,7 +339,7 @@ __meta__ = {
 modulate = Color( 0.133333, 0.145098, 0.176471, 1 )
 margin_left = 30.0
 margin_right = 130.0
-margin_bottom = 88.0
+margin_bottom = 76.0
 rect_min_size = Vector2( 100, 60 )
 mouse_default_cursor_shape = 2
 custom_icons/radio_checked = SubResource( 3 )
@@ -357,7 +357,7 @@ script = ExtResource( 10 )
 modulate = Color( 0.752941, 0.827451, 0.937255, 1 )
 margin_left = 134.0
 margin_right = 234.0
-margin_bottom = 88.0
+margin_bottom = 76.0
 rect_min_size = Vector2( 100, 60 )
 mouse_default_cursor_shape = 2
 custom_icons/radio_checked = SubResource( 3 )
@@ -374,7 +374,7 @@ script = ExtResource( 10 )
 modulate = Color( 0.87451, 0.713726, 0.00784314, 1 )
 margin_left = 238.0
 margin_right = 338.0
-margin_bottom = 88.0
+margin_bottom = 76.0
 rect_min_size = Vector2( 100, 60 )
 mouse_default_cursor_shape = 2
 custom_icons/radio_checked = SubResource( 3 )
@@ -390,7 +390,7 @@ script = ExtResource( 10 )
 modulate = Color( 0.678431, 0.231373, 0.360784, 1 )
 margin_left = 342.0
 margin_right = 442.0
-margin_bottom = 88.0
+margin_bottom = 76.0
 rect_min_size = Vector2( 100, 60 )
 mouse_default_cursor_shape = 2
 custom_icons/radio_checked = SubResource( 3 )
@@ -405,21 +405,24 @@ expand_icon = true
 script = ExtResource( 10 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 476.0
+margin_top = 464.0
 margin_right = 473.0
 margin_bottom = 508.0
-rect_min_size = Vector2( 0, 32 )
 size_flags_horizontal = 3
+size_flags_vertical = 4
 texture = ExtResource( 4 )
-patch_margin_left = 14
-patch_margin_top = 14
-patch_margin_right = 10
-patch_margin_bottom = 10
+region_rect = Rect2( 0, 0, 96, 96 )
+patch_margin_left = 33
+patch_margin_top = 22
+patch_margin_right = 34
+patch_margin_bottom = 22
 
 [node name="Button-retry" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/NinePatchRect"]
+modulate = Color( 0, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = ExtResource( 2 )
-text = "Retry"
+text = "Retry
+(select a color to tint your run)"
 flat = true
 script = ExtResource( 5 )
