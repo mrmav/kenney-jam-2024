@@ -1,0 +1,117 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Graphics/Shaders/2d_scroll.tres" type="Shader" id=1]
+[ext_resource path="res://CanvasLayer2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Graphics/Textures/Others/Patterns/pattern_01.png" type="Texture" id=3]
+[ext_resource path="res://Graphics/Textures/Others/Patterns/pattern_23.png" type="Texture" id=4]
+[ext_resource path="res://Menu.gd" type="Script" id=5]
+[ext_resource path="res://Graphics/Textures/UI/KenneyFantasyUI/Panel/panel-008.png" type="Texture" id=6]
+[ext_resource path="res://Fonts/Varela_Round/VarelaRound-h3.tres" type="DynamicFont" id=7]
+[ext_resource path="res://PlayButton.gd" type="Script" id=8]
+[ext_resource path="res://AudioOnOff.gd" type="Script" id=9]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/scroll_speed = 0.005
+shader_param/angle_degrees = 109.027
+shader_param/repeat_x = 20.0
+shader_param/repeat_y = 20.0
+shader_param/row_offset = 0.0
+shader_param/texture_to_scroll = ExtResource( 3 )
+
+[sub_resource type="ViewportTexture" id=2]
+viewport_path = NodePath("Viewport")
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 1024, 1024 )
+fxaa = true
+hdr = false
+usage = 0
+render_target_v_flip = true
+gui_snap_controls_to_pixels = false
+
+[node name="CanvasLayer2" parent="Viewport" instance=ExtResource( 2 )]
+margin_right = 256.0
+margin_bottom = 256.0
+color = Color( 0.284494, 0.34902, 0.27451, 1 )
+
+[node name="TextureRect" parent="Viewport/CanvasLayer2" index="0"]
+modulate = Color( 0.270269, 0.331569, 0.260784, 1 )
+texture = ExtResource( 4 )
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="Control" type="TextureRect" parent="CanvasLayer2"]
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -792.0
+margin_bottom = -443.0
+rect_scale = Vector2( 6, 6 )
+mouse_filter = 2
+texture = SubResource( 2 )
+expand = true
+stretch_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -264.0
+margin_top = -31.0
+margin_right = 265.0
+margin_bottom = 137.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer"]
+margin_right = 529.0
+margin_bottom = 66.0
+texture = ExtResource( 6 )
+patch_margin_left = 33
+patch_margin_top = 33
+patch_margin_right = 33
+patch_margin_bottom = 33
+
+[node name="Button" type="Button" parent="VBoxContainer/NinePatchRect"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_default_cursor_shape = 2
+custom_fonts/font = ExtResource( 7 )
+text = "Play"
+flat = true
+script = ExtResource( 8 )
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+margin_top = 70.0
+margin_right = 529.0
+margin_bottom = 102.0
+rect_min_size = Vector2( 0, 32 )
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="VBoxContainer"]
+margin_top = 106.0
+margin_right = 529.0
+margin_bottom = 172.0
+texture = ExtResource( 6 )
+patch_margin_left = 33
+patch_margin_top = 33
+patch_margin_right = 33
+patch_margin_bottom = 33
+
+[node name="Button" type="Button" parent="VBoxContainer/NinePatchRect2"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_default_cursor_shape = 2
+custom_fonts/font = ExtResource( 7 )
+text = "Audio: on"
+flat = true
+script = ExtResource( 9 )
+
+[editable path="Viewport/CanvasLayer2"]

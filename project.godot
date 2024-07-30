@@ -63,7 +63,7 @@ _global_script_class_icons={
 [application]
 
 config/name="kenney-jam-2024"
-run/main_scene="res://Scenes/Boot/Boot.tscn"
+run/main_scene="res://Menu.tscn"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 boot_splash/minimum_display_time=2
 
@@ -74,6 +74,7 @@ RequestManager="*res://Scripts/RequestManager.gd"
 NodesColors="*res://Scripts/NodesColors.gd"
 PlayerManager="*res://Scripts/PlayerManager.gd"
 ScoreManager="*res://Scripts/ScoreManager.gd"
+Audio="*res://Audio.tscn"
 
 [display]
 
