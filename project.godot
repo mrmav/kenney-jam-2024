@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Enums.gd"
 }, {
+"base": "Node2D",
+"class": "NodeContainer",
+"language": "GDScript",
+"path": "res://Scenes/NodeContainer/NodeContainer.gd"
+}, {
 "base": "HBoxContainer",
 "class": "PlayerInfo",
 "language": "GDScript",
@@ -53,6 +58,7 @@ _global_script_class_icons={
 "ColorPulse": "",
 "EffectColors": "",
 "Enums": "",
+"NodeContainer": "",
 "PlayerInfo": "",
 "ScoreTable": "",
 "SubmitButton": "",

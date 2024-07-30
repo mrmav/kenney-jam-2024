@@ -1,5 +1,8 @@
 tool
 extends Node2D
+class_name NodeContainer
+
+signal show_description
 
 signal user_clicked
 signal node_selected

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Audio/Field_-_Adventurers_Road.ogg" type="AudioStream" id=1]
 [ext_resource path="res://Audio.gd" type="Script" id=2]
+[ext_resource path="res://Audio/click-b.ogg" type="AudioStream" id=3]
 
 [node name="Audio" type="Node"]
 script = ExtResource( 2 )
@@ -9,3 +10,6 @@ script = ExtResource( 2 )
 [node name="MainMenu" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
 autoplay = true
+
+[node name="UiClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
