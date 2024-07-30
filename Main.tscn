@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/Character/scene_character.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/NodeContainer/NodeContainer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/NodeContainer/NodeContainerUpdate.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Transitions.gd" type="Script" id=3]
-[ext_resource path="res://test_node_design/test_node_design.tscn" type="PackedScene" id=4]
 [ext_resource path="res://CanvasLayer2.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Main.gd" type="Script" id=6]
 [ext_resource path="res://Graphics/Shaders/2d_scroll.tres" type="Shader" id=9]
@@ -92,7 +91,7 @@ gui_snap_controls_to_pixels = false
 [node name="CanvasLayer2" parent="Viewport" instance=ExtResource( 5 )]
 margin_right = 0.0
 margin_bottom = 0.0
-color = Color( 0.273, 0.35, 0.328748, 1 )
+color = Color( 0.315658, 0.273, 0.35, 1 )
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 layer = -100
@@ -107,10 +106,6 @@ expand = true
 stretch_mode = 2
 
 [node name="NodeContainer" parent="." instance=ExtResource( 2 )]
-position = Vector2( 489, 206 )
-
-[node name="test_node_design" parent="." instance=ExtResource( 4 )]
-visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
