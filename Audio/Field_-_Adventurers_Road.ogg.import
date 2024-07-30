@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Field_-_Adventurers_Road.ogg-bc74248361d9da5f128a7ca
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0

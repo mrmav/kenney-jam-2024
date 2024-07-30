@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Graphics/Shaders/2d_scroll.tres" type="Shader" id=1]
 [ext_resource path="res://CanvasLayer2.tscn" type="PackedScene" id=2]
@@ -11,6 +11,10 @@
 [ext_resource path="res://AudioOnOff.gd" type="Script" id=9]
 [ext_resource path="res://Fonts/Varela_Round/VarelaRound-p.tres" type="DynamicFont" id=10]
 [ext_resource path="res://Scripts/PlayerNameLabel.gd" type="Script" id=11]
+[ext_resource path="res://Fonts/Varela_Round/VarelaRound-TITLE.tres" type="DynamicFont" id=12]
+[ext_resource path="res://Graphics/Textures/UI/KenneyFantasyUI/Border/panel-border-025.png" type="Texture" id=13]
+[ext_resource path="res://Graphics/Textures/Particles/star_02.png" type="Texture" id=14]
+[ext_resource path="res://Graphics/Shaders/MENU_PARTIUCLES_PARTICLES.tres" type="Material" id=15]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
@@ -23,6 +27,10 @@ shader_param/texture_to_scroll = ExtResource( 3 )
 
 [sub_resource type="ViewportTexture" id=2]
 viewport_path = NodePath("Viewport")
+
+[sub_resource type="Curve" id=3]
+max_value = 0.25
+_data = [ Vector2( 0, 0 ), 0.0, 0.247832, 0, 0, Vector2( 0.517647, 0.0832386 ), -0.024767, -0.024767, 0, 0, Vector2( 1, 0 ), -0.172568, 0.0, 1, 0 ]
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -40,10 +48,10 @@ gui_snap_controls_to_pixels = false
 [node name="CanvasLayer2" parent="Viewport" instance=ExtResource( 2 )]
 margin_right = 256.0
 margin_bottom = 256.0
-color = Color( 0.298353, 0.34902, 0.27451, 1 )
+color = Color( 0.34902, 0.27451, 0.295522, 1 )
 
 [node name="TextureRect" parent="Viewport/CanvasLayer2" index="0"]
-modulate = Color( 0.283435, 0.331569, 0.260784, 1 )
+modulate = Color( 0.331569, 0.260784, 0.280746, 1 )
 texture = ExtResource( 4 )
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
@@ -136,5 +144,65 @@ custom_fonts/font = ExtResource( 10 )
 text = "Player Name: %s"
 script = ExtResource( 11 )
 prefix = "Player Name: "
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -294.0
+margin_top = 47.0
+margin_right = 294.0
+margin_bottom = 149.0
+rect_clip_content = true
+texture = ExtResource( 13 )
+patch_margin_left = 42
+patch_margin_top = 42
+patch_margin_right = 42
+patch_margin_bottom = 42
+
+[node name="Control" type="Control" parent="NinePatchRect"]
+anchor_left = 0.0680272
+anchor_top = 0.0392157
+anchor_right = 0.931973
+anchor_bottom = 0.960784
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="NinePatchRect/Control"]
+show_behind_parent = true
+material = ExtResource( 15 )
+position = Vector2( 260, 119 )
+amount = 18
+local_coords = false
+draw_order = 1
+texture = ExtResource( 14 )
+emission_shape = 2
+emission_rect_extents = Vector2( 230, 1 )
+direction = Vector2( 0, -1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 373.18
+initial_velocity_random = 0.55
+angular_velocity = 575.41
+angular_velocity_random = 1.0
+linear_accel = -70.0
+linear_accel_random = 1.0
+scale_amount_curve = SubResource( 3 )
+color = Color( 0.027451, 1, 0.0784314, 1 )
+hue_variation = 1.0
+hue_variation_random = 1.0
+
+[node name="Label" type="Label" parent="NinePatchRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -227.0
+margin_top = -39.0
+margin_right = 227.0
+margin_bottom = 39.0
+custom_fonts/font = ExtResource( 12 )
+text = "Magnum Opus"
 
 [editable path="Viewport/CanvasLayer2"]
