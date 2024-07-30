@@ -15,3 +15,6 @@ self_modulate = Color( 0.864, 0.62784, 0.5184, 1 )
 [node name="ElementIcon" parent="Content/TextureRect" index="1"]
 rect_scale = Vector2( 1.28642, 1.28642 )
 texture = ExtResource( 2 )
+
+[node name="ElementName" parent="Content/NameLabelFrame" index="0"]
+text = "Carrot"
