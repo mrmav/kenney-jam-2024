@@ -1,106 +1,24 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scenes/Character/MoveRectUpAndDown.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Character/Eye_Follow.gd" type="Script" id=2]
-[ext_resource path="res://Graphics/Textures/Player/T_BannerScroll.png" type="Texture" id=3]
+[ext_resource path="res://Graphics/Textures/UI/KenneyFantasyUI/Panel/panel-030.png" type="Texture" id=3]
 [ext_resource path="res://Graphics/Textures/Player/T_Ribbitonious.png" type="Texture" id=4]
 [ext_resource path="res://Graphics/Textures/Player/T_Eye_Black.png" type="Texture" id=5]
 [ext_resource path="res://Graphics/Textures/Player/T_Eye_White.png" type="Texture" id=6]
 [ext_resource path="res://Graphics/Textures/Player/T_Eye_Glow.png" type="Texture" id=7]
-[ext_resource path="res://Graphics/Textures/Others/T_Pattern_56.png" type="Texture" id=8]
-[ext_resource path="res://Graphics/Textures/UI/T_Button_RectangleRed.png" type="Texture" id=9]
+[ext_resource path="res://Scenes/SubmitMenu/PanelNinePatch.tscn" type="PackedScene" id=8]
+[ext_resource path="res://AudioOnOff.gd" type="Script" id=9]
 [ext_resource path="res://Fonts/Varela_Round/VarelaRound-p.tres" type="DynamicFont" id=10]
 [ext_resource path="res://Fonts/Varela_Round/VarelaRound-h3.tres" type="DynamicFont" id=11]
 [ext_resource path="res://Graphics/Textures/Player/Clouds/T_Cloud_1.png" type="Texture" id=12]
 [ext_resource path="res://Scenes/Character/ribbitious.gd" type="Script" id=13]
 [ext_resource path="res://Graphics/Textures/Player/T_FacialHair_01.png" type="Texture" id=14]
 [ext_resource path="res://Scenes/Character/Beard.gd" type="Script" id=15]
-[ext_resource path="res://Graphics/Textures/Player/Clouds/T_Cloud_4-Better.png" type="Texture" id=16]
+[ext_resource path="res://Graphics/Textures/UI/KenneyFantasyUI/Panel/panel-015.png" type="Texture" id=16]
 [ext_resource path="res://Graphics/Textures/UI/T_PanelBorder-026.png" type="Texture" id=17]
 [ext_resource path="res://Scripts/PlayerNameLabel.gd" type="Script" id=18]
-[ext_resource path="res://Graphics/Textures/UI/T_BannerHanging.png" type="Texture" id=19]
-[ext_resource path="res://Graphics/Textures/UI/T_Button_RectangleMetal.png" type="Texture" id=20]
 [ext_resource path="res://Scripts/SubmitRecipe.gd" type="Script" id=21]
-
-[sub_resource type="Shader" id=4]
-code = "shader_type canvas_item;
-
-uniform sampler2D mask_texture;
-uniform float mask_effect_intensity : hint_range(0.0, 1.0) = 1.0;
-uniform float rect_size : hint_range(0.0, 5.0) = 1.0;
-uniform float ratio_width : hint_range(0.0, 3.0) = 1.0;
-uniform float ratio_height : hint_range(0.0, 3.0) = 1.0;
-uniform float location_x : hint_range(-1.0, 2.0) = 0.0;
-uniform float location_y : hint_range(-1.0, 2.0) = 0.0;
-uniform bool invert_mask = false;
-
-void fragment() {
-	float ratio = TEXTURE_PIXEL_SIZE.x / TEXTURE_PIXEL_SIZE.y;
-    vec4 colour = texture(TEXTURE, UV);
-	float alpha_total = texture(mask_texture, (UV - vec2(location_x,location_y)) / vec2(ratio_width,ratio_height) / rect_size).a;
-	float alpha_total_effect = alpha_total * mask_effect_intensity;
-	if (invert_mask) {
-		alpha_total_effect = 1.0 - alpha_total_effect;
-	}
-    colour.a *= alpha_total_effect;
-    COLOR = colour;
-}"
-
-[sub_resource type="ShaderMaterial" id=1]
-shader = SubResource( 4 )
-shader_param/mask_effect_intensity = 1.0
-shader_param/rect_size = 5.0
-shader_param/ratio_width = 1.099
-shader_param/ratio_height = 0.693
-shader_param/location_x = -1.0
-shader_param/location_y = -0.098
-shader_param/invert_mask = false
-shader_param/mask_texture = ExtResource( 16 )
-
-[sub_resource type="Animation" id=5]
-resource_name = "A_backgroundSwitch_off"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:material:shader_param/location_y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 4.28709, 1 ),
-"update": 0,
-"values": [ -0.092, 2.0 ]
-}
-
-[sub_resource type="Animation" id=6]
-resource_name = "A_backgroundSwitch_on"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:material:shader_param/location_y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 0.241484, 1 ),
-"update": 0,
-"values": [ 2.0, -0.098 ]
-}
-
-[sub_resource type="Animation" id=7]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:material:shader_param/location_y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ -0.098 ]
-}
 
 [sub_resource type="Animation" id=3]
 resource_name = "A_clouds_idle"
@@ -148,7 +66,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=9]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Ribbitious:rect_position")
+tracks/0/path = NodePath("SubmitText/HBoxContainer:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -157,67 +75,43 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 640 ) ]
+"values": [ Vector2( 25, 19 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("SubmitText:rect_position")
+tracks/1/path = NodePath("Darkner:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 0.241484 ),
 "update": 0,
-"values": [ Vector2( 325, -102 ) ]
+"values": [ Color( 1, 1, 1, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Background:material:shader_param/mask_effect_intensity")
+tracks/2/path = NodePath("SubmitText:rect_position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 6.06287 ),
 "update": 0,
-"values": [ 1.0 ]
+"values": [ Vector2( 325, -111 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Darkner:modulate")
+tracks/3/path = NodePath("Ribbitious:rect_position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 0.31864 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Clouds:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("SubmitText/HBoxContainer:rect_position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 25, 46 ) ]
+"values": [ Vector2( 0, 640 ) ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -248,36 +142,24 @@ tracks/1/keys = {
 "values": [ Vector2( 325, -111 ), Vector2( 325, 4 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Background:material:shader_param/mask_effect_intensity")
+tracks/2/path = NodePath("Darkner:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 0.233258, 1 ),
+"transitions": PoolRealArray( 0.241484, 1 ),
 "update": 0,
-"values": [ 1.0, 0.0 ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.729412 ) ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("Darkner:modulate")
+tracks/3/type = "method"
+tracks/3/path = NodePath("Ribbitious")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 0.241484, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.729412 ) ]
-}
-tracks/4/type = "method"
-tracks/4/path = NodePath("Ribbitious")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -285,17 +167,17 @@ tracks/4/keys = {
 "method": "toggle_thinking_clouds"
 } ]
 }
-tracks/5/type = "value"
-tracks/5/path = NodePath("SubmitText/HBoxContainer:rect_position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
+tracks/4/type = "value"
+tracks/4/path = NodePath("SubmitText/HBoxContainer:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
 "times": PoolRealArray( 0, 0.6, 0.7, 0.9, 1.1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 25, 46 ), Vector2( 25, 46 ), Vector2( 25, 115 ), Vector2( 25, 82 ), Vector2( 25, 99 ) ]
+"values": [ Vector2( 25, 19 ), Vector2( 25, 16 ), Vector2( 25, 107 ), Vector2( 25, 82 ), Vector2( 25, 106 ) ]
 }
 
 [node name="scene_character" type="Control"]
@@ -303,23 +185,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="Background" type="TextureRect" parent="."]
-visible = false
-self_modulate = Color( 0.333333, 0.227451, 0.227451, 0.768627 )
-material = SubResource( 1 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-texture = ExtResource( 8 )
-stretch_mode = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
-anims/A_backgroundSwitch_off = SubResource( 5 )
-anims/A_backgroundSwitch_on = SubResource( 6 )
-anims/RESET = SubResource( 7 )
-
 [node name="Background_Border" type="NinePatchRect" parent="."]
-modulate = Color( 0.298039, 0.298039, 0.298039, 1 )
+visible = false
+modulate = Color( 0.831373, 0.831373, 0.831373, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 17 )
@@ -339,18 +207,18 @@ autoplay = "A_clouds_idle"
 anims/A_clouds_idle = SubResource( 3 )
 
 [node name="Could_03" type="TextureRect" parent="Clouds"]
-visible = false
-margin_left = 505.0
-margin_top = 370.0
-margin_right = 733.0
-margin_bottom = 497.0
+margin_left = 492.0
+margin_top = 380.0
+margin_right = 662.0
+margin_bottom = 475.0
 rect_scale = Vector2( 0.401, 0.401 )
 mouse_filter = 2
 texture = ExtResource( 12 )
+expand = true
+stretch_mode = 6
 flip_h = true
 
 [node name="Clouds_01" type="TextureRect" parent="Clouds"]
-visible = false
 margin_left = 471.0
 margin_top = 410.0
 margin_right = 563.0
@@ -385,35 +253,10 @@ color = Color( 0, 0, 0, 1 )
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -155.0
-margin_top = -102.0
+margin_top = -111.0
 margin_right = 145.0
-margin_bottom = -2.0
+margin_bottom = -11.0
 rect_min_size = Vector2( 300, 100 )
-
-[node name="rope_left" type="NinePatchRect" parent="SubmitText"]
-margin_top = -85.0
-margin_right = 18.0
-margin_bottom = 15.0
-rect_min_size = Vector2( 2, 100 )
-rect_pivot_offset = Vector2( -437, 0 )
-texture = ExtResource( 20 )
-patch_margin_left = 9
-patch_margin_top = 14
-patch_margin_right = 9
-patch_margin_bottom = 10
-
-[node name="rope_right" type="NinePatchRect" parent="SubmitText"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -18.0
-margin_top = -85.0
-margin_bottom = 15.0
-rect_min_size = Vector2( 2, 100 )
-texture = ExtResource( 20 )
-patch_margin_left = 9
-patch_margin_top = 14
-patch_margin_right = 9
-patch_margin_bottom = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SubmitText"]
 anchor_left = 0.5
@@ -421,44 +264,32 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -125.0
-margin_top = -4.0
+margin_top = -31.0
 margin_right = 125.0
-margin_bottom = 56.0
-custom_constants/separation = 16
+margin_bottom = 29.0
+custom_constants/separation = 7
 
 [node name="Button" type="Button" parent="SubmitText/HBoxContainer"]
-margin_right = 117.0
-margin_bottom = 60.0
+margin_right = 121.0
+margin_bottom = 59.0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 flat = true
 script = ExtResource( 21 )
 
-[node name="rope_left2" type="NinePatchRect" parent="SubmitText/HBoxContainer/Button"]
-margin_left = 47.0
-margin_top = -49.0
-margin_right = 65.0
-margin_bottom = 51.0
-rect_min_size = Vector2( 2, 100 )
-rect_pivot_offset = Vector2( -437, 0 )
-texture = ExtResource( 20 )
-patch_margin_left = 9
-patch_margin_top = 14
-patch_margin_right = 9
-patch_margin_bottom = 10
-
-[node name="NinePatchRect" type="NinePatchRect" parent="SubmitText/HBoxContainer/Button"]
+[node name="NinePatchRectLabel2" type="NinePatchRect" parent="SubmitText/HBoxContainer/Button"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 9 )
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
+texture = ExtResource( 16 )
+region_rect = Rect2( 0, 0, 96, 96 )
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 31
 
 [node name="Label" type="Label" parent="SubmitText/HBoxContainer/Button"]
-modulate = Color( 1, 0.945098, 0.823529, 1 )
+modulate = Color( 0, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = ExtResource( 11 )
@@ -467,38 +298,26 @@ align = 1
 valign = 1
 
 [node name="Dismiss" type="Button" parent="SubmitText/HBoxContainer"]
-margin_left = 133.0
+margin_left = 128.0
 margin_right = 250.0
-margin_bottom = 60.0
+margin_bottom = 59.0
 mouse_default_cursor_shape = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 flat = true
 
-[node name="rope_left3" type="NinePatchRect" parent="SubmitText/HBoxContainer/Dismiss"]
-margin_left = 47.0
-margin_top = -49.0
-margin_right = 65.0
-margin_bottom = 51.0
-rect_min_size = Vector2( 2, 100 )
-rect_pivot_offset = Vector2( -437, 0 )
-texture = ExtResource( 20 )
-patch_margin_left = 9
-patch_margin_top = 14
-patch_margin_right = 9
-patch_margin_bottom = 10
-
-[node name="NinePatchRect" type="NinePatchRect" parent="SubmitText/HBoxContainer/Dismiss"]
+[node name="NinePatchRectLabel2" type="NinePatchRect" parent="SubmitText/HBoxContainer/Dismiss"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 9 )
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
+texture = ExtResource( 16 )
+region_rect = Rect2( 0, 0, 96, 96 )
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 31
 
 [node name="Label" type="Label" parent="SubmitText/HBoxContainer/Dismiss"]
-modulate = Color( 1, 0.945098, 0.823529, 1 )
+modulate = Color( 0, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = ExtResource( 10 )
@@ -507,20 +326,10 @@ check again."
 align = 1
 valign = 1
 
-[node name="NinePatchRectLabel2" type="NinePatchRect" parent="SubmitText"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -150.0
-margin_right = 150.0
-margin_bottom = 100.0
-texture = ExtResource( 19 )
-region_rect = Rect2( 1, 0, 0, 0 )
-patch_margin_left = 34
-patch_margin_top = 40
-patch_margin_right = 49
-patch_margin_bottom = 37
+[node name="NinePatchRectLabel2" parent="SubmitText" instance=ExtResource( 8 )]
 
 [node name="Label" type="Label" parent="SubmitText/NinePatchRectLabel2"]
+modulate = Color( 0, 0, 0, 1 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -530,12 +339,26 @@ margin_top = -42.0
 margin_right = 163.0
 margin_bottom = 58.0
 rect_scale = Vector2( 0.858227, 0.858227 )
-custom_colors/font_color = Color( 1, 0.945098, 0.823529, 1 )
 custom_fonts/font = ExtResource( 11 )
-text = "Trasmutate your recipe?"
+text = "Transmute your recipe?"
 align = 1
 valign = 1
 autowrap = true
+
+[node name="Button" type="Button" parent="SubmitText"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 15.0
+margin_top = -26.0
+margin_right = 171.0
+margin_bottom = 20.0
+mouse_default_cursor_shape = 2
+custom_fonts/font = ExtResource( 11 )
+text = "Audio: on"
+flat = true
+script = ExtResource( 9 )
 
 [node name="Ribbitious" type="Control" parent="."]
 anchor_top = 1.0
@@ -549,7 +372,6 @@ script = ExtResource( 13 )
 hover_button_path = NodePath("../HoverButton")
 submitText_path = NodePath("../SubmitText")
 clouds_path = NodePath("../Clouds")
-background_animation_path = NodePath("../Background/AnimationPlayer")
 char_animation_player_path = NodePath("../AnimationPlayerChar")
 dismiss_btn_nodepath = NodePath("../SubmitText/HBoxContainer/Dismiss")
 beard_nodepath = NodePath("Rect_Frog/Beard")
@@ -677,31 +499,33 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -199.5
-margin_top = -101.0
-margin_right = 199.5
+margin_left = -176.0
+margin_top = -79.0
+margin_right = 329.0
+margin_bottom = 20.0
+rect_scale = Vector2( 0.69712, 0.69712 )
 texture = ExtResource( 3 )
-region_rect = Rect2( -4.68401, -6.8723, 531.06, 144.198 )
-patch_margin_left = 194
-patch_margin_top = 43
-patch_margin_right = 190
-patch_margin_bottom = 58
+region_rect = Rect2( 0, 0, 96, 96 )
+patch_margin_left = 70
+patch_margin_top = 50
+patch_margin_right = 70
+patch_margin_bottom = 49
 
 [node name="Label" type="Label" parent="Ribbitious/NinePatchRectName"]
+modulate = Color( 0, 0, 0, 1 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -169.5
-margin_top = -22.5
-margin_right = 169.5
-margin_bottom = 18.5
+margin_left = -163.5
+margin_top = -41.5
+margin_right = 164.5
+margin_bottom = 41.5
 theme = SubResource( 2 )
-custom_colors/font_color = Color( 1, 0.945098, 0.823529, 1 )
 custom_fonts/font = ExtResource( 11 )
 text = "LORD RIBBITIOUS"
 align = 1
-valign = 3
+valign = 1
 autowrap = true
 script = ExtResource( 18 )
 
