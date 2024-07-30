@@ -177,6 +177,7 @@ tree_id = 21
 position = Vector2( 262, -179 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 7 )
+relevant = false
 tree_id = 22
 
 [node name="TreeNode10" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode9/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode7/TreeNode8/TreeNode8/TreeNode9/TreeNode9/TreeNode9/TreeNode10"]
@@ -207,12 +208,14 @@ tree_id = 26
 position = Vector2( 95, 184 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 7 )
+relevant = false
 tree_id = 27
 
 [node name="TreeNode10" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode9/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode7/TreeNode8/TreeNode8/TreeNode9/TreeNode9/TreeNode9/TreeNode10/TreeNode10/TreeNode10/TreeNode10/TreeNode10/TreeNode10"]
 position = Vector2( 0, 267 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 7 )
+relevant = false
 tree_id = 28
 
 [node name="TreeNode10" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode9/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode7/TreeNode8/TreeNode8/TreeNode9/TreeNode9/TreeNode9/TreeNode10/TreeNode10/TreeNode10/TreeNode10/TreeNode10/TreeNode10/TreeNode10"]
@@ -225,12 +228,14 @@ tree_id = 29
 position = Vector2( -192, 119 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 7 )
+relevant = false
 tree_id = 30
 
 [node name="TreeNode10" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode9/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode7/TreeNode8/TreeNode8/TreeNode9/TreeNode9/TreeNode9/TreeNode10/TreeNode10/TreeNode10/TreeNode10/TreeNode10/TreeNode10/TreeNode10/TreeNode10/TreeNode10"]
 position = Vector2( -232, 1 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 7 )
+relevant = false
 tree_id = 31
 
 [node name="TreeNode10" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode9/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode7/TreeNode8/TreeNode8/TreeNode9/TreeNode9/TreeNode9/TreeNode10/TreeNode10/TreeNode10/TreeNode10/TreeNode10/TreeNode10/TreeNode10/TreeNode10/TreeNode10/TreeNode10"]
@@ -243,6 +248,7 @@ tree_id = 32
 position = Vector2( -148, -120 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 7 )
+relevant = false
 bridges = [ NodePath("../../../../../../../../../../../..") ]
 tree_id = 33
 
@@ -250,6 +256,7 @@ tree_id = 33
 position = Vector2( 204, 264 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 7 )
+relevant = false
 bridges = [ NodePath("../../../../TreeNode6/TreeNode6/TreeNode6") ]
 tree_id = 34
 
@@ -264,6 +271,7 @@ tree_id = 35
 position = Vector2( -566, 0 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 7 )
+relevant = false
 bridges = [ NodePath("../../../../../..") ]
 tree_id = 36
 
@@ -271,6 +279,7 @@ tree_id = 36
 position = Vector2( -442, -348 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 7 )
+relevant = false
 tree_id = 37
 
 [node name="TreeNode8" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode9/TreeNode8"]
@@ -296,6 +305,7 @@ tree_id = 40
 position = Vector2( -9, -346 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 7 )
+relevant = false
 tree_id = 41
 
 [node name="TreeNode8" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6"]
