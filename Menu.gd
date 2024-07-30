@@ -21,3 +21,6 @@ func _ready():
 		
 		
 	$Viewport/CanvasLayer2/TextureRect.texture = load(files.pick_random())
+	
+	
+	PlayerManager.fetch_player_data()

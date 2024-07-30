@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Graphics/Shaders/2d_scroll.tres" type="Shader" id=1]
 [ext_resource path="res://CanvasLayer2.tscn" type="PackedScene" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Fonts/Varela_Round/VarelaRound-h3.tres" type="DynamicFont" id=7]
 [ext_resource path="res://PlayButton.gd" type="Script" id=8]
 [ext_resource path="res://AudioOnOff.gd" type="Script" id=9]
+[ext_resource path="res://Fonts/Varela_Round/VarelaRound-p.tres" type="DynamicFont" id=10]
+[ext_resource path="res://Scripts/PlayerNameLabel.gd" type="Script" id=11]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
@@ -38,10 +40,10 @@ gui_snap_controls_to_pixels = false
 [node name="CanvasLayer2" parent="Viewport" instance=ExtResource( 2 )]
 margin_right = 256.0
 margin_bottom = 256.0
-color = Color( 0.284494, 0.34902, 0.27451, 1 )
+color = Color( 0.298353, 0.34902, 0.27451, 1 )
 
 [node name="TextureRect" parent="Viewport/CanvasLayer2" index="0"]
-modulate = Color( 0.270269, 0.331569, 0.260784, 1 )
+modulate = Color( 0.283435, 0.331569, 0.260784, 1 )
 texture = ExtResource( 4 )
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
@@ -113,5 +115,26 @@ custom_fonts/font = ExtResource( 7 )
 text = "Audio: on"
 flat = true
 script = ExtResource( 9 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -51.0
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+margin_left = 416.0
+margin_top = 15.0
+margin_right = 543.0
+margin_bottom = 35.0
+hint_tooltip = "This will be your user name. If you wish to change it, you'll have
+to clear the page cache. Your id is saved in the local storage.
+Atention: you will loose your progress!"
+mouse_filter = 1
+custom_fonts/font = ExtResource( 10 )
+text = "Player Name: %s"
+script = ExtResource( 11 )
+prefix = "Player Name: "
 
 [editable path="Viewport/CanvasLayer2"]

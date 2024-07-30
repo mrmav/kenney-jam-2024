@@ -92,7 +92,7 @@ gui_snap_controls_to_pixels = false
 [node name="CanvasLayer2" parent="Viewport" instance=ExtResource( 5 )]
 margin_right = 0.0
 margin_bottom = 0.0
-color = Color( 0.273, 0.35, 0.285782, 1 )
+color = Color( 0.35, 0.288708, 0.273, 1 )
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 layer = -100
