@@ -6,7 +6,13 @@ export(int) var color_index = 0
 onready var button_ref = $"../../ButtonsContainer/Button-nigredo"
 
 func _ready():
-	pass
+	var button_group : ButtonGroup = button_ref.group
+	button_group.connect("pressed", self, "check_selection")
+	disabled = true
+
+
+func check_selection(button):
+	disabled = not(button != null)
 
 
 func get_checked_color():

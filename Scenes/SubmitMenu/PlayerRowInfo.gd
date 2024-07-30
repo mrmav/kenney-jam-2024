@@ -10,10 +10,12 @@ var _suffix = ["st", "nd", "rd", "th"]
 
 
 func _ready():
-	$name.text = PlayerManager.get_name_dict({"name": pname, "id": id})
+	$name.text = PlayerManager.get_name_dict({"name": pname, "id": id})	
 	$score.text = "%1.2f" % score
-
 	$position.text = "%d%s" % [pos + 1, get_pos_suffix(pos)]
+	
+	if id != PlayerManager.get_id():
+		$ColorPulse.queue_free()
 
 
 func get_pos_suffix(i) -> String:

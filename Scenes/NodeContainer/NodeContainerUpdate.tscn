@@ -42,6 +42,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 tree_root_path = NodePath("TreeRoot")
+debug_mode = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -102,7 +103,7 @@ tree_id = 6
 position = Vector2( -442, -1 )
 script = ExtResource( 2 )
 element_scene = ExtResource( 19 )
-bridges = [ NodePath("../TreeNode8/TreeNode8/TreeNode8"), NodePath("TreeNode6/TreeNode6"), NodePath("../TreeNode8/TreeNode8") ]
+bridges = [ NodePath("../TreeNode8/TreeNode8/TreeNode8"), NodePath("../TreeNode8/TreeNode8") ]
 tree_id = 7
 
 [node name="TreeNode6" type="Node2D" parent="TreeRoot/TreeNode2/TreeNode6/TreeNode6/TreeNode6/TreeNode6/TreeNode9/TreeNode6"]
