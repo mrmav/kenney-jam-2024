@@ -35,3 +35,6 @@ texture = ExtResource( 4 )
 
 [node name="ElementName" parent="Content/NameLabelFrame" index="0"]
 text = "Strawberry"
+
+[node name="CPUParticles2D" parent="." index="4"]
+color = Color( 1, 0.49, 0.49, 1 )

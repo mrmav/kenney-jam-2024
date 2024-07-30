@@ -13,7 +13,7 @@ func set_master_color(value):
 	
 	$Content/TextureRect/RectClipBG/ColorRect.color = master_color
 	$Content/TextureRect/RectClipBG/PatternBG.self_modulate = master_color.darkened(0.1)
-
+	
 
 export var icon_path : NodePath
 export var area2D_path: NodePath
@@ -30,6 +30,7 @@ var default_icon_scale: Vector2 = Vector2(1, 1)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$CPUParticles2D.color = master_color
 	icon = get_node(icon_path)
 	area2D = get_node(area2D_path)
 	description = get_node(description_path)

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Field_-_Adventurers_Road.ogg-bc74248361d9da5f128a7ca7fb150b4e.oggstr"
+
+[deps]
+
+source_file="res://Audio/Field_-_Adventurers_Road.ogg"
+dest_files=[ "res://.import/Field_-_Adventurers_Road.ogg-bc74248361d9da5f128a7ca7fb150b4e.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
