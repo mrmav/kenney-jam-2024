@@ -1,0 +1,18 @@
+[
+    {
+        "name": "ORC MASSACRE",
+        "recipe": [0, 17,18,19,20,21]
+    },
+    {
+        "name": "CARROT SNACK",
+        "recipe": [0, 1, 2]
+    },
+    {
+        "name": "PEANUT BUTTER SANDWICH WITH BANANA",
+        "recipe": [0, 5, 6, 7, 8, 9]
+    },
+    {
+        "name": "WEIRD SUSHI",
+        "recipe": [0, 10, 11, 12, 13, 36]
+    }
+]

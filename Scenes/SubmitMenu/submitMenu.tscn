@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scenes/SubmitMenu/PlayerRowInfo.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Fonts/Varela_Round/VarelaRound-p.tres" type="DynamicFont" id=2]
@@ -13,6 +13,14 @@
 [ext_resource path="res://Scenes/SubmitMenu/ScoreTable.gd" type="Script" id=11]
 [ext_resource path="res://Scripts/PlayerNameLabel.gd" type="Script" id=12]
 [ext_resource path="res://Graphics/Textures/UI/KenneyFantasyUI/Divider/divider-005.png" type="Texture" id=13]
+[ext_resource path="res://Scenes/SubmitMenu/GoToMainMenu.gd" type="Script" id=14]
+[ext_resource path="res://Fonts/Varela_Round/VarelaRound-Regular.ttf" type="DynamicFontData" id=15]
+
+[sub_resource type="DynamicFont" id=5]
+size = 15
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 15 )
 
 [sub_resource type="ImageTexture" id=3]
 
@@ -43,25 +51,26 @@ custom_constants/margin_bottom = 16
 margin_left = 16.0
 margin_top = 16.0
 margin_right = 944.0
-margin_bottom = 524.0
+margin_bottom = 525.0
 custom_constants/separation = 17
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-margin_right = 385.0
-margin_bottom = 508.0
+margin_right = 389.0
+margin_bottom = 509.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+size_flags_stretch_ratio = 1.47
 
 [node name="RunInfo" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-margin_right = 385.0
-margin_bottom = 508.0
+margin_right = 389.0
+margin_bottom = 509.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/RunInfo"]
-margin_right = 385.0
-margin_bottom = 78.0
+margin_right = 389.0
+margin_bottom = 61.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 custom_fonts/font = ExtResource( 7 )
@@ -69,9 +78,9 @@ text = "Global Score"
 align = 1
 
 [node name="Title" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/RunInfo"]
-margin_top = 82.0
-margin_right = 385.0
-margin_bottom = 122.0
+margin_top = 65.0
+margin_right = 389.0
+margin_bottom = 105.0
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/RunInfo/Title"]
 margin_right = 62.0
@@ -85,7 +94,7 @@ valign = 1
 
 [node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/RunInfo/Title"]
 margin_left = 66.0
-margin_right = 319.0
+margin_right = 323.0
 margin_bottom = 40.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 8 )
@@ -94,8 +103,8 @@ align = 1
 valign = 1
 
 [node name="Label3" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer/RunInfo/Title"]
-margin_left = 323.0
-margin_right = 385.0
+margin_left = 327.0
+margin_right = 389.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 62, 0 )
 size_flags_horizontal = 5
@@ -105,29 +114,29 @@ align = 1
 valign = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/RunInfo"]
-margin_top = 126.0
-margin_right = 385.0
-margin_bottom = 508.0
+margin_top = 109.0
+margin_right = 389.0
+margin_bottom = 509.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ScoreTable" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/RunInfo/ScrollContainer"]
-margin_right = 385.0
-margin_bottom = 382.0
+margin_right = 389.0
+margin_bottom = 400.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 11 )
 table_row = ExtResource( 1 )
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-margin_left = 402.0
-margin_right = 438.0
-margin_bottom = 508.0
+margin_left = 406.0
+margin_right = 442.0
+margin_bottom = 509.0
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/HBoxContainer/VBoxContainer3"]
 modulate = Color( 0.25098, 0.25098, 0.25098, 1 )
 margin_right = 36.0
-margin_bottom = 508.0
+margin_bottom = 509.0
 size_flags_horizontal = 4
 size_flags_vertical = 3
 texture = ExtResource( 13 )
@@ -137,24 +146,25 @@ patch_margin_right = 18
 patch_margin_bottom = 141
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
-margin_left = 455.0
+margin_left = 459.0
 margin_right = 928.0
-margin_bottom = 508.0
+margin_bottom = 509.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.77
+custom_constants/separation = 2
 
 [node name="RunInfo" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
-margin_right = 473.0
-margin_bottom = 148.0
+margin_right = 469.0
+margin_bottom = 131.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = -5
 alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/RunInfo"]
-margin_right = 473.0
-margin_bottom = 78.0
+margin_right = 469.0
+margin_bottom = 61.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 7 )
@@ -162,9 +172,9 @@ text = "Your Score"
 align = 1
 
 [node name="Label3" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/RunInfo"]
-margin_top = 73.0
-margin_right = 473.0
-margin_bottom = 113.0
+margin_top = 56.0
+margin_right = 469.0
+margin_bottom = 96.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 8 )
@@ -173,10 +183,10 @@ align = 1
 script = ExtResource( 12 )
 
 [node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/RunInfo"]
-modulate = Color( 0.91728, 0.53, 1, 1 )
-margin_top = 108.0
-margin_right = 473.0
-margin_bottom = 148.0
+modulate = Color( 0.53, 1, 0.718, 1 )
+margin_top = 91.0
+margin_right = 469.0
+margin_bottom = 131.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 8 )
@@ -188,31 +198,31 @@ script = ExtResource( 6 )
 script = ExtResource( 9 )
 
 [node name="Description" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 152.0
-margin_right = 473.0
-margin_bottom = 380.0
+margin_top = 133.0
+margin_right = 469.0
+margin_bottom = 334.0
 size_flags_horizontal = 3
 alignment = 1
 
 [node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/Description"]
-margin_right = 473.0
-margin_bottom = 112.0
-custom_fonts/font = ExtResource( 2 )
+margin_right = 469.0
+margin_bottom = 85.0
+custom_fonts/font = SubResource( 5 )
 text = "In the magical quest for the Philosopher's Stone, every effort counts. Choose a color to leave an enchanted trail of your journey.
 Your mystical mark can guide other fellow alchemists on their path to discovery!"
 align = 1
 autowrap = true
 
 [node name="Space" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer2/Description"]
-margin_top = 116.0
-margin_right = 473.0
-margin_bottom = 132.0
+margin_top = 89.0
+margin_right = 469.0
+margin_bottom = 105.0
 rect_min_size = Vector2( 0, 16 )
 
 [node name="ColorRow" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/Description"]
-margin_top = 136.0
-margin_right = 473.0
-margin_bottom = 156.0
+margin_top = 109.0
+margin_right = 469.0
+margin_bottom = 129.0
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/Description/ColorRow"]
 self_modulate = Color( 0.133333, 0.145098, 0.176471, 1 )
@@ -238,9 +248,9 @@ custom_fonts/font = ExtResource( 2 )
 text = "Facing and purging inner darkness."
 
 [node name="ColorRow2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/Description"]
-margin_top = 160.0
-margin_right = 473.0
-margin_bottom = 180.0
+margin_top = 133.0
+margin_right = 469.0
+margin_bottom = 153.0
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/Description/ColorRow2"]
 self_modulate = Color( 0.752941, 0.827451, 0.937255, 1 )
@@ -267,9 +277,9 @@ custom_fonts/font = ExtResource( 2 )
 text = "Achieving purification and spiritual clarity."
 
 [node name="ColorRow3" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/Description"]
-margin_top = 184.0
-margin_right = 473.0
-margin_bottom = 204.0
+margin_top = 157.0
+margin_right = 469.0
+margin_bottom = 177.0
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/Description/ColorRow3"]
 self_modulate = Color( 0.87451, 0.713726, 0.00784314, 1 )
@@ -296,9 +306,9 @@ custom_fonts/font = ExtResource( 2 )
 text = "Gaining wisdom and deeper understanding."
 
 [node name="ColorRow4" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2/Description"]
-margin_top = 208.0
-margin_right = 473.0
-margin_bottom = 228.0
+margin_top = 181.0
+margin_right = 469.0
+margin_bottom = 201.0
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2/Description/ColorRow4"]
 self_modulate = Color( 0.678431, 0.231373, 0.360784, 1 )
@@ -325,9 +335,9 @@ custom_fonts/font = ExtResource( 2 )
 text = "Reaching unity and enlightenment."
 
 [node name="ButtonsContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 384.0
-margin_right = 473.0
-margin_bottom = 460.0
+margin_top = 336.0
+margin_right = 469.0
+margin_bottom = 396.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
@@ -337,9 +347,9 @@ __meta__ = {
 
 [node name="Button-nigredo" type="CheckBox" parent="MarginContainer/HBoxContainer/VBoxContainer2/ButtonsContainer"]
 modulate = Color( 0.133333, 0.145098, 0.176471, 1 )
-margin_left = 30.0
-margin_right = 130.0
-margin_bottom = 76.0
+margin_left = 28.0
+margin_right = 128.0
+margin_bottom = 60.0
 rect_min_size = Vector2( 100, 60 )
 mouse_default_cursor_shape = 2
 custom_icons/radio_checked = SubResource( 3 )
@@ -355,9 +365,9 @@ script = ExtResource( 10 )
 
 [node name="Button-albedo" type="CheckBox" parent="MarginContainer/HBoxContainer/VBoxContainer2/ButtonsContainer"]
 modulate = Color( 0.752941, 0.827451, 0.937255, 1 )
-margin_left = 134.0
-margin_right = 234.0
-margin_bottom = 76.0
+margin_left = 132.0
+margin_right = 232.0
+margin_bottom = 60.0
 rect_min_size = Vector2( 100, 60 )
 mouse_default_cursor_shape = 2
 custom_icons/radio_checked = SubResource( 3 )
@@ -372,9 +382,9 @@ script = ExtResource( 10 )
 
 [node name="Button-citrinas" type="CheckBox" parent="MarginContainer/HBoxContainer/VBoxContainer2/ButtonsContainer"]
 modulate = Color( 0.87451, 0.713726, 0.00784314, 1 )
-margin_left = 238.0
-margin_right = 338.0
-margin_bottom = 76.0
+margin_left = 236.0
+margin_right = 336.0
+margin_bottom = 60.0
 rect_min_size = Vector2( 100, 60 )
 mouse_default_cursor_shape = 2
 custom_icons/radio_checked = SubResource( 3 )
@@ -388,9 +398,9 @@ script = ExtResource( 10 )
 
 [node name="Button-rubedo" type="CheckBox" parent="MarginContainer/HBoxContainer/VBoxContainer2/ButtonsContainer"]
 modulate = Color( 0.678431, 0.231373, 0.360784, 1 )
-margin_left = 342.0
-margin_right = 442.0
-margin_bottom = 76.0
+margin_left = 340.0
+margin_right = 440.0
+margin_bottom = 60.0
 rect_min_size = Vector2( 100, 60 )
 mouse_default_cursor_shape = 2
 custom_icons/radio_checked = SubResource( 3 )
@@ -404,10 +414,18 @@ icon_align = 1
 expand_icon = true
 script = ExtResource( 10 )
 
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 398.0
+margin_right = 469.0
+margin_bottom = 417.0
+custom_fonts/font = SubResource( 5 )
+text = "(select a color to tint your run)"
+align = 1
+
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
-margin_top = 464.0
-margin_right = 473.0
-margin_bottom = 508.0
+margin_top = 419.0
+margin_right = 469.0
+margin_bottom = 463.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
 texture = ExtResource( 4 )
@@ -422,7 +440,28 @@ modulate = Color( 0, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = ExtResource( 2 )
-text = "Retry
-(select a color to tint your run)"
+text = "Retry"
 flat = true
 script = ExtResource( 5 )
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 465.0
+margin_right = 469.0
+margin_bottom = 509.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 96, 96 )
+patch_margin_left = 33
+patch_margin_top = 22
+patch_margin_right = 34
+patch_margin_bottom = 22
+
+[node name="Button-retry" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/NinePatchRect2"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 2 )
+text = "Main Menu"
+flat = true
+script = ExtResource( 14 )
