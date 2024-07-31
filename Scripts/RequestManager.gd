@@ -3,7 +3,8 @@ extends Node
 var domain = "http://localhost:3000"
 
 func _enter_tree():
-	domain = "https://mrmav-jam.com"
+	#domain = "https://mrmav-jam.com"
+	domain = "http://localhost:3000"
 
 
 func make_request(endpoint : String, caller : Object, callback : String, parameters : Dictionary = {}, encode = false):

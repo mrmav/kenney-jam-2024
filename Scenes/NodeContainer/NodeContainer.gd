@@ -21,10 +21,17 @@ var visited_nodes = []
 func _enter_tree():
 	# register self class for global access
 	TreeNode._reset_ids()
-		
+	
+	if not Engine.editor_hint:
+		GlobalAccess.node_container = self
+	
+
+func _exit_tree():
+	GlobalAccess.node_container = null
+
 
 func _ready():
-	GlobalAccess.node_container = self
+	#GlobalAccess.node_container = self
 	
 	if Engine.editor_hint:
 		return

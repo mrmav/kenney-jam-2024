@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Graphics/Shaders/2d_scroll.tres" type="Shader" id=1]
 [ext_resource path="res://CanvasLayer2.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Graphics/Textures/UI/KenneyFantasyUI/Border/panel-border-025.png" type="Texture" id=13]
 [ext_resource path="res://Graphics/Textures/Particles/star_02.png" type="Texture" id=14]
 [ext_resource path="res://Graphics/Shaders/MENU_PARTIUCLES_PARTICLES.tres" type="Material" id=15]
+[ext_resource path="res://Scripts/EffectColors.gd" type="Script" id=16]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
@@ -32,6 +33,9 @@ viewport_path = NodePath("Viewport")
 max_value = 0.25
 _data = [ Vector2( 0, 0 ), 0.0, 0.247832, 0, 0, Vector2( 0.517647, 0.0832386 ), -0.024767, -0.024767, 0, 0, Vector2( 1, 0 ), -0.172568, 0.0, 1, 0 ]
 
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.6, 0.6, 0.6, 0.207843 )
+
 [node name="Menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -48,10 +52,10 @@ gui_snap_controls_to_pixels = false
 [node name="CanvasLayer2" parent="Viewport" instance=ExtResource( 2 )]
 margin_right = 256.0
 margin_bottom = 256.0
-color = Color( 0.27451, 0.34902, 0.332926, 1 )
+color = Color( 0.278683, 0.27451, 0.34902, 1 )
 
 [node name="TextureRect" parent="Viewport/CanvasLayer2" index="0"]
-modulate = Color( 0.260785, 0.331569, 0.31628, 1 )
+modulate = Color( 0.264748, 0.260785, 0.331569, 1 )
 texture = ExtResource( 4 )
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
@@ -69,19 +73,22 @@ texture = SubResource( 2 )
 expand = true
 stretch_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -264.0
-margin_top = -31.0
-margin_right = 265.0
-margin_bottom = 137.0
+[node name="VBoxContainer" type="HBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 263.0
+margin_top = -119.0
+margin_right = -269.0
+margin_bottom = -38.0
+alignment = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer"]
-margin_right = 529.0
-margin_bottom = 66.0
+modulate = Color( 0.85598, 0.81, 1, 1 )
+margin_right = 203.0
+margin_bottom = 81.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture = ExtResource( 6 )
 patch_margin_left = 33
 patch_margin_top = 33
@@ -98,16 +105,24 @@ text = "Play"
 flat = true
 script = ExtResource( 8 )
 
+[node name="EffectColors" type="Node" parent="VBoxContainer/NinePatchRect"]
+script = ExtResource( 16 )
+
 [node name="Control" type="Control" parent="VBoxContainer"]
-margin_top = 70.0
-margin_right = 529.0
-margin_bottom = 102.0
+margin_left = 207.0
+margin_right = 220.0
+margin_bottom = 81.0
 rect_min_size = Vector2( 0, 32 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.06
 
 [node name="NinePatchRect2" type="NinePatchRect" parent="VBoxContainer"]
-margin_top = 106.0
-margin_right = 529.0
-margin_bottom = 172.0
+margin_left = 224.0
+margin_right = 428.0
+margin_bottom = 81.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture = ExtResource( 6 )
 patch_margin_left = 33
 patch_margin_top = 33
@@ -123,27 +138,6 @@ custom_fonts/font = ExtResource( 7 )
 text = "Audio: on"
 flat = true
 script = ExtResource( 9 )
-
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -51.0
-alignment = 1
-
-[node name="Label" type="Label" parent="HBoxContainer"]
-margin_left = 416.0
-margin_top = 15.0
-margin_right = 543.0
-margin_bottom = 35.0
-hint_tooltip = "This will be your user name. If you wish to change it, you'll have
-to clear the page cache. Your id is saved in the local storage.
-Atention: you will loose your progress!"
-mouse_filter = 1
-custom_fonts/font = ExtResource( 10 )
-text = "Player Name: %s"
-script = ExtResource( 11 )
-prefix = "Player Name: "
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 anchor_left = 0.5
@@ -172,7 +166,7 @@ __meta__ = {
 [node name="CPUParticles2D" type="CPUParticles2D" parent="NinePatchRect/Control"]
 show_behind_parent = true
 material = ExtResource( 15 )
-position = Vector2( 260, 119 )
+position = Vector2( 254, 125 )
 amount = 18
 local_coords = false
 draw_order = 1
@@ -204,5 +198,54 @@ margin_right = 227.0
 margin_bottom = 39.0
 custom_fonts/font = ExtResource( 12 )
 text = "Magnum Opus"
+
+[node name="Feed" type="VBoxContainer" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 35.0
+margin_top = -81.0
+margin_right = -35.0
+margin_bottom = 101.0
+
+[node name="Label" type="Label" parent="Feed"]
+modulate = Color( 0.360706, 0.180392, 0.92549, 1 )
+margin_right = 890.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 7 )
+text = "Transmutations Feed:"
+align = 1
+
+[node name="EffectColors" type="Node" parent="Feed/Label"]
+script = ExtResource( 16 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Feed"]
+margin_top = 44.0
+margin_right = 890.0
+margin_bottom = 182.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/bg = SubResource( 4 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Feed/ScrollContainer"]
+margin_right = 890.0
+margin_bottom = 138.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -26.0
+hint_tooltip = "This will be your user name. If you wish to change it, you'll have
+to clear the page cache. Your id is saved in the local storage.
+Atention: you will loose your progress!"
+mouse_filter = 1
+custom_fonts/font = ExtResource( 10 )
+text = "Player Name: %s"
+align = 1
+script = ExtResource( 11 )
+prefix = "Player Name: "
 
 [editable path="Viewport/CanvasLayer2"]
