@@ -29,6 +29,15 @@ app.use(cors());
 // The final recipe, used to check against.
 var good_recipe = [];
 
+// other recipes
+var other_recipes = null;
+
+var unlocked_by_players = [
+  
+  // {player_name: name, recipe_name: name, code: id_recipe_name}
+
+];
+
 // The nodes colors state. This will be saved to file by cronjob.
 var node_colors = [];
 
@@ -63,6 +72,44 @@ app.get("/check", (req, res) => {
 
   console.log(new Date(), "Player got: " + data.result.toString());
 
+  ReadItem(player_uuid, (row) => {
+
+    if (row) {
+      // could be undefined
+      // player exists
+      
+      // we now check for any other recipes found:
+      if(other_recipes != null)
+      {
+        for(var i = 0; i < other_recipes.length; i++)
+        {
+          if(CheckSubmittedArray(other_recipes[i].recipe, player_array) >= 99.0)
+          {
+            var code = `${row.id}_${other_recipes[i].name}`;
+
+            // check if already unlocked:
+            var found = false
+            for(var j = 0; j < unlocked_by_players.length; j++)
+            {
+              if(unlocked_by_players[j].code == code)
+              {
+                found = true;
+                break;
+              }
+            }
+
+            if(!found)
+            {
+              unlocked_by_players.push({timestamp: Date.now(), player_name: `${row.name}#${row.id}`, recipe_name: other_recipes[i].name, code: code})
+            }            
+          }
+        }
+      }
+    } 
+
+  })
+
+
   var success = true;
   UpdateItem(player_uuid, data.result, (err) => {
     if (err) {
@@ -72,7 +119,7 @@ app.get("/check", (req, res) => {
 
       return;
     }
-
+    
     res.status(200).send(JSON.stringify(data));
   });
 
@@ -137,6 +184,16 @@ app.listen(port, () => {
     fs.readFileSync("recipe.secret", { encoding: "utf8", flag: "r" })
   );
 
+  // Load in other recipe.
+  other_recipes = JSON.parse(
+    fs.readFileSync("other_recipes.json", { encoding: "utf8", flag: "r" })
+  );
+
+  // Load in other unlocked recipe.
+  unlocked_by_players = JSON.parse(
+    fs.readFileSync("unlocked_by_players.secret", { encoding: "utf8", flag: "r" })
+  );
+
   console.log(`Game Server listening at http://localhost:${port}`);
 });
 
@@ -175,6 +232,15 @@ new cronJob(
         console.log(new Date(), "Saved nodes state");
       }
     });
+
+    fs.writeFile("./unlocked_by_players.secret", JSON.stringify(unlocked_by_players), (err) => {
+      if (err) {
+        console.error(err);
+      } else {
+        console.log(new Date(), "Saved unlocked recipes by players");
+      }
+    });
+
   },
   null,
   true
@@ -232,3 +298,10 @@ function createAndStoreNewPlayer(res) {
     }
   });
 }
+
+
+app.get("/feed", (req, res) => {
+
+  res.status(200).send(JSON.stringify(unlocked_by_players));
+
+})
